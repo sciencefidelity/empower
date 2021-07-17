@@ -1,13 +1,13 @@
 {
-  "name": "empower",
+  "name": "empower-studio",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "package.json",
   "author": "Matt Cook <sciencefidelity@hotmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "sanity start",
+    "dev": "sanity start",
     "build": "sanity build"
   },
   "keywords": [
