@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "cd studio\nsanity deploy"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "cd studio\nsanity start"
+    }
+  },
+  "identifier" : "8311BDEA-0142-43C6-ABA0-E71BD8A7E901",
+  "openLogOnRun" : "start"
+}

@@ -1,0 +1,14 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "cd web\nnpm run build"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "cd web\nnpm run dev"
+    }
+  },
+  "identifier" : "0AC868BE-4F11-4438-B807-79AA1555B5D6",
+  "openLogOnRun" : "start"
+}
