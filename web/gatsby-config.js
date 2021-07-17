@@ -1,13 +1,18 @@
+require('dotenv').config()
+
+const clientConfig = require('./client-config')
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Empower`,
+    description: `Meditation for all`,
+    author: `@sciencefidelity`,
+    siteUrl: `https://empower-us-all.org/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -27,6 +32,12 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        ...clientConfig.sanity
       },
     },
     `gatsby-plugin-gatsby-cloud`,
