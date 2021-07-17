@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Meditation for all",
   "main": "package.json",
-  "author": "Matt Cook <sciencefidelity@hotmail.com>",
+  "author": "Matt Cook <matt@sciencefidelity.co.uk>",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity start",

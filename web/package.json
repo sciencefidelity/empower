@@ -3,7 +3,7 @@
   "private": true,
   "description": "Meditation for all.",
   "version": "0.1.0",
-  "author": "Matt Cook",
+  "author": "Matt Cook <matt@sciencefidelity.co.uk>",
   "dependencies": {
     "gatsby": "^3.9.1",
     "gatsby-plugin-gatsby-cloud": "^2.9.1",
