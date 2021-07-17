@@ -8,7 +8,7 @@
     "allowJs": true,
     "checkJs": true,
     "jsx": "react",
-    "types": [],
+    "types": ["react-helmet"],
     "paths": {
       "~/*": ["./src/*"],
       "@/*": ["./src/*"],
