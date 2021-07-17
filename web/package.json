@@ -5,22 +5,29 @@
   "version": "0.1.0",
   "author": "Matt Cook <matt@sciencefidelity.co.uk>",
   "dependencies": {
+    "@sanity/block-content-to-react": "^3.0.0",
+    "dotenv": "^10.0.0",
     "gatsby": "^3.9.1",
     "gatsby-plugin-gatsby-cloud": "^2.9.1",
     "gatsby-plugin-image": "^1.9.0",
     "gatsby-plugin-manifest": "^3.9.0",
     "gatsby-plugin-offline": "^4.9.0",
     "gatsby-plugin-react-helmet": "^4.9.0",
+    "gatsby-plugin-sass": "^4.9.0",
     "gatsby-plugin-sharp": "^3.9.0",
     "gatsby-source-filesystem": "^3.9.0",
+    "gatsby-source-sanity": "^7.0.7",
     "gatsby-transformer-sharp": "^3.9.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-portable-text": "^0.3.0",
+    "sass": "^1.35.2"
   },
   "devDependencies": {
-    "prettier": "2.3.2"
+    "prettier": "2.3.2",
+    "typescript": "^4.3.5"
   },
   "keywords": [
     "gatsby"
