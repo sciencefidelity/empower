@@ -9,13 +9,11 @@ interface Props {
 const Header:FC<Props> = ({ siteTitle }) => {
   return (
     <header>
-      <div>
-        <h1>
-          <Link to="/">
-            {siteTitle}
-          </Link>
-        </h1>
-      </div>
+      <h1>
+        <Link to="/">
+          {siteTitle}
+        </Link>
+      </h1>
     </header>
   )
 }
