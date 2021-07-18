@@ -4,7 +4,7 @@ const clientConfig = require('./client-config')
 
 module.exports = {
   siteMetadata: {
-    title: `Empower`,
+    title: `eMpower`,
     description: `Meditation for all`,
     author: `@sciencefidelity`,
     siteUrl: `https://empower-us-all.org/`,
