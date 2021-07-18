@@ -7,7 +7,7 @@ exports[`Header renders correctly 1`] = `
       <a
         href="/"
       >
-        Default Starter
+        eMpower
       </a>
     </h1>
   </div>
