@@ -3,10 +3,20 @@
  */
 
 import React from "react"
+import renderer from "react-test-renderer"
 import { render } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
 
 import Header from "../header"
+
+describe("Header", () => {
+  it("renders correctly", () => {
+    const tree = renderer
+      .create(<Header siteTitle="eMpower" />)
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+})
 
 test("renders the site title", () => {
   const siteTitle = `eMpower`
