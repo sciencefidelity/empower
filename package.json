@@ -19,4 +19,11 @@
   "devDependencies": {
     "lerna": "^4.0.0"
   }
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sciencefidelity/empower"
+  },
+  "bugs": {
+    "url": "https://github.com/sciencefidelity/empower/issues"
+  }
 }
