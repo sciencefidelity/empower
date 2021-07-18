@@ -8,18 +8,21 @@
     "allowJs": true,
     "checkJs": true,
     "jsx": "react",
-    "types": ["react-helmet"],
+    "types": [
+      "jest",
+      "react-helmet",
+      "react-test-renderer"
+    ],
     "paths": {
       "~/*": ["./src/*"],
-      "@/*": ["./src/*"],
-      "*": ["./types/*"]
-    },
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/*", "types/*"],
   "exclude": [
     "node_modules",
     "./node_modules",
     "./node_modules/*",
-    "./node_modules/@types/node/index.d.ts",
+    "./node_modules/@types/node/index.d.ts"
   ]
 }
