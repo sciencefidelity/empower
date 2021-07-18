@@ -30,15 +30,15 @@ const Layout:FC<Props> = ({ children }) => {
 
   return (
     <>
-      {!! data && <Header
-        siteTitle={data.site.siteMetadata?.title ||
+      {!!data && <Header
+        siteTitle={data.site.siteMetadata.title ||
         `eMpower`}
       />}
       <div>
         <main>{children}</main>
       </div>
-      {!! data && <Footer
-        siteTitle={data.site.siteMetadata?.title ||
+      {!!data && <Footer
+        siteTitle={data.site.siteMetadata.title ||
         `eMpower`}
       />}
     </>

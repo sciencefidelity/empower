@@ -20,7 +20,9 @@ describe("Header", () => {
 
   it("renders the site title", () => {
     const siteTitle = `eMpower`
-    const { container, getByText } = render(<Header siteTitle={siteTitle} />)
+    const { container, getByText } = render(
+      <Header siteTitle={siteTitle} />
+    )
     expect(getByText("eMpower")).toBeInTheDocument()
     expect(container.firstChild).toMatchInlineSnapshot(`
       <header>
