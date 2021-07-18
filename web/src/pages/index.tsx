@@ -23,12 +23,10 @@ const IndexPage:FC = () => {
     }
   `)
 
-  const siteTitle = data.site.siteMetadata?.title
-
   return (
     <Layout>
-      <Seo title={siteTitle} />
-      <h1>{siteTitle}</h1>
+      {!!data && <Seo title={data.site.siteMetadata.title} />}
+      {!!data && <h1>{data.site.siteMetadata.title}</h1>}
     </Layout>
   )
 }

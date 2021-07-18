@@ -30,17 +30,17 @@ const Layout:FC<Props> = ({ children }) => {
 
   return (
     <>
-      <Header
+      {!! data && <Header
         siteTitle={data.site.siteMetadata?.title ||
         `eMpower`}
-      />
+      />}
       <div>
         <main>{children}</main>
       </div>
-      <Footer
+      {!! data && <Footer
         siteTitle={data.site.siteMetadata?.title ||
         `eMpower`}
-      />
+      />}
     </>
   )
 }
