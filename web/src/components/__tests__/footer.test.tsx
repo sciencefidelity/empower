@@ -18,7 +18,7 @@ describe("Footer", () => {
   })
 })
 
-test(`renders the site title`, () => {
+it(`renders the site title`, () => {
   const siteTitle = `eMpower`
   const { getByText } = render(<Footer siteTitle={siteTitle} />)
   expect(getByText(/eMpower/i)).toBeInTheDocument()

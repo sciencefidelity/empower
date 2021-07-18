@@ -18,7 +18,7 @@ describe("Header", () => {
   })
 })
 
-test("renders the site title", () => {
+it("renders the site title", () => {
   const siteTitle = `eMpower`
   const { container, getByText } = render(<Header siteTitle={siteTitle} />)
   expect(getByText("eMpower")).toBeInTheDocument()
