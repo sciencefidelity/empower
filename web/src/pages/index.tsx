@@ -1,13 +1,36 @@
-import * as React from "react"
+import React, { FC } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>eMpower</h1>
-  </Layout>
-)
+interface Data {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+}
+
+const IndexPage:FC = () => {
+  const data: Data = useStaticQuery(graphql`
+    query SiteIndexQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+
+  const siteTitle = data.site.siteMetadata?.title
+
+  return (
+    <Layout>
+      <Seo title={siteTitle} />
+      <h1>{siteTitle}</h1>
+    </Layout>
+  )
+}
 
 export default IndexPage

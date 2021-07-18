@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 interface Props {
-  siteTitle: string
+  siteTitle?: string
 }
 
 const Header:FC<Props> = ({ siteTitle }) => {
