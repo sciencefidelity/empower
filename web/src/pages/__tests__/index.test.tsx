@@ -4,21 +4,23 @@
 
 import React from "react"
 import renderer from "react-test-renderer"
-// import { render } from "@testing-library/react"
+import { render } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
 
-import IndexPage from "../index"
+import Index from "../index"
 
-describe("IndexPage", () => {
-  beforeAll(() => {
+describe("Index", () => {
+  beforeEach(() => {
     const useStaticQuery = jest.fn();
-    useStaticQuery.mockReturnValue({
-      site: {
-        siteMetadata: {
-          title: `eMpower`
+    useStaticQuery.mockImplementationOnce(({ render }) =>
+      render({
+        site: {
+          siteMetadata: {
+            title: `eMpower`
+          }
         }
-      }
-    })
+      })
+    )
   })
 
   const mockData = {
@@ -31,7 +33,7 @@ describe("IndexPage", () => {
 
   it("renders correctly", () => {
     const tree = renderer
-      .create(<IndexPage children={mockData} />)
+      .create(<Index />)
       .toJSON()
     expect(tree).toMatchSnapshot()
   })

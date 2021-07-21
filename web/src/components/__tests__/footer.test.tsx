@@ -24,7 +24,12 @@ describe("Footer", () => {
     expect(getByText(/eMpower/i)).toBeInTheDocument()
   })
 
-  it.todo("renders the current year")
+  it("renders the current year", () => {
+    const currentYear = new Date().getFullYear()
+    const { getByText } = render(<Footer />)
+    const regex =  new RegExp(String(currentYear), 'i')
+    expect(getByText(regex)).toBeInTheDocument()
+  })
 
   it.todo("links to gatsbyjs.com")
 
