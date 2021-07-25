@@ -6,7 +6,7 @@
     "target": "es2019",
     "baseUrl": ".",
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "jsx": "react",
     "types": [
       "jest",
