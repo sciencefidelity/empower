@@ -1,8 +1,5 @@
 /**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
+ * https://www.gatsbyjs.com/tutorial/seo-and-social-sharing-cards-tutorial/
  */
 
 import React, { FC } from "react"
