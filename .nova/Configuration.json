@@ -1,9 +1,10 @@
 {
+  "apexskier.eslint.config.fixOnSave" : "Enable",
   "apexskier.typescript.config.formatDocumentOnSave" : "false",
   "apexskier.typescript.config.isEnabledForJavascript" : "Disable",
   "apexskier.typescript.config.organizeImportsOnSave" : "false",
   "apexskier.typescript.config.userPreferences.quotePreference" : "double",
   "workspace.art_style" : 1,
   "workspace.color" : 8,
-  "workspace.name" : "Empower"
+  "workspace.name" : "eMpower"
 }

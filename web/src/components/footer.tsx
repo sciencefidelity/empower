@@ -5,12 +5,14 @@ interface Props {
   siteTitle?: string
 }
 
-const Footer:FC<Props> = ({ siteTitle }) => {
+const Footer: FC<Props> = ({ siteTitle }) => {
   return (
     <footer>
-      © {new Date().getFullYear()} {siteTitle}, Built with
+      &copy; {new Date().getFullYear()} {siteTitle}, Built with
       {` `}
-      <a href="https://www.gatsbyjs.com">Gatsby</a>
+      <a href="https://gatsbyjs.com" target="_blank" rel="noreferrer">
+        Gatsby
+      </a>
     </footer>
   )
 }
