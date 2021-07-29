@@ -14,6 +14,12 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
     {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./generated/graphqlTypes.ts`,
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

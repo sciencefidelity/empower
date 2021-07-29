@@ -2,24 +2,17 @@ import React, { FC } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { SiteTitleQuery } from "../../generated/graphqlTypes"
 import Header from "./header"
 import Footer from "./footer"
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
-interface Data {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
-
-const Layout:FC<Props> = ({ children }) => {
-  const data: Data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+const Layout: FC<Props> = ({ children }) => {
+  const { site } = useStaticQuery<SiteTitleQuery>(graphql`
+    query SiteTitle {
       site {
         siteMetadata {
           title
@@ -30,17 +23,15 @@ const Layout:FC<Props> = ({ children }) => {
 
   return (
     <>
-      {!!data && <Header
-        siteTitle={data.site.siteMetadata.title ||
-        `eMpower`}
-      />}
+      {!!site && (
+        <Header siteTitle={site.siteMetadata.title || `eMpower`} />
+      )}
       <div>
         <main>{children}</main>
       </div>
-      {!!data && <Footer
-        siteTitle={data.site.siteMetadata.title ||
-        `eMpower`}
-      />}
+      {!!site && (
+        <Footer siteTitle={site.siteMetadata.title || `eMpower`} />
+      )}
     </>
   )
 }

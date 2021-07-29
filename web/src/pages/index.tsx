@@ -1,20 +1,13 @@
 import React, { FC } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { IndexQuery } from "../../generated/graphqlTypes"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-interface Data {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
-
-const IndexPage:FC = () => {
-  const data: Data = useStaticQuery(graphql`
-    query SiteIndexQuery {
+const IndexPage: FC = () => {
+  const { site } = useStaticQuery<IndexQuery>(graphql`
+    query Index {
       site {
         siteMetadata {
           title
@@ -25,8 +18,8 @@ const IndexPage:FC = () => {
 
   return (
     <Layout>
-      {!!data && <Seo title={data.site.siteMetadata.title} />}
-      {!!data && <h1>{data.site.siteMetadata.title}</h1>}
+      {!!site && <Seo title={site.siteMetadata.title} />}
+      {!!site && <h1>{site.siteMetadata.title}</h1>}
     </Layout>
   )
 }
