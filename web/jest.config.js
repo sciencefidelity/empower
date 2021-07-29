@@ -1,3 +1,5 @@
+// https://gatsby.dev/unit-testing
+
 const { compilerOptions } = require("./tsconfig.json")
 const { pathsToModuleNameMapper } = require("ts-jest/utils")
 const paths = pathsToModuleNameMapper(compilerOptions.paths, {
