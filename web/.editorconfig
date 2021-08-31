@@ -1,0 +1,19 @@
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+# TypeScript, JavaScript
+[*.{ts,tsx,js,jsx}]
+indent_style = space
+indent_size = 2
+
+[*.scss]
+indent_style = space
+indent_size = 2
+
+# package.json, tsconfig.json
+[*.json]
+indent_style = space
+indent_size = 2
