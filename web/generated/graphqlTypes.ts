@@ -4989,4 +4989,7 @@ export type SeoQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetada
 export type IndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type IndexQuery = { sanityPost?: Maybe<(
+    Pick<SanityPost, '_id' | 'publishedAt' | 'title'>
+    & { author?: Maybe<Pick<SanityAuthor, '_id' | 'name'>>, categories?: Maybe<Array<Maybe<Pick<SanityCategory, '_id' | 'title'>>>>, slug?: Maybe<Pick<SanitySlug, 'current'>>, body?: Maybe<Array<Maybe<Pick<SanityBlock, '_rawChildren'>>>> }
+  )>, site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };

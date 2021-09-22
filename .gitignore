@@ -63,6 +63,7 @@ dist/
 
 # Mac files
 .DS_Store
+*.bak
 
 # Yarn
 yarn-error.log
