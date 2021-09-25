@@ -4,10 +4,6 @@
       "enabled" : true,
       "script" : "cd web\nnpm run build"
     },
-    "clean" : {
-      "enabled" : true,
-      "script" : "cd web\ngatsby clean"
-    },
     "run" : {
       "enabled" : true,
       "script" : "cd web\nnpm run dev"
