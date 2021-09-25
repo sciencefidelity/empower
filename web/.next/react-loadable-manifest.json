@@ -1,0 +1,14 @@
+{
+  "../node_modules/next-sanity/dist/next-sanity.esm.js -> @sanity/groq-store": {
+    "id": "./node_modules/@sanity/groq-store/dist/browser/groq-store.js",
+    "files": [
+      "static/chunks/node_modules_sanity_groq-store_dist_browser_groq-store_js.js"
+    ]
+  },
+  "../node_modules/next/dist/client/next-dev.js -> ./dev/noop": {
+    "id": "./node_modules/next/dist/client/dev/noop.js",
+    "files": [
+      "static/chunks/node_modules_next_dist_client_dev_noop_js.js"
+    ]
+  }
+}
