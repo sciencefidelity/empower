@@ -6,24 +6,24 @@ yarn-error.log*
 
 # Dependencies
 node_modules/
-/.pnp
+.pnp/
 .pnp.js
 
 # Eslint cache
 .eslintcache
 
 # testing
-/coverage
+coverage/
 
 # dotenv environment variable files
 .env*
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
-/build
+build/
 
 # Sanity files
 dist/
