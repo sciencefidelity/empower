@@ -1454,10 +1454,10 @@
   resolved "https://registry.npmjs.org/@sanity/generate-help-url/-/generate-help-url-2.18.0.tgz#9130301579ff38b6bcc2ea0ce6105a7979272a66"
   integrity sha512-If8Qkw32LWPes16UzqwUsTLgfxF5d4ACdUvCLMl6grJc/5G8LKPAGCQUuA/d1F4W16yCJVV7Zv31HDRDXJSJkg==
 
-"@sanity/icons@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.npmjs.org/@sanity/icons/-/icons-1.1.7.tgz#f2b6f2d9b68965b6f26975c0d5528ae75e1472d8"
-  integrity sha512-5KbAhNowjO94UjIrsaaKCGNLdHs+ek+RF5Bc+XRELOi1TFR0GBG3Wo7LK30df2ajA7TW6HwERLbPQB3sJyMRMQ==
+"@sanity/icons@^1.1.7", "@sanity/icons@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.1.tgz#0dcef7d0c0ea965acffbccb825d9da6ccaa53330"
+  integrity sha512-dDXvyRIppU6OD8dNPBdd8LVBaIw5n5TrVOZ6AvT5pCoDswXlFQinoea5Fe4Huk26C+IZfe8d++P4tctnQPG8Vw==
 
 "@sanity/image-url@^1.0.1":
   version "1.0.1"
@@ -1684,21 +1684,21 @@
     react "17.0.1"
     rxjs "^6.5.3"
 
-"@sanity/ui@^0.36.8":
-  version "0.36.9"
-  resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.36.9.tgz#0b6da18d6bfb5b91fca8d0258c1586e78c276d3e"
-  integrity sha512-duL6E2qA69r+4X8cT3o/vhehzFmJX82Jx4fejXk+3e4yPQOUPGpjqWwkhIBSDFv/lE0/7tphgp5K3+UVw+RA+w==
+"@sanity/ui@^0.36.12", "@sanity/ui@^0.36.8":
+  version "0.36.12"
+  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.36.12.tgz#cdc0fde42869dfe2a8fc9c7afdbcbc1cac020e6c"
+  integrity sha512-BTkuBWGIf03lVUrlgLRyUwixI9uWJjsOzJx0MJeZBO7fLsbaiI+4sMZZYqWpMZrw1mh2p0+jsaoDbKlbiHwrPA==
   dependencies:
     "@juggle/resize-observer" "^3.3.1"
     "@popperjs/core" "^2.10.1"
     "@reach/auto-id" "^0.16.0"
     "@sanity/color" "^2.1.5"
-    "@sanity/icons" "^1.1.7"
+    "@sanity/icons" "^1.2.1"
     framer-motion "^4.1.17"
     popper-max-size-modifier "^0.2.0"
     react-is "^17.0.2"
     react-popper "^2.2.5"
-    react-refractor "^2.1.4"
+    react-refractor "^2.1.5"
 
 "@sanity/util@2.20.0":
   version "2.20.0"
@@ -1730,15 +1730,18 @@
     date-fns "^2.16.1"
     lodash "^4.17.15"
 
-"@sanity/vision@^2.20.0":
-  version "2.20.0"
-  resolved "https://registry.npmjs.org/@sanity/vision/-/vision-2.20.0.tgz#e40d3e87cfee96586846ba6344244ed5c4b28537"
-  integrity sha512-cpMZ7NSOxpbXvjzJPsVxVlUswL7VF6Lb4REO5hBMzlmK6PK2K9Y1zGkppqkD4tcAYalLHn2iNJK4j2U4iGzjLA==
+"@sanity/vision@^2.21.0":
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/@sanity/vision/-/vision-2.21.0.tgz#46d0914e2cf9c6d39d8b48292449c0b557755242"
+  integrity sha512-B0Ar4okK8wWtKos0YCShHsHYfPQQ/vcuVzXJ9m/1laSQN+8R2E6ue3gtzrXP08sgZuCWuwc29wW9Pm3Dm7J4Yw==
   dependencies:
-    "@sanity/icons" "^1.1.7"
-    "@sanity/ui" "^0.36.8"
+    "@sanity/icons" "^1.2.1"
+    "@sanity/ui" "^0.36.12"
     classnames "^2.2.5"
     codemirror "^5.47.0"
+    is-hotkey "^0.1.6"
+    json5 "^1.0.1"
+    lodash "^4.17.15"
     moment "^2.19.1"
     query-string "^4.3.2"
     react-codemirror2 "^6.0.0"
@@ -8014,7 +8017,7 @@ react-props-stream@^1.0.0:
   resolved "https://registry.npmjs.org/react-props-stream/-/react-props-stream-1.0.1.tgz#dac2198df19d27efe2d0f9bf7eb016e1ec22c4f9"
   integrity sha512-lBMW9S7OvqE8sYruPTpG8Dv7WVwHiDt4hJmhixoRNlHBtVMnMvMJal/tsH8F/YKMsObvSkY3PCWCPRLqnEaOaw==
 
-react-refractor@^2.1.2, react-refractor@^2.1.4:
+react-refractor@^2.1.2, react-refractor@^2.1.5:
   version "2.1.5"
   resolved "https://registry.npmjs.org/react-refractor/-/react-refractor-2.1.5.tgz#e7ab2d59f742cbc68fae687f9c3c015f8f0fc188"
   integrity sha512-HhZQfZhFvscgx97rvT33+QKniQxyQ6QqVY0pjPR2i4RAcy0PW6/5N6/uEBKc9d5Ioivfd1QkUZ8UI0ivuk7vbA==
