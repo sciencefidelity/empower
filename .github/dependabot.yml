@@ -9,3 +9,7 @@ updates:
     directory: "/web"
     schedule:
       interval: "monthly"
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
