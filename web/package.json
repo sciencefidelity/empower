@@ -29,7 +29,7 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.2.4",
+    "jest": "^27.2.5",
     "prettier": "^2.4.1",
     "react-test-renderer": "^17.0.2",
     "sanity-codegen": "^0.9.5",
