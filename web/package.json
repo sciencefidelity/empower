@@ -1,6 +1,9 @@
 {
-  "name": "next-test",
+  "name": "empower-web",
   "version": "0.1.0",
+  "description": "Meditation for all",
+  "author": "Matt Cook <matt@sciencefidelity.co.uk>",
+  "license": "UNLICENCED",
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
