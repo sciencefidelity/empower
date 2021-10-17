@@ -1,11 +1,10 @@
 {
   "name": "empower-studio",
-  "private": true,
   "version": "0.1.0",
   "description": "Meditation for all",
-  "main": "package.json",
   "author": "Matt Cook <matt@sciencefidelity.co.uk>",
-  "license": "UNLICENSED",
+  "license": "UNLICENCED",
+  "private": true,
   "scripts": {
     "dev": "sanity start --host=0.0.0.0",
     "build": "sanity build"
