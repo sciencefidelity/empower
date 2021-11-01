@@ -36,10 +36,10 @@
     "prettier": "^2.4.1",
     "react-test-renderer": "^17.0.2",
     "sanity-codegen": "^0.9.6",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.0.1",
     "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-recommended": "^5.0.0",
-    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-config-sass-guidelines": "^9.0.0",
     "typescript": "4.4.4"
   }
 }
