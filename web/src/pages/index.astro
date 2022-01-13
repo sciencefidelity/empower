@@ -1,39 +1,27 @@
 ---
 // Component Imports
 import BaseLayout from "../layouts/BaseLayout.astro"
-// You can import components from any supported Framework here!
-
-// Component Script:
-// You can write any JavaScript/TypeScript that you'd like here.
-// It will run during the build, but never in the browser.
-// All variables are available to use in the HTML template below.
+import heart from "../icons/heart.svg"
 const title = "eMpower"
-let seconds = 0
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
 ---
 <BaseLayout title="home">
   <section class="home">
-    <div class="emoji">🧘</div>
+    <img src={heart} alt="Asterisk" class="asterisk" />
     <h1>{title}</h1>
     <p>coming soon</p>
   </section>
 </BaseLayout>
 
 <style lang="scss">
-  @font-face {
-    font-family: 'Verveine';
-    font-size: normal;
-    font-weight: 700;
-    src: url('./fonts/verveine_std_rg-subset.woff2') format('woff2');
-    font-display: swap;
-  }
-
   .home {
     text-align: center;
   }
+
   .emoji {
     font-size: 10rem;
+  }
+
+  .asterisk {
+    width: 7rem;
   }
 </style>

@@ -1,12 +1,6 @@
 ---
 import Footer from "../components/Footer.astro"
-import "sanitize.css/sanitize.css"
-import "sanitize.css/assets.css"
-import "sanitize.css/reduce-motion.css"
-import "sanitize.css/typography.css"
 import "../styles/global.scss"
-import { capitalize } from "../lib/utils.ts"
-
 const {title} = Astro.props
 ---
 <html lang="en">
@@ -30,18 +24,25 @@ const {title} = Astro.props
 
 <!-- prettier-ignore -->
 <style lang="scss">
-  @keyframes logo-pulse {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.06);
-    }
+  @font-face {
+    font-family: 'Verveine';
+    font-size: normal;
+    font-weight: 700;
+    src: url('/fonts/verveine_std_rg-subset.woff2') format('woff2');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Sacramento';
+    font-size: normal;
+    font-weight: 700;
+    src: url('/fonts/sacramento-regular-subnum.woff2') format('woff2');
+    font-display: swap;
   }
 
   #app {
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     place-items: center;
     height: 100vh;
     background-color: var(--background);

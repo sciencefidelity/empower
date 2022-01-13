@@ -21,12 +21,19 @@ body {
   font-size: calc(10px + 2vmin);
   color: var(--foreground);
   background-color: var(--background);
+  font-family: Sacramento;
 }
 
 h1 {
   font-family: Verveine;
   color: var(--blue);
   font-size: 17rem;
+  line-height: 1;
+}
+
+p {
+  font-size: 5rem;
+  line-height: 3;
 }
 
 a {
