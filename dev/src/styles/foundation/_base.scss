@@ -1,0 +1,49 @@
+@use 'breakpoints' as b;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: auto;
+  font-size: calc(10px + 2vmin);
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: Sacramento;
+}
+
+h1 {
+  font-family: Verveine;
+  color: var(--blue);
+  font-size: 17rem;
+  line-height: 1;
+  @include b.mq(lg) {
+    font-size: 14rem;
+  }
+  @include b.mq(sm) {
+    font-size: 10rem;
+  }
+}
+
+p {
+  font-size: 5rem;
+  line-height: 3;
+  @include b.mq(lg) {
+    font-size: 4.5rem;
+  }
+  @include b.mq(sm) {
+    font-size: 4rem;
+  }
+}
+
+a {
+  color: var(--blue);
+}

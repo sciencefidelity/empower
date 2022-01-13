@@ -1,0 +1,54 @@
+---
+import Footer from "../components/Footer.astro"
+import "../styles/global.scss"
+const {title} = Astro.props
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>eMpower | {title}</title>
+  <meta name="Description" content="Meditation for children, teachers, and healthcare professionals." />
+
+  <link rel="preload" href="/fonts/verveine_std_rg-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/sacramento-regular-subnum.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+  <link rel="stylesheet" href={Astro.resolve('../styles/global.scss')}>
+
+</head>
+<body>
+  <div id="app">
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</body>
+
+<!-- prettier-ignore -->
+<style lang="scss">
+  @font-face {
+    font-family: 'Verveine';
+    font-size: normal;
+    font-weight: 700;
+    src: url('/fonts/verveine_std_rg-subset.woff2') format('woff2');
+    font-display: block;
+  }
+
+  @font-face {
+    font-family: 'Sacramento';
+    font-size: normal;
+    font-weight: 700;
+    src: url('/fonts/sacramento-regular-subnum.woff2') format('woff2');
+    font-display: block;
+  }
+
+  #app {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    place-items: center;
+    height: 100vh;
+    background-color: var(--background);
+  }
+</style>

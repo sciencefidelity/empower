@@ -1,0 +1,35 @@
+---
+// Component Imports
+import BaseLayout from "../layouts/BaseLayout.astro"
+import heart from "../icons/heart.svg"
+const title = "eMpower"
+---
+<BaseLayout title="home">
+  <section class="home">
+    <img src={heart} alt="Heart" class="heart" />
+    <h1>{title}</h1>
+    <p>coming soon</p>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/foundation/breakpoints' as b;
+
+  .home {
+    text-align: center;
+  }
+
+  .emoji {
+    font-size: 10rem;
+  }
+
+  .heart {
+    width: 7rem;
+    @include b.mq(lg) {
+      width: 6rem;
+    }
+    @include b.mq(sm) {
+      width: 5rem;
+    }
+  }
+</style>
