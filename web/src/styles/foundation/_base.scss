@@ -1,8 +1,4 @@
-@use './colors';
-
-* + * {
-  margin-top: 1rem;
-}
+@use 'breakpoints' as b;
 
 * {
   box-sizing: border-box;
@@ -29,11 +25,23 @@ h1 {
   color: var(--blue);
   font-size: 17rem;
   line-height: 1;
+  @include b.mq(lg) {
+    font-size: 14rem;
+  }
+  @include b.mq(sm) {
+    font-size: 10rem;
+  }
 }
 
 p {
   font-size: 5rem;
   line-height: 3;
+  @include b.mq(lg) {
+    font-size: 4.5rem;
+  }
+  @include b.mq(sm) {
+    font-size: 4rem;
+  }
 }
 
 a {

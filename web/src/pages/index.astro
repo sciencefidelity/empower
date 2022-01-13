@@ -6,13 +6,15 @@ const title = "eMpower"
 ---
 <BaseLayout title="home">
   <section class="home">
-    <img src={heart} alt="Asterisk" class="asterisk" />
+    <img src={heart} alt="Heart" class="heart" />
     <h1>{title}</h1>
     <p>coming soon</p>
   </section>
 </BaseLayout>
 
 <style lang="scss">
+  @use '../styles/foundation/breakpoints' as b;
+
   .home {
     text-align: center;
   }
@@ -21,7 +23,13 @@ const title = "eMpower"
     font-size: 10rem;
   }
 
-  .asterisk {
+  .heart {
     width: 7rem;
+    @include b.mq(lg) {
+      width: 6rem;
+    }
+    @include b.mq(sm) {
+      width: 5rem;
+    }
   }
 </style>

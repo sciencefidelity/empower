@@ -8,15 +8,22 @@ const year = new Date().getFullYear()
 
 <!-- prettier-ignore -->
 <style lang="scss">
+  @use '../styles/foundation/breakpoints' as b;
+
   footer {
     width: 100vw;
     padding: 2rem 0;
     color: var(--foreground);
     text-align: center;
-    // border-top: 1px solid var(--blue);
     p {
       font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
       font-size: 2rem;
+      @include b.mq(lg) {
+        font-size: 1.75rem;
+      }
+      @include b.mq(sm) {
+        font-size: 1.5rem;
+      }
     }
   }
 </style>
