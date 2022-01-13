@@ -1,63 +1,39 @@
 ---
 // Component Imports
 import BaseLayout from "../layouts/BaseLayout.astro"
-import { capitalize } from "../lib/utils.ts"
-import logo from "/assets/logo.svg"
 // You can import components from any supported Framework here!
 
 // Component Script:
 // You can write any JavaScript/TypeScript that you'd like here.
 // It will run during the build, but never in the browser.
 // All variables are available to use in the HTML template below.
-const title = "home"
+const title = "eMpower"
 let seconds = 0
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
-<BaseLayout title={title}>
-  <section class={title}>
-    <h1>{capitalize(title)}</h1>
-    <img src={logo} class="logo" alt="logo" />
-    <p>Page has been open for <code id="counter">{seconds}</code> seconds.</p>
-    <a
-      class="App-link"
-      href="https://astro.build"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Learn Astro
-    </a>
+<BaseLayout title="home">
+  <section class="home">
+    <div class="emoji">🧘</div>
+    <h1>{title}</h1>
+    <p>coming soon</p>
   </section>
-  <script>
-    const counter = document.querySelector("#counter")
-    let seconds = 0
-
-    const timer = () => {
-      setInterval(() => {
-        seconds += 1
-        counter.textContent = seconds.toString()
-      }, 1000)
-    }
-    timer()
-  </script>
 </BaseLayout>
 
 <style lang="scss">
-  .home {
-    margin: 5rem 0;
-    text-align: center;
-    p {
-      margin: 0.4rem;
-    }
+  @font-face {
+    font-family: 'Verveine';
+    font-size: normal;
+    font-weight: 700;
+    src: url('./fonts/verveine_std_rg-subset.woff2') format('woff2');
+    font-display: swap;
   }
 
-  .logo {
-    height: 36vmin;
-    margin: 3rem;
-    pointer-events: none;
-    @media (prefers-reduced-motion: no-preference) {
-      animation: logo-pulse infinite 1.6s ease-in-out alternate;
-    }
+  .home {
+    text-align: center;
+  }
+  .emoji {
+    font-size: 10rem;
   }
 </style>
