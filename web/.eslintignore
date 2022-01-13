@@ -1,6 +1,9 @@
-.cache/
-package-lock.json
-public/
-.nova/
-node_modules/
-yarn.lock
+dist
+generated
+functions
+node_modules
+static
+generated
+pnpm-lock.yaml
+.nova
+.vscode
