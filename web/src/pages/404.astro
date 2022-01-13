@@ -1,23 +1,36 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-
-const title = "four-oh-four"
+import heart from "../icons/heart.svg"
+const title = "404"
 ---
-<BaseLayout title={title}>
-  <div class={title}>
-    <h1>404 Not Found</h1>
-    <p>
-      You've hit a path that does not exist,
-      <br />
-      oh the sadness!
-    </p>
-    <a href="/">Home</a>
+<BaseLayout title="404">
+  <div class="sans center">
+<!--     <img src={heart} alt="Heart" class="heart" /> -->
+    <h1>not found</h1>
+    <p class="sacramento">this path that does not exist</p>
+    <a href="/">home</a>
   </div>
 </BaseLayout>
 
 <!-- prettier-ignore -->
 <style lang="scss">
-  .four-oh-four {
-    margin: 5rem 2rem;
+  @use '../styles/foundation/breakpoints' as b;
+
+  .center {
+    text-align: center;
+  }
+
+  .heart {
+    width: 7rem;
+    @include b.mq(lg) {
+      width: 6rem;
+    }
+    @include b.mq(sm) {
+      width: 5rem;
+    }
+  }
+
+  .sacramento {
+    font-family: Sacramento;
   }
 </style>

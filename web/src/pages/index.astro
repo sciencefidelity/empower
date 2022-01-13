@@ -1,26 +1,21 @@
 ---
-// Component Imports
 import BaseLayout from "../layouts/BaseLayout.astro"
 import heart from "../icons/heart.svg"
 const title = "eMpower"
 ---
 <BaseLayout title="home">
-  <section class="home">
+  <section class="center">
     <img src={heart} alt="Heart" class="heart" />
     <h1>{title}</h1>
-    <p>coming soon</p>
+    <p class="sacramento">coming soon</p>
   </section>
 </BaseLayout>
 
 <style lang="scss">
   @use '../styles/foundation/breakpoints' as b;
 
-  .home {
+  .center {
     text-align: center;
-  }
-
-  .emoji {
-    font-size: 10rem;
   }
 
   .heart {
@@ -31,5 +26,9 @@ const title = "eMpower"
     @include b.mq(sm) {
       width: 5rem;
     }
+  }
+
+  .sacramento {
+    font-family: Sacramento;
   }
 </style>

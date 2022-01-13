@@ -1,5 +1,10 @@
 @use 'breakpoints' as b;
 
+:root {
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",
+          Arial,"Noto Sans",sans-serif;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,26 +15,27 @@ html {
   background-color: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--sans);
 }
 
 body {
   margin: auto;
   font-size: calc(10px + 2vmin);
-  color: var(--foreground);
-  background-color: var(--background);
-  font-family: Sacramento;
 }
 
 h1 {
   font-family: Verveine;
   color: var(--blue);
   font-size: 17rem;
-  line-height: 1;
+  line-height: 1.3;
   @include b.mq(lg) {
     font-size: 14rem;
   }
   @include b.mq(sm) {
     font-size: 10rem;
+  }
+  @include b.mq(xs) {
+    font-size: 8rem;
   }
 }
 
@@ -41,6 +47,9 @@ p {
   }
   @include b.mq(sm) {
     font-size: 4rem;
+  }
+  @include b.mq(xs) {
+    font-size: 3.2rem;
   }
 }
 
