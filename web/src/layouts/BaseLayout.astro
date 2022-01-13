@@ -8,6 +8,10 @@ const {title} = Astro.props
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
   <title>eMpower | {title}</title>
+  <meta name="Description" content="Meditation for children, teachers, and healthcare professionals." />
+
+  <link rel="preload" href="/fonts/verveine_std_rg-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/sacramento-regular-subnum.woff2" as="font" type="font/woff2" crossorigin />
 
   <link rel="icon" type="image/x-icon" href="/favicon.svg" />
   <link rel="stylesheet" href={Astro.resolve('../styles/global.scss')}>
@@ -29,7 +33,7 @@ const {title} = Astro.props
     font-size: normal;
     font-weight: 700;
     src: url('/fonts/verveine_std_rg-subset.woff2') format('woff2');
-    font-display: swap;
+    font-display: block;
   }
 
   @font-face {
@@ -37,7 +41,7 @@ const {title} = Astro.props
     font-size: normal;
     font-weight: 700;
     src: url('/fonts/sacramento-regular-subnum.woff2') format('woff2');
-    font-display: swap;
+    font-display: block;
   }
 
   #app {
