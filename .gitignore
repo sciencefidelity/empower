@@ -1,43 +1,23 @@
-# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.log
-
-# Dependencies
 node_modules/
 .pnp/
 .pnp.js
-
-# Eslint cache
 .eslintcache
-
-# testing
-coverage/
-
-# dotenv environment variable files
-.env*
-
-# next.js
-.next/
-out/
-
-# production
-build/
-
-# Sanity files
+coverage
+.env
+.env.*
+.next
+out
+build
 dist/
-
-# Yarn Integrity file
 .yarn-integrity
-
-# vercel
 .vercel
-
-# misc
 .DS_Store
 *.pem
 *.bak
-
-# Cypress
 cypress/
+*.css
+*.css.map
