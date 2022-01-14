@@ -2,17 +2,17 @@
   "actions" : {
     "build" : {
       "enabled" : true,
-      "script" : "npm run build"
+      "script" : "cd dev\nnpm run build"
     },
     "clean" : {
       "enabled" : true,
-      "script" : "npm run clean"
+      "script" : "cd dev\nnpm run clean"
     },
     "run" : {
       "enabled" : true,
-      "script" : "npm run dev"
+      "script" : "cd dev\nnpm run dev"
     }
   },
-  "identifier" : "712D6FF1-D220-4247-986D-165B472A1DB9",
+  "identifier" : "0AC868BE-4F11-4438-B807-79AA1555B5D6",
   "openLogOnRun" : "start"
 }

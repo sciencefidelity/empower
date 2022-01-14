@@ -4,11 +4,14 @@
       "enabled" : true,
       "script" : "cd web\nnpm run build"
     },
+    "clean" : {
+      "enabled" : true,
+      "script" : "cd web\nnpm run clean"
+    },
     "run" : {
       "enabled" : true,
       "script" : "cd web\nnpm run dev"
     }
   },
-  "identifier" : "0AC868BE-4F11-4438-B807-79AA1555B5D6",
-  "openLogOnRun" : "start"
+  "identifier" : "5918E457-783E-43F1-9BA8-DFD0AB3759EA"
 }
