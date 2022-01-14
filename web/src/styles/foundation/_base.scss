@@ -1,12 +1,6 @@
 @use 'breakpoints' as b;
 
-:root {
-  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",
-          Arial,"Noto Sans",sans-serif;
-}
-
 * {
-  box-sizing: border-box;
   margin: 0;
 }
 

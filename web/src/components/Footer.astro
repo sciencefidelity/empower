@@ -1,29 +1,22 @@
 ---
-const year = new Date().getFullYear()
+const year = new Date().getFullYear().toString()
 ---
 
-<footer>
-  <p>&copy; {year} eMpower</p>
+<footer class=" center vw-100 p-small">
+  <p class="footer__text">&copy; {year} eMpower</p>
 </footer>
 
 <!-- prettier-ignore -->
 <style lang="scss">
   @use '../styles/foundation/breakpoints' as b;
 
-  footer {
-    width: 100vw;
-    padding: 2rem 0;
-    color: var(--foreground);
-    text-align: center;
-    p {
-      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-      font-size: 2rem;
-      @include b.mq(lg) {
-        font-size: 1.75rem;
-      }
-      @include b.mq(sm) {
-        font-size: 1.5rem;
-      }
+  .footer__text {
+    font-size: 2rem;
+    @include b.mq(lg) {
+      font-size: 1.75rem;
+    }
+    @include b.mq(sm) {
+      font-size: 1.5rem;
     }
   }
 </style>
