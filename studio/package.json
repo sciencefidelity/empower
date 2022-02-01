@@ -1,0 +1,32 @@
+{
+  "name": "empower-studio",
+  "version": "0.1.0",
+  "description": "Meditation for all",
+  "author": "Matt Cook <matt@sciencefidelity.co.uk>",
+  "license": "UNLICENCED",
+  "private": true,
+  "scripts": {
+    "dev": "sanity start --host=0.0.0.0",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.26.0",
+    "@sanity/components": "^2.14.0",
+    "@sanity/core": "^2.26.0",
+    "@sanity/default-layout": "^2.26.0",
+    "@sanity/default-login": "^2.26.0",
+    "@sanity/desk-tool": "^2.26.0",
+    "@sanity/vision": "^2.26.0",
+    "prop-types": "^15.8",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "sanity-codegen": "^0.9.5"
+  }
+}
