@@ -1,6 +1,10 @@
 version: 2
-updates:
 
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
   - package-ecosystem: "npm"
     directory: "/studio"
     schedule:
@@ -14,9 +18,5 @@ updates:
       - dependency-name: "@sanity/vision"
   - package-ecosystem: "npm"
     directory: "/web"
-    schedule:
-      interval: "monthly"
-  - package-ecosystem: "npm"
-    directory: "/"
     schedule:
       interval: "monthly"
