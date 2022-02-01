@@ -1053,6 +1053,11 @@
   resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
   integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
 
+"@popperjs/core@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
+  integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
+
 "@reach/auto-id@^0.13.2":
   version "0.13.2"
   resolved "https://registry.npmjs.org/@reach/auto-id/-/auto-id-0.13.2.tgz#6c7fe7142285707b0f38b2f556f32accb467df32"
@@ -1370,14 +1375,14 @@
     react-rx "^1.0.0-beta.6"
     rxjs "^6.5.3"
 
-"@sanity/default-login@^2.23.2":
-  version "2.23.2"
-  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-2.23.2.tgz#b07388437d798c849fa159408d3fc8ea0468ec86"
-  integrity sha512-4Mry1FUEOAWCvbwwq14SvAw+bHD2J3e3xQuuMK6799oyTbgg8yrMy0zlw0NFV+36QQyGqR53MJiD6dbGUBS/mg==
+"@sanity/default-login@^2.24.1":
+  version "2.24.1"
+  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-2.24.1.tgz#9094839f367c95ee69278bf29e3c2048757b8fb1"
+  integrity sha512-53lMcDtjk3YwgBhHXCux7ek7t37o1hq74+w8TGi2pzIL5NBHot3Lp7YvKUJiBKNb4zBtOlc5t0sSvU/ISbezJQ==
   dependencies:
     "@sanity/generate-help-url" "2.18.0"
     "@sanity/logos" "^1.1.6"
-    "@sanity/ui" "^0.36.17"
+    "@sanity/ui" "^0.37.2"
     prop-types "^15.6.0"
     rxjs "^6.5.3"
 
@@ -1520,6 +1525,11 @@
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.2.tgz#6fe5cb74cf75757aee864ea13c2740329046b615"
   integrity sha512-lhA6f/K5r8ajL8PrrCftJe6ry/6VGSD1JZSwZiEodVZgkuZOZLs1mU8E0LXUXEyj8QRlvKpifv2xRbY7rWimQg==
+
+"@sanity/icons@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.3.tgz#58b1f3c0d2a8bb13731c5d91ca96461c29bc5cd9"
+  integrity sha512-yp/o9Kd/4gEncihLrly/PNXo77Z6+xHkEZP4K2/C+PJ7/dXR7Nyy4Lj729tR/0SQKA/Rc8WEapGQCPmWVBvHOQ==
 
 "@sanity/image-url@^1.0.1":
   version "1.0.1"
@@ -1808,6 +1818,23 @@
     "@sanity/color" "^2.1.6"
     "@sanity/icons" "^1.2.2"
     framer-motion "5.3.3"
+    lodash "^4.17.21"
+    popper-max-size-modifier "^0.2.0"
+    react-is "^17.0.2"
+    react-popper "^2.2.5"
+    react-refractor "^2.1.5"
+
+"@sanity/ui@^0.37.2":
+  version "0.37.2"
+  resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-0.37.2.tgz#f58c518d14f0e741c707642a91144d95ca456ebb"
+  integrity sha512-WVPR06HCP325OjPuiAanXLFoSSdJrOV6/zEs9w7UuSH5ov0zOP2qWFGOxOu2aeZexpQCS73SFTb8+UXOOlRp0Q==
+  dependencies:
+    "@juggle/resize-observer" "^3.3.1"
+    "@popperjs/core" "^2.11.2"
+    "@reach/auto-id" "^0.16.0"
+    "@sanity/color" "^2.1.6"
+    "@sanity/icons" "^1.2.3"
+    framer-motion "5.5.5"
     lodash "^4.17.21"
     popper-max-size-modifier "^0.2.0"
     react-is "^17.0.2"
@@ -3730,6 +3757,11 @@ debounce@1.0.0:
   dependencies:
     date-now "1.0.1"
 
+debounce@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
+  integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
+
 debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -4659,6 +4691,21 @@ framer-motion@5.3.3:
     framesync "6.0.1"
     hey-listen "^1.0.8"
     popmotion "11.0.0"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
+framer-motion@5.5.5:
+  version "5.5.5"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-5.5.5.tgz#2cc9345e720ec1b93189ee76423799c72a3224b4"
+  integrity sha512-+LPAF5ddo02qKh+MK4h1ChwqUFvrLkK1NDWwrHy+MuCVmQDGgiFNHvwqOSklTDGkEtbio3dCOEDy23+ZyNAa9g==
+  dependencies:
+    framesync "6.0.1"
+    hey-listen "^1.0.8"
+    popmotion "11.0.3"
+    react-merge-refs "^1.1.0"
+    react-use-measure "^2.1.1"
     style-value-types "5.0.0"
     tslib "^2.1.0"
   optionalDependencies:
@@ -7100,6 +7147,16 @@ popmotion@11.0.0:
     style-value-types "5.0.0"
     tslib "^2.1.0"
 
+popmotion@11.0.3:
+  version "11.0.3"
+  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-11.0.3.tgz#565c5f6590bbcddab7a33a074bb2ba97e24b0cc9"
+  integrity sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA==
+  dependencies:
+    framesync "6.0.1"
+    hey-listen "^1.0.8"
+    style-value-types "5.0.0"
+    tslib "^2.1.0"
+
 popper-max-size-modifier@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/popper-max-size-modifier/-/popper-max-size-modifier-0.2.0.tgz#1574744401296a488b4974909d130a85db94256f"
@@ -8153,6 +8210,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-merge-refs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
+  integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
+
 react-popper@^2.2.4, react-popper@^2.2.5:
   version "2.2.5"
   resolved "https://registry.npmjs.org/react-popper/-/react-popper-2.2.5.tgz#1214ef3cec86330a171671a4fbcbeeb65ee58e96"
@@ -8221,6 +8283,13 @@ react-textarea-autosize@^8.3.2:
     "@babel/runtime" "^7.10.2"
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
+
+react-use-measure@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-use-measure/-/react-use-measure-2.1.1.tgz#5824537f4ee01c9469c45d5f7a8446177c6cc4ba"
+  integrity sha512-nocZhN26cproIiIduswYpV5y5lQpSQS1y/4KuvUCjSKmw7ZWIS/+g3aFnX3WdBkyuGUtTLif3UTqnLLhbDoQig==
+  dependencies:
+    debounce "^1.2.1"
 
 react@17.0.1:
   version "17.0.1"
