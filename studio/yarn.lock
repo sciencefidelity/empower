@@ -1053,6 +1053,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
   integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
+"@popperjs/core@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
+  integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
+
 "@reach/auto-id@^0.13.2":
   version "0.13.2"
   resolved "https://registry.npmjs.org/@reach/auto-id/-/auto-id-0.13.2.tgz#6c7fe7142285707b0f38b2f556f32accb467df32"
@@ -1426,14 +1431,14 @@
     react-rx "^1.0.0-beta.6"
     rxjs "^6.5.3"
 
-"@sanity/default-login@^2.23.2":
-  version "2.23.2"
-  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-2.23.2.tgz#b07388437d798c849fa159408d3fc8ea0468ec86"
-  integrity sha512-4Mry1FUEOAWCvbwwq14SvAw+bHD2J3e3xQuuMK6799oyTbgg8yrMy0zlw0NFV+36QQyGqR53MJiD6dbGUBS/mg==
+"@sanity/default-login@^2.24.1":
+  version "2.24.1"
+  resolved "https://registry.yarnpkg.com/@sanity/default-login/-/default-login-2.24.1.tgz#9094839f367c95ee69278bf29e3c2048757b8fb1"
+  integrity sha512-53lMcDtjk3YwgBhHXCux7ek7t37o1hq74+w8TGi2pzIL5NBHot3Lp7YvKUJiBKNb4zBtOlc5t0sSvU/ISbezJQ==
   dependencies:
     "@sanity/generate-help-url" "2.18.0"
     "@sanity/logos" "^1.1.6"
-    "@sanity/ui" "^0.36.17"
+    "@sanity/ui" "^0.37.2"
     prop-types "^15.6.0"
     rxjs "^6.5.3"
 
@@ -1573,6 +1578,11 @@
   integrity sha512-If8Qkw32LWPes16UzqwUsTLgfxF5d4ACdUvCLMl6grJc/5G8LKPAGCQUuA/d1F4W16yCJVV7Zv31HDRDXJSJkg==
 
 "@sanity/icons@^1.2.1", "@sanity/icons@^1.2.2", "@sanity/icons@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.3.tgz#58b1f3c0d2a8bb13731c5d91ca96461c29bc5cd9"
+  integrity sha512-yp/o9Kd/4gEncihLrly/PNXo77Z6+xHkEZP4K2/C+PJ7/dXR7Nyy4Lj729tR/0SQKA/Rc8WEapGQCPmWVBvHOQ==
+
+"@sanity/icons@^1.2.3":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-1.2.3.tgz#58b1f3c0d2a8bb13731c5d91ca96461c29bc5cd9"
   integrity sha512-yp/o9Kd/4gEncihLrly/PNXo77Z6+xHkEZP4K2/C+PJ7/dXR7Nyy4Lj729tR/0SQKA/Rc8WEapGQCPmWVBvHOQ==
