@@ -1,0 +1,34 @@
+---
+import groq from "groq"
+import sanityClient from "../sanityClient"
+import BaseLayout from "../layouts/BaseLayout.astro"
+
+const query = groq`{
+  "categories": *[_type == "category"] | order(title){
+    "slug": slug.current,
+    title,
+    "posts": *[_type == "post" && references(^._id)]
+  }[count(posts) > 0]
+}`
+const response = await sanityClient.fetch(query)
+const data = await response
+const title = "All Categories"
+---
+<BaseLayout title={title}>
+  <div>
+    <h1>{title}</h1>
+    <br>
+    <ul>
+      {data.categories.map(category =>
+        <li>
+          <a href="/categories/${category.slug}">{category.title}</a>
+        </li>
+      )}
+    </ul>
+  </div>
+</BaseLayout>
+
+<!-- prettier-ignore -->
+<style>
+
+</style>

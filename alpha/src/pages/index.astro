@@ -7,7 +7,7 @@ const query = groq`{
   "site": *[_type == "site"][0]{
     keywords, siteDescription, siteName
   },
-  "sections": *[_type == "section"]{
+  "sections": *[_type == "section"] | order(menuTitle){
     _id,
     menuTitle,
     "slug": slug.current,

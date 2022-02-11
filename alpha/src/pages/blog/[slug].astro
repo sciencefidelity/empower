@@ -11,7 +11,7 @@ export async function getStaticPaths() {
       _id,
       author->{name, "slug": slug.current},
       body,
-      categories[]->{_id,title},
+      categories[]->{_id, "slug": slug.current, title},
       publishedAt,
       "slug": slug.current,
       title
@@ -41,11 +41,11 @@ const date = new Date(post.publishedAt).toLocaleDateString("en-GB", dateOptions)
     <h1>{post.title}</h1>
     <p>published on: {date}</p>
     {post.author && <p>by:
-      <a href="/author/${post.author.slug.current}">{post.author.name}</a>
+      <a href="/authors/${post.author.slug}">{post.author.name}</a>
     </p>}
     {post.categories && <ul>
       in: {post.categories.map(category =>
-        <li><a href="#">{category.title}</a></li>
+        <li><a href="/categories/${category.slug}">{category.title}</a></li>
       )}
     </ul>}
     {post.body && <Markdown>{post.body}</Markdown>}
