@@ -248,7 +248,7 @@ export interface Post extends SanityDocument {
   keywords?: string;
 
   /**
-   * Excerpt — `string`
+   * Excerpt — `text`
    *
    *
    */
@@ -386,13 +386,6 @@ export interface Site extends SanityDocument {
   siteName?: string;
 
   /**
-   * Site URL — `url`
-   *
-   *
-   */
-  siteURL?: string;
-
-  /**
    * Site Description — `string`
    *
    *
@@ -405,6 +398,20 @@ export interface Site extends SanityDocument {
    * A list of keywords seperated by commas.
    */
   keywords?: string;
+
+  /**
+   * Site URL — `url`
+   *
+   *
+   */
+  siteURL?: string;
+
+  /**
+   * Email Address — `string`
+   *
+   *
+   */
+  email?: string;
 
   /**
    * SEO image — `image`
