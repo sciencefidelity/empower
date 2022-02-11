@@ -1,6 +1,6 @@
 export default {
   name: 'social',
-  title: 'Social Links',
+  title: 'Social',
   type: 'document',
   fields: [
     {

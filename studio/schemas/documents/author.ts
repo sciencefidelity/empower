@@ -18,8 +18,8 @@ export default {
       }
     },
     {
-      name: 'image',
-      title: 'Image',
+      name: 'avatar',
+      title: 'Avatar',
       type: 'image',
       options: {
         hotspot: true

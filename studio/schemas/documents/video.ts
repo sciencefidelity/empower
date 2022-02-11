@@ -1,20 +1,17 @@
-import { FaYoutube } from 'react-icons/fa'
-
 export default {
   name: 'video',
   title: 'Video',
   type: 'document',
-  icon: FaYoutube,
   fields: [
     {
       name: 'title',
       title: 'Title',
-      type: 'localeString'
+      type: 'string'
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'localeRichText'
+      type: 'blockContent'
     },
     {
       name: 'videoLink',
@@ -33,11 +30,11 @@ export default {
     {
       name: 'slug',
       title: 'Slug',
-      type: 'localeSlug'
+      type: 'slug'
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
+      name: 'thumbnail',
+      title: 'Thumbnail',
       type: 'image',
       options: {
         hotspot: true
@@ -47,7 +44,7 @@ export default {
 
   preview: {
     select: {
-      title: 'title.en',
+      title: 'title',
       media: 'mainImage'
     }
   }

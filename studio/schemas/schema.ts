@@ -6,8 +6,12 @@ import blockContent from './objects/blockContent'
 
 // documents
 import author from './documents/author'
+import menu from './documents/menu'
+import page from './documents/page'
 import post from './documents/post'
 import site from './documents/site'
+import social from './documents/social'
+import video from './documents/video'
 
 // taxonomy
 import category from './taxonomy/category'
@@ -19,9 +23,13 @@ export default createSchema({
     blockContent,
 
     // documents
-    site,
-    post,
     author,
+    menu,
+    page,
+    post,
+    site,
+    social,
+    video,
 
     // taxonomy
     category

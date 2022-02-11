@@ -33,13 +33,6 @@ export default {
       group: 'info'
     },
     {
-      name: 'subtitle',
-      title: 'Subtitle',
-      type: 'string',
-      description: "Not available for 'Page' type",
-      group: 'info'
-    },
-    {
       name: 'template',
       title: 'Template',
       type: 'array',
@@ -58,21 +51,19 @@ export default {
     {
       name: 'slug',
       title: 'Slug',
-      type: 'localeSlug',
+      type: 'slug',
       group: 'info'
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'localeRichText',
-      description: "Only available for 'Page' type",
+      type: 'blockContent',
       group: 'content'
     },
     {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
-      description: "Only available for 'Page' type",
       options: {
         hotspot: true
       },
@@ -106,7 +97,7 @@ export default {
 
   preview: {
     select: {
-      title: 'title.en',
+      title: 'title',
       media: 'mainImage'
     }
   }

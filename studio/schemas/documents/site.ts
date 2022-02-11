@@ -31,7 +31,7 @@ export default {
       title: 'Keywords',
       type: 'string',
       description: 'A list of keywords seperated by commas.',
-      group: 'seo'
+      group: 'meta'
     },
     {
       name: 'seoImage',
