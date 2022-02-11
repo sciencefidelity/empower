@@ -1,0 +1,22 @@
+---
+const year = new Date().getFullYear().toString()
+---
+
+<footer class=" center vw-100 p-small">
+  <p class="footer__text">&copy; {year} eMpower</p>
+</footer>
+
+<!-- prettier-ignore -->
+<style lang="scss">
+  @use '../styles/foundation/breakpoints' as b;
+
+  .footer__text {
+    font-size: 2rem;
+    @include b.mq(lg) {
+      font-size: 1.75rem;
+    }
+    @include b.mq(sm) {
+      font-size: 1.5rem;
+    }
+  }
+</style>

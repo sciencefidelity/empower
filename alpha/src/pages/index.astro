@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import heart from "../icons/heart.svg"
+const title = "eMpower"
+---
+<BaseLayout title="home">
+  <section class="center">
+    <img src={heart} alt="Heart" class="heart" />
+    <h1>{title}</h1>
+    <p class="sacramento">hello world</p>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  @use '../styles/foundation/breakpoints' as b;
+
+  .heart {
+    width: 7rem;
+    @include b.mq(lg) {
+      width: 6rem;
+    }
+    @include b.mq(sm) {
+      width: 5rem;
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import Footer from "../components/Footer.astro"
+import "../styles/global.scss"
+const {title} = Astro.props
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>eMpower | {title}</title>
+  <meta name="Description" content="Meditation for children, teachers, and healthcare professionals." />
+
+  <link rel="preload" href="/assets/fonts/verveine_std_rg-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/sacramento-regular-subset.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+  <link rel="mask-icon" href="/mask-icon.svg" color="#ff7a6b" />
+
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href={Astro.resolve('../styles/global.scss')}>
+
+</head>
+<body>
+  <div class="grid center vh-100">
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</body>
