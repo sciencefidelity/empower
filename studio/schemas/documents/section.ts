@@ -63,6 +63,13 @@ export default {
       group: 'content'
     },
     {
+      name: 'video',
+      title: 'Video',
+      type: 'reference',
+      to: { type: 'video' },
+      group: 'content'
+    },
+    {
       name: 'seoTitle',
       title: 'SEO title',
       type: 'string',

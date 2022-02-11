@@ -3,6 +3,7 @@ import { Markdown } from "astro/components"
 import groq from "groq"
 import sanityClient from "../../lib/sanityClient"
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import Video from "../../components/Video.astro"
 
 export async function getStaticPaths() {
   const query = groq`{
@@ -14,7 +15,8 @@ export async function getStaticPaths() {
       seoTitle,
       "slug": slug.current,
       subtitle,
-      title
+      title,
+      video->{thumbnail, title, videoLink}
     }
   }`
   const data = await sanityClient.fetch(query).then(response => response)
@@ -39,6 +41,7 @@ const { section } = Astro.props
   <div>
     <h1>{section.title}</h1>
     <Markdown>{section.body}</Markdown>
+    {section.video && <Video video={section.video} />}
 </BaseLayout>
 
 <!-- prettier-ignore -->
