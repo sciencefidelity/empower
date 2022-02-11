@@ -1,6 +1,6 @@
 export default {
-  name: 'page',
-  title: 'Page',
+  name: 'section',
+  title: 'Section',
   type: 'document',
   groups: [
     {
@@ -19,33 +19,22 @@ export default {
   fields: [
     {
       name: 'title',
-      title: 'Title',
+      title: 'Section Title',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
+      group: 'info'
+    },
+    {
+      name: 'subtitle',
+      title: 'Subitle',
+      type: 'string',
       group: 'info'
     },
     {
       name: 'menuTitle',
       title: 'Menu Title',
       type: 'string',
-      description: 'The title shown in the main navigation',
-      validation: (Rule: any) => Rule.required(),
-      group: 'info'
-    },
-    {
-      name: 'template',
-      title: 'Template',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        layout: 'grid',
-        list: [{ title: 'Page', value: 'page' }]
-      },
-      initialValue: {
-        title: 'Page',
-        value: 'page'
-      },
-      validation: (Rule: any) => Rule.required(),
+      description: 'The title shown in the main navigation if defferent from Title',
       group: 'info'
     },
     {
@@ -60,7 +49,7 @@ export default {
     },
     {
       name: 'body',
-      title: 'Body',
+      title: 'Introduction',
       type: 'blockContent',
       group: 'content'
     },

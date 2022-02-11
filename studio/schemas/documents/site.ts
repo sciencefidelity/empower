@@ -2,7 +2,7 @@ export default {
   name: 'site',
   title: 'Site',
   type: 'document',
-  // __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
+  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
   groups: [
     {
       name: 'meta',

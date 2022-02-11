@@ -2,7 +2,7 @@ export default {
   name: 'menu',
   title: 'Menu',
   type: 'document',
-  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     {
       name: 'title',
@@ -13,7 +13,10 @@ export default {
       name: 'items',
       title: 'Manu Items',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'page' } }],
+      of: [
+        { type: 'reference', to: { type: 'page' } },
+        { type: 'reference', name: 'section', to: { type: 'section' } },
+      ],
       sortable: true
     }
   ],

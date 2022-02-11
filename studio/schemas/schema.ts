@@ -9,6 +9,7 @@ import author from './documents/author'
 import menu from './documents/menu'
 import page from './documents/page'
 import post from './documents/post'
+import section from './documents/section'
 import site from './documents/site'
 import social from './documents/social'
 import video from './documents/video'
@@ -27,6 +28,7 @@ export default createSchema({
     menu,
     page,
     post,
+    section,
     site,
     social,
     video,
