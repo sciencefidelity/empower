@@ -4,6 +4,7 @@ import groq from "groq"
 import sanityClient from "../sanityClient"
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Blog from "../components/Blog.astro"
+import Contact from "../components/Contact.astro"
 
 export async function getStaticPaths() {
   const query = groq`{
@@ -11,6 +12,7 @@ export async function getStaticPaths() {
       _id,
       menuTitle,
       "slug": slug.current,
+      template[0],
       title
     }
   }`
@@ -35,7 +37,11 @@ const { page } = Astro.props
 >
   <div>
     <h1>{page.title}</h1>
-    {page.title === "Blog" && <Blog />}
+    {page.body &&
+      <Markdown>{page.body}</Markdown>
+    }
+    {page.template === "blog" && <Blog />}
+    {page.template === "contact" && <Contact />}
   </div>
 </BaseLayout>
 

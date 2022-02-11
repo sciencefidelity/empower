@@ -8,6 +8,7 @@ import "../styles/global.scss"
 
 const query = groq`{
   "site": *[_type == "site"][0]{
+    email,
     keywords,
     seoDescription,
     seoTitle,
@@ -69,6 +70,6 @@ const {
     <main>
       <slot />
     </main>
-    <Footer siteName={data.site.siteName} />
+    <Footer site={data.site} />
   </div>
 </body>

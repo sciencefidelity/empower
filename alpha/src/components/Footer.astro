@@ -1,9 +1,11 @@
 ---
-const { siteName } = Astro.props
+const { site } = Astro.props
 const year = new Date().getFullYear().toString()
+const { email, siteName } = site
 ---
 
 <footer>
+  <p>Contact: <a href="mailto:${email}">{email}</a></p>
   <p>&copy; {year} {siteName}</p>
 </footer>
 
