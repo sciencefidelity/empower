@@ -6,6 +6,12 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 const query = groq`{
   "site": *[_type == "site"][0]{
     keywords, siteDescription, siteName
+  },
+  "sections": *[_type == "section"]{
+    _id,
+    menuTitle,
+    "slug": slug.current,
+    subtitle
   }
 }`
 const response = await sanityClient.fetch(query)
@@ -15,6 +21,14 @@ const title = data.site.siteName
 <BaseLayout>
   <section>
     <h1>{data.site.siteName}</h1>
+    <ul>
+      {data.sections.map(section =>
+        <li key={section.id}>
+          <a href="/section/${section.slug}">{section.menuTitle}</a><br />
+          {section.subtitle}
+        </li>
+      )}
+    </ul>
   </section>
 </BaseLayout>
 

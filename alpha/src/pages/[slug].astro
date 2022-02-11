@@ -1,0 +1,43 @@
+---
+import { Markdown } from "astro/components"
+import groq from "groq"
+import sanityClient from "../sanityClient"
+import BaseLayout from "../layouts/BaseLayout.astro"
+
+export async function getStaticPaths() {
+  const query = groq`{
+    "pages": *[_type == "page"]{
+      _id,
+      menuTitle,
+      "slug": slug.current,
+      title
+    }
+  }`
+  const data = await sanityClient.fetch(query).then(response => response)
+  return data.pages.map(page => {
+    return {
+      params: { slug: page.slug },
+      props: { page }
+    }
+  })
+}
+const { slug } = Astro.request.params
+const { page } = Astro.props
+---
+<BaseLayout
+  title={page.title}
+  seoDescription={page.seoDescription}
+  keywords={page.seoKeywords}
+  seoTitle={page.seoTitle}
+  siteDescription={page.seoDescription}
+  slug={page.slug}
+>
+  <div>
+    <h1>{page.title}</h1>
+  </div>
+</BaseLayout>
+
+<!-- prettier-ignore -->
+<style>
+
+</style>
