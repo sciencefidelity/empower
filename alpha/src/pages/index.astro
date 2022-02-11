@@ -1,26 +1,23 @@
 ---
+import groq from "groq"
+import sanityClient from "../sanityClient"
 import BaseLayout from "../layouts/BaseLayout.astro"
-import heart from "../icons/heart.svg"
-const title = "eMpower"
+
+const query = groq`{
+  "site": *[_type == "site"][0]{
+    keywords, siteDescription, siteName
+  }
+}`
+const response = await sanityClient.fetch(query)
+const data = await response
+const title = data.site.siteName
 ---
-<BaseLayout title="home">
-  <section class="center">
-    <img src={heart} alt="Heart" class="heart" />
-    <h1>{title}</h1>
-    <p class="sacramento">hello world</p>
+<BaseLayout>
+  <section>
+    <h1>{data.site.siteName}</h1>
   </section>
 </BaseLayout>
 
-<style lang="scss">
-  @use '../styles/foundation/breakpoints' as b;
-
-  .heart {
-    width: 7rem;
-    @include b.mq(lg) {
-      width: 6rem;
-    }
-    @include b.mq(sm) {
-      width: 5rem;
-    }
-  }
+<!-- prettier-ignore -->
+<style>
 </style>

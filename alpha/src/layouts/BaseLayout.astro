@@ -1,30 +1,74 @@
 ---
+import groq from "groq"
+import sanityClient from "../sanityClient"
 import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import Navbar from "../components/Navbar.astro"
 import "../styles/global.scss"
-const {title} = Astro.props
+
+const query = groq`{
+  "site": *[_type == "site"][0]{
+    keywords,
+    seoDescription,
+    seoTitle,
+    siteDescription,
+    siteName,
+    siteURL
+  }
+}`
+const response = await sanityClient.fetch(query)
+const data = await response
+const {
+  title,
+  keywords,
+  slug,
+  seoTitle,
+  seoDescription,
+  seoImage,
+  twitter,
+  twitterHandle
+} = Astro.props
 ---
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
-  <title>eMpower | {title}</title>
-  <meta name="Description" content="Meditation for children, teachers, and healthcare professionals." />
+  <title>{title && title + " | "}{data.site.siteName}</title>
+  <meta name="Description" content={data.site.siteDescription} />
+  <meta name="keywords" content={data.site.keywords}>
 
-  <link rel="preload" href="/assets/fonts/verveine_std_rg-subset.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/sacramento-regular-subset.woff2" as="font" type="font/woff2" crossorigin />
+  <meta property="og:title" content={seoTitle || data.site.seoTitle}>
+  <meta property="og:description" content={seoDescription || data.site.seoDescription}>
+  <meta property="og:url" content="${data.site.siteURL}/${slug || ''}">
+  <meta property="og:image" content={seoImage || data.site.seoImage}>
+  <meta property="og:site_name" content={data.site.siteName}>
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:type" content="article">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={seoTitle || data.site.seoTitle}>
+  <meta name="twitter:description" content={seoDescription || data.site.seoDescription}>
+  {data.site.twitterHandle !== undefined &&
+    <meta name="twitter:site" content={data.site.twitterHandle}>
+  }
+  <meta name="twitter:image" content={seoImage || data.site.seoImage}>
+  {twitterHandle !== undefined &&
+    <meta name="twitter:creator" content={twitterHandle}>
+  }
 
   <link rel="icon" type="image/x-icon" href="/favicon.svg" />
   <link rel="mask-icon" href="/mask-icon.svg" color="#ff7a6b" />
-
   <meta name="theme-color" content="#ffffff" />
   <link rel="stylesheet" href={Astro.resolve('../styles/global.scss')}>
 
 </head>
 <body>
-  <div class="grid center vh-100">
+  <div id="app">
+    <Header siteName={data.site.siteName} />
+    <Navbar />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer siteName={data.site.siteName} />
   </div>
 </body>
