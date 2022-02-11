@@ -39,7 +39,11 @@ export default {
       of: [{ type: 'string' }],
       options: {
         layout: 'grid',
-        list: [{ title: 'Page', value: 'page' }]
+        list: [
+          { title: 'Page', value: 'page' },
+          { title: 'Blog', value: 'blog' },
+          { title: 'Contact', value: 'contact' }
+        ]
       },
       initialValue: {
         title: 'Page',

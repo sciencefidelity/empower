@@ -21,12 +21,6 @@ export default {
       group: 'meta'
     },
     {
-      name: 'siteURL',
-      title: 'Site URL',
-      type: 'url',
-      group: 'meta'
-    },
-    {
       name: 'siteDescription',
       title: 'Site Description',
       type: 'string',
@@ -37,6 +31,29 @@ export default {
       title: 'Keywords',
       type: 'string',
       description: 'A list of keywords seperated by commas.',
+      group: 'meta'
+    },
+    {
+      name: 'siteURL',
+      title: 'Site URL',
+      type: 'url',
+      group: 'meta'
+    },
+    {
+      name: 'email',
+      title: 'Email Address',
+      type: 'string',
+      validation: Rule => Rule.custom((email: string) => {
+        if (typeof email === 'undefined') {
+          return true
+        }
+        const regex = /[a-z0-9!#$%&'*+/=?^_'{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_'{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+        if (regex.test(email)) {
+          return true
+        } else {
+          return 'Not a valid email'
+        }
+      }),
       group: 'meta'
     },
     {
@@ -54,7 +71,7 @@ export default {
       type: 'string',
       description:
         'Displayed on Facebook and Twitter shares (max 60 characters).',
-      validation: (Rule: any) =>
+      validation: Rule =>
         Rule.max(60).warning('Only 60 characters will be visible.'),
       group: 'seo'
     },
@@ -64,7 +81,7 @@ export default {
       type: 'string',
       description:
         'Displayed on Facebook and Twitter shares (max 65 characters).',
-      validation: (Rule: any) =>
+      validation: Rule =>
         Rule.max(65).warning('Only 65 characters will be visible.'),
       group: 'seo'
     },
