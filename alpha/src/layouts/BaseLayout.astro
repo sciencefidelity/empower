@@ -1,6 +1,7 @@
 ---
 import groq from "groq"
 import sanityClient from "../lib/sanityClient"
+import { socialImage } from "../lib/utils"
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import Navbar from "../components/Navbar.astro"
@@ -11,6 +12,7 @@ const query = groq`{
     email,
     keywords,
     seoDescription,
+    seoImage,
     seoTitle,
     siteDescription,
     siteName,
@@ -29,6 +31,7 @@ const {
   twitter,
   twitterHandle
 } = Astro.props
+const socialimageUrl = socialImage(data.site.seoImage)
 ---
 <html lang="en">
 <head>
@@ -41,7 +44,7 @@ const {
   <meta property="og:title" content={seoTitle || data.site.seoTitle}>
   <meta property="og:description" content={seoDescription || data.site.seoDescription}>
   <meta property="og:url" content="${data.site.siteURL}/${slug || ''}">
-  <meta property="og:image" content={seoImage || data.site.seoImage}>
+  <meta property="og:image" content={socialimageUrl}>
   <meta property="og:site_name" content={data.site.siteName}>
   <meta property="og:locale" content="en_GB">
   <meta property="og:type" content="article">
@@ -52,7 +55,7 @@ const {
   {data.site.twitterHandle !== undefined &&
     <meta name="twitter:site" content={data.site.twitterHandle}>
   }
-  <meta name="twitter:image" content={seoImage || data.site.seoImage}>
+  <meta name="twitter:image" content={socialimageUrl}>
   {twitterHandle !== undefined &&
     <meta name="twitter:creator" content={twitterHandle}>
   }

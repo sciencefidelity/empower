@@ -5,11 +5,13 @@ import sanityClient from "../lib/sanityClient"
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Blog from "../components/Blog.astro"
 import Contact from "../components/Contact.astro"
+import Image from "../components/Image.astro"
 
 export async function getStaticPaths() {
   const query = groq`{
     "pages": *[_type == "page"]{
       _id,
+      mainImage,
       menuTitle,
       "slug": slug.current,
       template[0],
@@ -37,6 +39,15 @@ const { page } = Astro.props
 >
   <div>
     <h1>{page.title}</h1>
+    {page.mainImage &&
+      <Image
+        caption={page.title}
+        image={page.mainImage}
+        width={900}
+        height={600}
+        lazy={false}
+      />
+    }
     {page.body &&
       <Markdown>{page.body}</Markdown>
     }
