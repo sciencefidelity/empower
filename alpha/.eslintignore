@@ -1,9 +1,0 @@
-dist
-generated
-functions
-node_modules
-static
-generated
-pnpm-lock.yaml
-.nova
-.vscode

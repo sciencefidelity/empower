@@ -1,22 +1,15 @@
 ---
+const { site } = Astro.props
 const year = new Date().getFullYear().toString()
+const { email, siteName } = site
 ---
 
-<footer class=" center vw-100 p-small">
-  <p class="footer__text">&copy; {year} eMpower</p>
+<footer>
+  <p>Contact: <a href="mailto:${email}">{email}</a></p>
+  <p>&copy; {year} {siteName}</p>
 </footer>
 
 <!-- prettier-ignore -->
-<style lang="scss">
-  @use '../styles/foundation/breakpoints' as b;
+<style>
 
-  .footer__text {
-    font-size: 2rem;
-    @include b.mq(lg) {
-      font-size: 1.75rem;
-    }
-    @include b.mq(sm) {
-      font-size: 1.5rem;
-    }
-  }
 </style>
