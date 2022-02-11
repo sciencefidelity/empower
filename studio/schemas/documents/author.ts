@@ -18,17 +18,27 @@ export default {
       }
     },
     {
+      name: 'occupation',
+      title: 'Occupation',
+      type: 'string'
+    },
+    {
+      name: 'twitterHandle',
+      title: 'Twitter Handle',
+      type: 'string'
+    },
+    {
+      name: 'bio',
+      title: 'Bio',
+      type: 'markdown'
+    },
+    {
       name: 'avatar',
       title: 'Avatar',
       type: 'image',
       options: {
         hotspot: true
       }
-    },
-    {
-      name: 'bio',
-      title: 'Bio',
-      type: 'markdown'
     }
   ],
   preview: {

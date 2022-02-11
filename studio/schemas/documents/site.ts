@@ -21,6 +21,12 @@ export default {
       group: 'meta'
     },
     {
+      name: 'siteURL',
+      title: 'Site URL',
+      type: 'url',
+      group: 'meta'
+    },
+    {
       name: 'siteDescription',
       title: 'Site Description',
       type: 'string',

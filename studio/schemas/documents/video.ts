@@ -30,7 +30,11 @@ export default {
     {
       name: 'slug',
       title: 'Slug',
-      type: 'slug'
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96
+      }
     },
     {
       name: 'thumbnail',
