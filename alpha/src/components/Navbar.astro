@@ -1,6 +1,6 @@
 ---
 import groq from "groq"
-import sanityClient from "../sanityClient"
+import sanityClient from "../lib/sanityClient"
 
 const query = groq`{
   "menu": *[_type == "menu"][0]{
