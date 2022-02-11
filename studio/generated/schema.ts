@@ -344,6 +344,13 @@ export interface Section extends SanityDocument {
   };
 
   /**
+   * Video — `reference`
+   *
+   *
+   */
+  video?: SanityReference<Video>;
+
+  /**
    * SEO title — `string`
    *
    * Displayed on Facebook and Twitter shares (max 60 characters).
