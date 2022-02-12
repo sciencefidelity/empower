@@ -14,8 +14,8 @@ import type {
   SanityImageMetadata,
   SanityImageDimensions,
   SanityImagePalette,
-  SanityImagePaletteSwatch,
-} from "sanity-codegen";
+  SanityImagePaletteSwatch
+} from 'sanity-codegen'
 
 export type {
   SanityReference,
@@ -33,8 +33,8 @@ export type {
   SanityImageMetadata,
   SanityImageDimensions,
   SanityImagePalette,
-  SanityImagePaletteSwatch,
-};
+  SanityImagePaletteSwatch
+}
 
 /**
  * Author
@@ -42,42 +42,42 @@ export type {
  *
  */
 export interface Author extends SanityDocument {
-  _type: "author";
+  _type: 'author'
 
   /**
    * Name — `string`
    *
    *
    */
-  name?: string;
+  name?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Occupation — `string`
    *
    *
    */
-  occupation?: string;
+  occupation?: string
 
   /**
    * Twitter Handle — `string`
    *
    *
    */
-  twitterHandle?: string;
+  twitterHandle?: string
 
   /**
    * Bio — `markdown`
    *
    *
    */
-  bio?: Markdown;
+  bio?: Markdown
 
   /**
    * Avatar — `image`
@@ -85,11 +85,11 @@ export interface Author extends SanityDocument {
    *
    */
   avatar?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 }
 
 /**
@@ -98,21 +98,21 @@ export interface Author extends SanityDocument {
  *
  */
 export interface Menu extends SanityDocument {
-  _type: "menu";
+  _type: 'menu'
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Manu Items — `array`
    *
    *
    */
-  items?: Array<SanityKeyedReference<Page> | SanityKeyedReference<Section>>;
+  items?: Array<SanityKeyedReference<Page> | SanityKeyedReference<Section>>
 }
 
 /**
@@ -121,42 +121,42 @@ export interface Menu extends SanityDocument {
  *
  */
 export interface Page extends SanityDocument {
-  _type: "page";
+  _type: 'page'
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Menu Title — `string`
    *
    * The title shown in the main navigation
    */
-  menuTitle?: string;
+  menuTitle?: string
 
   /**
    * Template — `array`
    *
    *
    */
-  template?: Array<SanityKeyed<string>>;
+  template?: Array<SanityKeyed<string>>
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Body — `markdown`
    *
    *
    */
-  body?: Markdown;
+  body?: Markdown
 
   /**
    * Main image — `image`
@@ -164,25 +164,25 @@ export interface Page extends SanityDocument {
    *
    */
   mainImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * SEO title — `string`
    *
    * Displayed on Facebook and Twitter shares (max 60 characters).
    */
-  seoTitle?: string;
+  seoTitle?: string
 
   /**
    * SEO description — `string`
    *
    * Displayed on Facebook and Twitter shares (max 65 characters).
    */
-  seoDescription?: string;
+  seoDescription?: string
 
   /**
    * SEO Image — `image`
@@ -190,11 +190,11 @@ export interface Page extends SanityDocument {
    * Ideal size 1200 x 630px (if not added main image will be used).
    */
   seoImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 }
 
 /**
@@ -203,63 +203,63 @@ export interface Page extends SanityDocument {
  *
  */
 export interface Post extends SanityDocument {
-  _type: "post";
+  _type: 'post'
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Author — `reference`
    *
    *
    */
-  author?: SanityReference<Author>;
+  author?: SanityReference<Author>
 
   /**
    * Published at — `datetime`
    *
    *
    */
-  publishedAt?: string;
+  publishedAt?: string
 
   /**
    * Categories — `array`
    *
    *
    */
-  categories?: Array<SanityKeyedReference<Category>>;
+  categories?: Array<SanityKeyedReference<Category>>
 
   /**
    * Keywords (tags) — `string`
    *
    *
    */
-  keywords?: string;
+  keywords?: string
 
   /**
    * Excerpt — `text`
    *
    *
    */
-  excerpt?: string;
+  excerpt?: string
 
   /**
    * Body — `markdown`
    *
    *
    */
-  body?: Markdown;
+  body?: Markdown
 
   /**
    * Image — `image`
@@ -267,25 +267,25 @@ export interface Post extends SanityDocument {
    *
    */
   image?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * Social title — `string`
    *
    * Displayed on Facebook and Twitter shares (max 60 characters)
    */
-  ogTitle?: string;
+  ogTitle?: string
 
   /**
    * Social description — `string`
    *
    * Displayed on Facebook and Twitter shares (max 65 characters)
    */
-  ogDescription?: string;
+  ogDescription?: string
 }
 
 /**
@@ -294,42 +294,42 @@ export interface Post extends SanityDocument {
  *
  */
 export interface Section extends SanityDocument {
-  _type: "section";
+  _type: 'section'
 
   /**
    * Section Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Subitle — `string`
    *
    *
    */
-  subtitle?: string;
+  subtitle?: string
 
   /**
    * Menu Title — `string`
    *
    * The title shown in the main navigation if defferent from Title
    */
-  menuTitle?: string;
+  menuTitle?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Introduction — `markdown`
    *
    *
    */
-  body?: Markdown;
+  body?: Markdown
 
   /**
    * Main image — `image`
@@ -337,32 +337,32 @@ export interface Section extends SanityDocument {
    *
    */
   mainImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * Video — `reference`
    *
    *
    */
-  video?: SanityReference<Video>;
+  video?: SanityReference<Video>
 
   /**
    * SEO title — `string`
    *
    * Displayed on Facebook and Twitter shares (max 60 characters).
    */
-  seoTitle?: string;
+  seoTitle?: string
 
   /**
    * SEO description — `string`
    *
    * Displayed on Facebook and Twitter shares (max 65 characters).
    */
-  seoDescription?: string;
+  seoDescription?: string
 
   /**
    * SEO Image — `image`
@@ -370,11 +370,11 @@ export interface Section extends SanityDocument {
    * Ideal size 1200 x 630px (if not added main image will be used).
    */
   seoImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 }
 
 /**
@@ -383,42 +383,42 @@ export interface Section extends SanityDocument {
  *
  */
 export interface Site extends SanityDocument {
-  _type: "site";
+  _type: 'site'
 
   /**
    * Site Name — `string`
    *
    *
    */
-  siteName?: string;
+  siteName?: string
 
   /**
    * Site Description — `string`
    *
    *
    */
-  siteDescription?: string;
+  siteDescription?: string
 
   /**
    * Keywords — `string`
    *
    * A list of keywords seperated by commas.
    */
-  keywords?: string;
+  keywords?: string
 
   /**
    * Site URL — `url`
    *
    *
    */
-  siteURL?: string;
+  siteURL?: string
 
   /**
    * Email Address — `string`
    *
    *
    */
-  email?: string;
+  email?: string
 
   /**
    * SEO image — `image`
@@ -426,32 +426,32 @@ export interface Site extends SanityDocument {
    *
    */
   seoImage?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 
   /**
    * SEO title — `string`
    *
    * Displayed on Facebook and Twitter shares (max 60 characters).
    */
-  seoTitle?: string;
+  seoTitle?: string
 
   /**
    * SEO description — `string`
    *
    * Displayed on Facebook and Twitter shares (max 65 characters).
    */
-  seoDescription?: string;
+  seoDescription?: string
 
   /**
    * Twitter Handle — `string`
    *
    *
    */
-  twitterHandle?: string;
+  twitterHandle?: string
 }
 
 /**
@@ -460,28 +460,28 @@ export interface Site extends SanityDocument {
  *
  */
 export interface Social extends SanityDocument {
-  _type: "social";
+  _type: 'social'
 
   /**
    * site — `string`
    *
    *
    */
-  site?: string;
+  site?: string
 
   /**
    * Username — `string`
    *
    *
    */
-  username?: string;
+  username?: string
 
   /**
    * Link — `url`
    *
    *
    */
-  link?: string;
+  link?: string
 }
 
 /**
@@ -490,42 +490,42 @@ export interface Social extends SanityDocument {
  *
  */
 export interface Video extends SanityDocument {
-  _type: "video";
+  _type: 'video'
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Body — `markdown`
    *
    *
    */
-  body?: Markdown;
+  body?: Markdown
 
   /**
    * Video Link — `url`
    *
    *
    */
-  videoLink?: string;
+  videoLink?: string
 
   /**
    * Publish date — `date`
    *
    *
    */
-  publishDate?: string;
+  publishDate?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string }
 
   /**
    * Thumbnail — `image`
@@ -533,11 +533,11 @@ export interface Video extends SanityDocument {
    *
    */
   thumbnail?: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+    _type: 'image'
+    asset: SanityReference<SanityImageAsset>
+    crop?: SanityImageCrop
+    hotspot?: SanityImageHotspot
+  }
 }
 
 /**
@@ -546,39 +546,39 @@ export interface Video extends SanityDocument {
  *
  */
 export interface Category extends SanityDocument {
-  _type: "category";
+  _type: 'category'
 
   /**
    * Title — `string`
    *
    *
    */
-  title?: string;
+  title?: string
 
   /**
    * Description — `text`
    *
    *
    */
-  description?: string;
+  description?: string
 
   /**
    * Slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug?: { _type: 'slug'; current: string }
 }
 
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
-      _type: "image";
-      asset: SanityReference<SanityImageAsset>;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
+      _type: 'image'
+      asset: SanityReference<SanityImageAsset>
+      crop?: SanityImageCrop
+      hotspot?: SanityImageHotspot
     }>
->;
+>
 
 export type Documents =
   | Author
@@ -589,11 +589,11 @@ export type Documents =
   | Site
   | Social
   | Video
-  | Category;
+  | Category
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but
  * the definition was not actually found. Future versions of
  * sanity-codegen will let you type this explicity.
  */
-type Markdown = any;
+type Markdown = any

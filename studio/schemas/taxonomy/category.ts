@@ -21,6 +21,6 @@ export default {
         source: 'title',
         maxLength: 96
       }
-    },
+    }
   ]
 }

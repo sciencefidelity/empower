@@ -15,7 +15,7 @@ export default {
       type: 'array',
       of: [
         { type: 'reference', to: { type: 'page' } },
-        { type: 'reference', name: 'section', to: { type: 'section' } },
+        { type: 'reference', name: 'section', to: { type: 'section' } }
       ],
       sortable: true
     }

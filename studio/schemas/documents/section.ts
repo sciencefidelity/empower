@@ -34,7 +34,8 @@ export default {
       name: 'menuTitle',
       title: 'Menu Title',
       type: 'string',
-      description: 'The title shown in the main navigation if defferent from Title',
+      description:
+        'The title shown in the main navigation if defferent from Title',
       group: 'info'
     },
     {

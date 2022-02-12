@@ -1,3 +1,5 @@
+import { StringValidation } from '../interfaces'
+
 export default {
   name: 'page',
   title: 'Page',
@@ -21,7 +23,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: StringValidation) => Rule.required(),
       group: 'info'
     },
     {
@@ -29,7 +31,7 @@ export default {
       title: 'Menu Title',
       type: 'string',
       description: 'The title shown in the main navigation',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: StringValidation) => Rule.required(),
       group: 'info'
     },
     {
@@ -49,7 +51,7 @@ export default {
         title: 'Page',
         value: 'page'
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: StringValidation) => Rule.required(),
       group: 'info'
     },
     {

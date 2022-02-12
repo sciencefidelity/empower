@@ -1,8 +1,10 @@
+import { StringValidation } from '../interfaces'
+
 export default {
   name: 'site',
   title: 'Site',
   type: 'document',
-  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   groups: [
     {
       name: 'meta',
@@ -43,18 +45,11 @@ export default {
       name: 'email',
       title: 'Email Address',
       type: 'string',
-      validation: Rule => Rule.custom((email: string) => {
-        if (typeof email === 'undefined') {
-          return true
-        }
-        const regex = /[a-z0-9!#$%&'*+/=?^_'{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_'{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-        if (regex.test(email)) {
-          return true
-        } else {
-          return 'Not a valid email'
-        }
-      }),
-      group: 'meta'
+      group: 'meta',
+      validation: (Rule: StringValidation) =>
+        Rule.regex(
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        ).error('Not a valid email address')
     },
     {
       name: 'seoImage',
@@ -71,7 +66,7 @@ export default {
       type: 'string',
       description:
         'Displayed on Facebook and Twitter shares (max 60 characters).',
-      validation: Rule =>
+      validation: (Rule: StringValidation) =>
         Rule.max(60).warning('Only 60 characters will be visible.'),
       group: 'seo'
     },
@@ -81,7 +76,7 @@ export default {
       type: 'string',
       description:
         'Displayed on Facebook and Twitter shares (max 65 characters).',
-      validation: Rule =>
+      validation: (Rule: StringValidation) =>
         Rule.max(65).warning('Only 65 characters will be visible.'),
       group: 'seo'
     },
