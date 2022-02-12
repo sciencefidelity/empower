@@ -1,7 +1,7 @@
 ---
 import groq from "groq"
 import sanityClient from "lib/sanityClient"
-import { dateOptions } from "lib/utils"
+import format from "date-fns/format"
 
 const query = groq`{
   "posts": *[_type == "post"] | order(publishedAt desc){
@@ -17,7 +17,7 @@ const data = await response
 <ul>
   {data.posts.map(post =>
     <li key={post._id}><a href="/blog/${post.slug}">{post.title}</a><br>
-      {new Date(post.publishedAt).toLocaleDateString("en-GB", dateOptions)}
+      {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
     </li>
   )}
 </ul>

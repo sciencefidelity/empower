@@ -1,4 +1,4 @@
-import { StringValidation } from '../interfaces'
+import { Rule } from '@sanity/types'
 
 export default {
   name: 'page',
@@ -23,7 +23,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: StringValidation) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
       group: 'info'
     },
     {
@@ -31,7 +31,7 @@ export default {
       title: 'Menu Title',
       type: 'string',
       description: 'The title shown in the main navigation',
-      validation: (Rule: StringValidation) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
       group: 'info'
     },
     {
@@ -51,7 +51,7 @@ export default {
         title: 'Page',
         value: 'page'
       },
-      validation: (Rule: StringValidation) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
       group: 'info'
     },
     {

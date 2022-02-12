@@ -39,5 +39,8 @@
     "stylelint-scss": "^4.1.0",
     "stylelint-selector-bem-pattern": "^2.1.1",
     "tailwindcss": "^3.0.22"
+  },
+  "dependencies": {
+    "date-fns": "^2.28.0"
   }
 }
