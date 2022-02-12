@@ -1,7 +1,7 @@
 ---
 import groq from "groq"
-import sanityClient from "../lib/sanityClient"
-import { dateOptions } from "../lib/utils"
+import sanityClient from "lib/sanityClient"
+import { dateOptions } from "lib/utils"
 
 const query = groq`{
   "posts": *[_type == "post"] | order(publishedAt desc){

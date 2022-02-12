@@ -3,6 +3,14 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/generated/*": ["generated/*"],
+      "@/pages/*": ["pages/*"],
+      "@/styles/*": ["styles/*"]
+    }
   }
 }

@@ -1,9 +1,9 @@
 ---
 import { Markdown } from "astro/components"
 import groq from "groq"
-import sanityClient from "../../lib/sanityClient"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import { dateOptions } from "../../lib/utils"
+import sanityClient from "lib/sanityClient"
+import BaseLayout from "layouts/BaseLayout.astro"
+import { dateOptions } from "lib/utils"
 
 export async function getStaticPaths() {
   const query = groq`{

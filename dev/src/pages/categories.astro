@@ -1,7 +1,7 @@
 ---
 import groq from "groq"
-import sanityClient from "../lib/sanityClient"
-import BaseLayout from "../layouts/BaseLayout.astro"
+import sanityClient from "lib/sanityClient"
+import BaseLayout from "layouts/BaseLayout.astro"
 
 const query = groq`{
   "categories": *[_type == "category"] | order(title){
