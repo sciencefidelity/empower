@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+// https://vitejs.dev/guide/env-and-mode.html#intellisense-for-typescript
 
 interface ImportMetaEnv {
   readonly PUBLIC_SANITY_PROJECT_ID: string
