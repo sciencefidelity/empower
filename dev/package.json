@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "check": "astro check",
     "lint": "concurrently 'yarn:lint:*'",
     "lint:styles": "stylelint '**/*.{astro,scss}' --ignore-path .eslintignore",
     "fix": "concurrently 'yarn:fix:*'",
