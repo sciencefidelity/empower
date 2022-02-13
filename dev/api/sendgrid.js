@@ -1,7 +1,7 @@
 require("dotenv").config()
-const sgMail = require("@sendgrid/mail")
+import sendgrid from "@sendgrid/mail"
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
 async function sendEmail(req, res) {
   const subject = "New Message from artsed.wales"
