@@ -35,7 +35,6 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.request.params
 const { post } = Astro.props
-console.log(post.body[16].markDefs)
 ---
 <BaseLayout
   title={post.title}
