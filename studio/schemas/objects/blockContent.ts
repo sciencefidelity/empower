@@ -35,6 +35,7 @@ export default {
                   { type: 'author' },
                   { type: 'page' },
                   { type: 'post' },
+                  { type: 'section' },
                   { type: 'video' }
                 ]
               }
