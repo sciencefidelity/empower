@@ -1,9 +1,10 @@
 {
   "__comment": "Any compiler configuration in here will be ignored.",
   "compilerOptions": {
+    "lib": [ "esnext" ],
     "jsx": "react",
-    "types": ["@sanity/types"],
-  }
+    "types": ["@sanity/types"]
+  },
   "include": [
     "./node_modules/@sanity/base/types/**/*.ts",
     "./node_modules/@sanity/types/**/*.ts",

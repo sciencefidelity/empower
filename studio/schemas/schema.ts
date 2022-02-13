@@ -6,6 +6,7 @@ import blockContent from './objects/blockContent'
 
 // documents
 import author from './documents/author'
+import comment from './documents/comment'
 import menu from './documents/menu'
 import page from './documents/page'
 import post from './documents/post'
@@ -25,6 +26,7 @@ export default createSchema({
 
     // documents
     author,
+    comment,
     menu,
     page,
     post,

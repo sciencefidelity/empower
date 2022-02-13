@@ -1,4 +1,4 @@
-import { StringValidation } from '../interfaces'
+import { Rule } from "@sanity/types"
 
 export default {
   name: 'site',
@@ -46,7 +46,7 @@ export default {
       title: 'Email Address',
       type: 'string',
       group: 'meta',
-      validation: (Rule: StringValidation) =>
+      validation: (Rule: Rule) =>
         Rule.regex(
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         ).error('Not a valid email address')
@@ -66,7 +66,7 @@ export default {
       type: 'string',
       description:
         'Displayed on Facebook and Twitter shares (max 60 characters).',
-      validation: (Rule: StringValidation) =>
+      validation: (Rule: Rule) =>
         Rule.max(60).warning('Only 60 characters will be visible.'),
       group: 'seo'
     },
@@ -76,7 +76,7 @@ export default {
       type: 'string',
       description:
         'Displayed on Facebook and Twitter shares (max 65 characters).',
-      validation: (Rule: StringValidation) =>
+      validation: (Rule: Rule) =>
         Rule.max(65).warning('Only 65 characters will be visible.'),
       group: 'seo'
     },

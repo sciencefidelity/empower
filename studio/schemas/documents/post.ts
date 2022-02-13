@@ -1,3 +1,5 @@
+import { Rule } from "@sanity/types"
+
 interface Selection {
   author?: string
   title?: string
@@ -97,7 +99,7 @@ export default {
       description:
         'Displayed on Facebook and Twitter shares (max 60 characters)',
       type: 'string',
-      validation: Rule =>
+      validation: (Rule: Rule) =>
         Rule.max(60).warning(`Only 60 characters will be visible.`),
       group: 'seo'
     },
@@ -107,7 +109,7 @@ export default {
       description:
         'Displayed on Facebook and Twitter shares (max 65 characters)',
       type: 'string',
-      validation: Rule =>
+      validation: (Rule: Rule) =>
         Rule.max(65).warning(`Only 65 characters will be visible.`),
       group: 'seo'
     }
