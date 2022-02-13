@@ -1,11 +1,11 @@
 ---
-import { Markdown } from "astro/components"
 import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import Blog from "components/Blog.astro"
 import Contact from "components/Contact.astro"
 import Image from "components/Image.astro"
+import PortableText from "components/PortableText.svelte"
 
 export async function getStaticPaths() {
   const query = groq`{
@@ -49,7 +49,7 @@ const { page } = Astro.props
       />
     }
     {page.body &&
-      <Markdown>{page.body}</Markdown>
+      <PortableText body={page.body} />
     }
     {page.template === "blog" && <Blog />}
     {page.template === "contact" && <Contact />}

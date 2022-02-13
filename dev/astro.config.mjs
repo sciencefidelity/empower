@@ -7,10 +7,10 @@ export default {
     sitemap: true
   },
   devOptions: {
-    // hostname: "0.0.0.0",
-    port: 8080
+    hostname: "0.0.0.0",
   },
-  renderers: [],
+  // renderers: ["@astrojs/renderer-react"],
+  renderers: ["@astrojs/renderer-svelte"],
   vite: {
     resolve: {
       alias: {

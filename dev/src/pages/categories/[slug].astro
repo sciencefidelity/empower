@@ -1,6 +1,6 @@
 ---
-import { Markdown } from "astro/components"
 import groq from "groq"
+import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { dateOptions } from "lib/utils"
@@ -37,7 +37,7 @@ const title = `Category: ${category.title}`
     <ul>
       {category.posts.map(item =>
         <li><a href="/blog/${item.slug.current}">{item.title}</a><br>
-          {new Date(item.publishedAt).toLocaleDateString("en-GB", dateOptions)}
+          {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
         </li>
       )}
     </ul>

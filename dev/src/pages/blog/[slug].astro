@@ -1,9 +1,9 @@
 ---
-import { Markdown } from "astro/components"
 import groq from "groq"
 import sanityClient from "lib/sanityClient"
+import format from "date-fns/format"
 import BaseLayout from "layouts/BaseLayout.astro"
-import { dateOptions, kebabCase } from "lib/utils"
+import PortableText from "components/PortableText.svelte"
 
 export async function getStaticPaths() {
   const query = groq`{
@@ -27,7 +27,6 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.request.params
 const { post } = Astro.props
-const date = new Date(post.publishedAt).toLocaleDateString("en-GB", dateOptions)
 ---
 <BaseLayout
   title={post.title}
@@ -39,7 +38,7 @@ const date = new Date(post.publishedAt).toLocaleDateString("en-GB", dateOptions)
 >
   <div>
     <h1>{post.title}</h1>
-    <p>published on: {date}</p>
+    <p>published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}</p>
     {post.author && <p>by:
       <a href="/authors/${post.author.slug}">{post.author.name}</a>
     </p>}
@@ -48,7 +47,7 @@ const date = new Date(post.publishedAt).toLocaleDateString("en-GB", dateOptions)
         <li><a href="/categories/${category.slug}">{category.title}</a></li>
       )}
     </ul>}
-    {post.body && <Markdown>{post.body}</Markdown>}
+    <PortableText body={post.body} />
   </div>
 </BaseLayout>
 

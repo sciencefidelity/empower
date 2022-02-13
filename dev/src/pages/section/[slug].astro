@@ -1,9 +1,9 @@
 ---
-import { Markdown } from "astro/components"
 import groq from "groq"
-import sanityClient from "../../lib/sanityClient"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import Video from "../../components/Video.astro"
+import sanityClient from "lib/sanityClient"
+import BaseLayout from "layouts/BaseLayout.astro"
+import PortableText from "components/PortableText.svelte"
+import Video from "components/Video.astro"
 
 export async function getStaticPaths() {
   const query = groq`{
@@ -40,6 +40,6 @@ const { section } = Astro.props
 >
   <div>
     <h1>{section.title}</h1>
-    <Markdown>{section.body}</Markdown>
+    <PortableText body={section.body} />
     {section.video && <Video video={section.video} />}
 </BaseLayout>
