@@ -12,13 +12,7 @@ export async function getStaticPaths() {
     "posts": *[_type == "post"]{
       _id,
       author->{name, "slug": slug.current},
-      body[]{
-        ..., markDefs[]{
-          ..., item->{
-            _type, "slug": slug
-          }
-        }
-      },
+      body,
       categories[]->{_id, "slug": slug.current, title},
       publishedAt,
       "slug": slug.current,
@@ -35,7 +29,6 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.request.params
 const { post } = Astro.props
-console.log(post.body[16].markDefs)
 ---
 <BaseLayout
   title={post.title}

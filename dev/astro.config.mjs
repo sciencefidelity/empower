@@ -9,8 +9,8 @@ export default {
   devOptions: {
     hostname: "0.0.0.0",
   },
-  // renderers: ["@astrojs/renderer-react"],
-  renderers: ["@astrojs/renderer-svelte"],
+  renderers: ["@astrojs/renderer-react", "@astrojs/renderer-svelte"],
+  // renderers: ["@astrojs/renderer-svelte"],
   vite: {
     resolve: {
       alias: {
