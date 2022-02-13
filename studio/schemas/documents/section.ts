@@ -51,7 +51,7 @@ export default {
     {
       name: 'body',
       title: 'Introduction',
-      type: 'markdown',
+      type: 'blockContent',
       group: 'content'
     },
     {
