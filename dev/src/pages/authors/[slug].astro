@@ -23,9 +23,12 @@ const title = `Author: ${author.name}`
 <BaseLayout title={title}>
   <div>
     <h1>{title}</h1>
-    {author.twitterHandle && <p><a href={twitterLink(author.twitterHandle)}>
-      {author.twitterHandle}
-    </a></p>}
+    {author.twitterHandle && <p>
+      <a
+        href={twitterLink(author.twitterHandle)}
+        target="_blank"
+        rel="noreferrer">{author.twitterHandle}</a>
+    </p>}
     <h2>Bio</h2>
     <PortableText body={author.bio} />
     <br>

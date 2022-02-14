@@ -1,5 +1,6 @@
 ---
 import sanityClient from "lib/sanityClient"
+import { buildUrl } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { indexQuery } from "lib/queries"
 
@@ -13,7 +14,7 @@ const title = data.site.siteName
     <ul>
       {data.sections.map(section =>
         <li key={section.id}>
-          <a href="/section/${section.slug}">{section.menuTitle}</a><br />
+          <a href={buildUrl(section._type, section.slug)}>{section.menuTitle}</a><br />
           {section.subtitle}
         </li>
       )}

@@ -151,6 +151,7 @@ export const videoQuery = groq`{
 export const blogQuery = groq`{
   "posts": *[_type == "post"] | order(publishedAt desc){
     _id,
+    _type,
     publishedAt,
     "slug": slug.current,
     title
