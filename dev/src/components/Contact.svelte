@@ -39,6 +39,7 @@ const submitHandler = async () => {
     const { error } = await res.json()
     if (error) submitMessage = "Oops! Something went wrong, please try again."
     submitMessage = "Thankyou! Your Message has been delivered."
+    fields = { firstName: "", lastName: "", email: "", message: "" }
   }
 }
 </script>
