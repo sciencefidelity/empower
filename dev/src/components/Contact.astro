@@ -1,20 +1,44 @@
 <section>
-  <form>
+  <form id="contact-form">
+    <p>Send a message with Astro</p>
     <label>First Name</label>
-    <input placeholder="Your name...">
+    <input
+      type="text"
+      value=""
+      name="firstName"
+      placeholder="Your name..."
+    >
     <label>Last Name</label>
-    <input type="text" placeholder="Your last name...">
+    <input
+      type="text"
+      value=""
+      name="lastName"
+      placeholder="Your last name..."
+    >
     <label type="email">Email</label>
-    <input type="text" placeholder="Your email address...">
+    <input
+      type="text"
+      value=""
+      name="lastName"
+      placeholder="Your email address..."
+    >
     <label for="subject">Subject</label>
-    <textarea placeholder="Write something..." style="height:200px"></textarea>
+    <textarea
+      name="message"
+      value=""
+      placeholder="Write something..."
+    ></textarea>
     <input type="submit" value="Submit">
   </form>
 </section>
+<script src={Astro.resolve("./sendForm.ts")}></script>
 
 <style>
 input,
 label {
   display: block;
+}
+textarea {
+  height: 200px;
 }
 </style>
