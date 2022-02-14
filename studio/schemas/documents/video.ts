@@ -9,6 +9,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'introduction',
+      title: 'Introduction',
+      type: 'text'
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent'
@@ -26,6 +31,13 @@ export default {
         dateFormat: 'dddd, MMMM Do YYYY',
         calendarTodayLabel: 'Today'
       }
+    },
+    {
+      name: 'section',
+      title: 'Section',
+      description: 'Which section does this video belong to?',
+      type: 'reference',
+      to: { type: 'section' }
     },
     {
       name: 'slug',
