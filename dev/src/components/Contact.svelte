@@ -2,6 +2,7 @@
 let fields = { firstName: "", lastName: "", email: "", message: "" }
 let errors = { firstName: "", lastName: "", email: "", message: "" }
 let valid = false
+let submitMessage = ""
 
 const submitHandler = async () => {
   valid = true
@@ -30,14 +31,17 @@ const submitHandler = async () => {
   } else {
     errors.message = ""
   }
-
   if (valid) {
-    console.log(fields)
     await fetch("api/sendgrid", {
       body: JSON.stringify(fields),
       headers: {"Content-Type": "application/json"},
       method: "POST"
+    }).then(data => {
+      data.status === 200
+        ? submitMessage = "Thankyou! Your Message has been delivered."
+        : submitMessage = "Oops! Something went wrong, please try again."
     })
+    fields = { firstName: "", lastName: "", email: "", message: "" }
   }
 }
 </script>
@@ -92,6 +96,7 @@ const submitHandler = async () => {
       <div class="errors">{ errors.message }</div>
       <!-- Submit -->
       <input type="submit" value="Submit">
+      <div>{submitMessage}</div>
     </form>
   </div>
 </section>
