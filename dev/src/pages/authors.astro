@@ -1,5 +1,7 @@
 ---
+import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
+import { buildUrl } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { authorsQuery } from "lib/queries"
 
@@ -12,9 +14,17 @@ const title = "All Authors"
     <h1>{title}</h1>
     <br>
     <ul>
-      {data.authors.map(authors =>
+      {data.authors.map(author =>
         <li>
-          <a href="/authors/${authors.slug}">{authors.name}</a>
+          <a href={buildUrl(author._type, author.slug)}>{author.name}</a>
+          <ul>
+            {author.posts.map(post =>
+              <li>
+                <p><a href={buildUrl(post._type, post.slug)}>{post.title}</a><p>
+                <p>{format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}<p>
+              </li>
+            )}
+          </ul>
         </li>
       )}
     </ul>

@@ -1,17 +1,9 @@
 ---
-import groq from "groq"
-import sanityClient from "lib/sanityClient"
 import format from "date-fns/format"
+import sanityClient from "lib/sanityClient"
+import { blogQuery } from "lib/queries"
 
-const query = groq`{
-  "posts": *[_type == "post"] | order(publishedAt desc){
-    _id,
-    publishedAt,
-    "slug": slug.current,
-    title
-  }
-}`
-const response = await sanityClient.fetch(query)
+const response = await sanityClient.fetch(blogQuery)
 const data = await response
 ---
 <ul>

@@ -1,5 +1,6 @@
 ---
 import sanityClient from "lib/sanityClient"
+import { buildUrl } from "lib/utils"
 import { navbarQuery } from "lib/queries"
 
 const response = await sanityClient.fetch(navbarQuery)
@@ -8,7 +9,7 @@ const data = await response
 <nav class="nav">
   <ul>
     {data.menu.items.map(item =>
-      <li><a href="/${item.slug}">{item.title}</a></li>
+      <li><a href={buildUrl(item._type, item.slug)}>{item.title}</a></li>
     )}
   </ul>
 </nav>

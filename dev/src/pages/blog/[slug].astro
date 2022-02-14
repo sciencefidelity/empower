@@ -1,14 +1,14 @@
 ---
-import sanityClient from "lib/sanityClient"
 import format from "date-fns/format"
+import sanityClient from "lib/sanityClient"
+import { article, buildUrl, twitterLink } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import PortableText from "components/PortableText.tsx"
 import { components } from "components/portableTextComponents"
-// import PortableText from "components/PortableText.svelte"
-import { postQuery } from "lib/queries"
+import { postsQuery } from "lib/queries"
 
 export async function getStaticPaths() {
-  const data = await sanityClient.fetch(postQuery).then(response => response)
+  const data = await sanityClient.fetch(postsQuery).then(response => response)
   return data.posts.map(post => {
     return {
       params: { slug: post.slug },
@@ -28,17 +28,35 @@ const { post } = Astro.props
   twitterHandle={post.author.twitterHandle}
 >
   <div>
-    <h1>{post.title}</h1>
-    <p>published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}</p>
-    {post.author && <p>by:
-      <a href="/authors/${post.author.slug}">{post.author.name}</a>
+    {post.title && <h1>{post.title}</h1>}
+    {post.publishedAt && <p>
+      published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
+    </p>}
+    {post.author && <p>{"by: "}
+      <a href={buildUrl(post.author._type, post.author.slug)}>
+        {post.author.name}
+      </a>
     </p>}
     {post.categories && <ul>
-      in: {post.categories.map(category =>
-        <li><a href="/categories/${category.slug}">{category.title}</a></li>
+      {"in: "}{post.categories.map(category =>
+        <li>
+          <a href={buildUrl(category._type, category.slug)}>
+            {category.title}
+          </a>
+        </li>
       )}
     </ul>}
-    <PortableText body={post.body} components={components} />
+    {post.body && <PortableText body={post.body} components={components} />}
+    {post.author && <p>
+      {post.author.twitterHandle
+        ? <a href={twitterLink(post.author.twitterHandle)}>
+          {post.author.name}
+        </a>
+        : {post.author.name}
+      }
+      {" is "}
+      {article(post.author.occupation)}{" "}{post.author.occupation}
+    </p>}
   </div>
 </BaseLayout>
 

@@ -5,21 +5,10 @@ import { socialImage } from "lib/utils"
 import Footer from "components/Footer.astro"
 import Header from "components/Header.astro"
 import Navbar from "components/Navbar.astro"
+import { layoutQuery } from "lib/queries"
 import "styles/global.scss"
 
-const query = groq`{
-  "site": *[_type == "site"][0]{
-    email,
-    keywords,
-    seoDescription,
-    seoImage,
-    seoTitle,
-    siteDescription,
-    siteName,
-    siteURL
-  }
-}`
-const response = await sanityClient.fetch(query)
+const response = await sanityClient.fetch(layoutQuery)
 const data = await response
 const {
   title,

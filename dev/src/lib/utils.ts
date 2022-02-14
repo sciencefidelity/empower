@@ -13,6 +13,10 @@ export const capitalize = (str: string): string => {
     .join(" ")
 }
 
+export const article = (word: string): string => {
+  return /[aeiou]/i.test(word[0]) ? "an" : "a"
+}
+
 export const kebabCase = (str: string): string => {
   return str.toLowerCase().split(" ").join("-").replace(/[^a-z0-9-]/g, "")
 }
@@ -30,6 +34,8 @@ export const subdir = (type: string): string => {
   switch (type) {
   case "author":
     return "/authors"
+  case "category":
+    return "/categories"
   case "post":
     return "/blog"
   case "section":
@@ -39,6 +45,10 @@ export const subdir = (type: string): string => {
   default:
     return ""
   }
+}
+
+export const twitterLink = (handle: string): string => {
+  return `https://twitter.com/${handle.replace(/^@/, "")}`
 }
 
 export const urlFor = (source: Image) => {

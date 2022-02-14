@@ -1,11 +1,25 @@
 import groq from "groq"
 
+export const layoutQuery = groq`{
+  "site": *[_type == "site"][0]{
+    email,
+    keywords,
+    seoDescription,
+    seoImage,
+    seoTitle,
+    siteDescription,
+    siteName,
+    siteURL
+  }
+}`
+
 export const indexQuery = groq`{
   "site": *[_type == "site"][0]{
     keywords, siteDescription, siteName
   },
   "sections": *[_type == "section"] | order(menuTitle){
     _id,
+    _type,
     menuTitle,
     "slug": slug.current,
     subtitle
@@ -15,6 +29,7 @@ export const indexQuery = groq`{
 export const pageQuery = groq`{
   "pages": *[_type == "page"]{
     _id,
+    _type,
     mainImage,
     menuTitle,
     "slug": slug.current,
@@ -25,14 +40,18 @@ export const pageQuery = groq`{
 
 export const authorsQuery = groq`{
   "authors": *[_type == "author"]{
+    _type,
     name,
-    "posts": *[_type == "post" && author._ref == ^._id]{},
+    "posts": *[_type == "post" && author._ref == ^._id] | order(date desc){
+      _type, publishedAt,"slug": slug.current, title
+    },
     "slug": slug.current
   }[count(posts) > 0]
 }`
 
 export const categoriesQuery = groq`{
   "categories": *[_type == "category"] | order(title){
+    _type,
     "slug": slug.current,
     title,
     "posts": *[_type == "post" && references(^._id)]
@@ -41,26 +60,24 @@ export const categoriesQuery = groq`{
 
 export const authorQuery = groq`{
   "authors": *[_type == "author"]{
+    _type,
     bio[]{
       ..., markDefs[]{
-        ..., item->{
-          _type, "slug": slug
-        }
+        ..., item->{_type, "slug": slug}
       }
     },
     name,
     "posts": *[_type == "post" && author._ref == ^._id]
-    | order(publishedAt desc){
-      publishedAt, title, slug
-    },
+      | order(publishedAt desc){_type, publishedAt, title, "slug": slug.current},
     "slug": slug.current
   }[count(posts) > 0]
 }`
 
-export const postQuery = groq`{
+export const postsQuery = groq`{
   "posts": *[_type == "post"]{
     _id,
-    author->{name, "slug": slug.current},
+    _type,
+    author->{_type, name, occupation, "slug": slug.current},
     body[]{
       ..., markDefs[]{
         ..., item->{
@@ -68,7 +85,7 @@ export const postQuery = groq`{
         }
       }
     },
-    categories[]->{_id, "slug": slug.current, title},
+    categories[]->{_id, _type, "slug": slug.current, title},
     publishedAt,
     "slug": slug.current,
     title
@@ -78,9 +95,10 @@ export const postQuery = groq`{
 export const categoryQuery = groq`{
   "categories": *[_type == "category"] | order(title){
     _id,
+    _type,
     "posts": *[_type == "post" && references(^._id)]
-    | order(publishedAt desc){
-      publishedAt, title, slug
+      | order(publishedAt desc){
+        _type, publishedAt, "slug": slug.current, title
     },
     "slug": slug.current,
     title,
@@ -91,6 +109,7 @@ export const categoryQuery = groq`{
 export const sectionQuery = groq`{
   "sections": *[_type == "section"]{
     _id,
+    _type,
     body[]{
       ..., markDefs[]{
         ..., item->{
@@ -110,6 +129,7 @@ export const sectionQuery = groq`{
 
 export const videoQuery = groq`{
   "videos": *[_type == "video"]{
+    _type,
     body[]{
       ..., markDefs[]{
         ..., item->{
@@ -127,10 +147,20 @@ export const videoQuery = groq`{
   }
 }`
 
+export const blogQuery = groq`{
+  "posts": *[_type == "post"] | order(publishedAt desc){
+    _id,
+    publishedAt,
+    "slug": slug.current,
+    title
+  }
+}`
+
 export const navbarQuery = groq`{
   "menu": *[_type == "menu"][0]{
     "items": items[]->{
       _id,
+      _type,
       "slug": slug.current,
       title
     }
