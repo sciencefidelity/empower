@@ -2,7 +2,7 @@
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import Blog from "components/Blog.astro"
-import Contact from "../components/Contact.svelte"
+import ContactForm from "../components/ContactForm.svelte"
 import Image from "components/Image.astro"
 import PortableText from "components/PortableText.svelte"
 import { pageQuery } from "lib/queries"
@@ -42,6 +42,6 @@ const { page } = Astro.props
       <PortableText body={page.body} />
     }
     {page.template === "blog" && <Blog />}
-    {page.template === "contact" && <Contact client:idle />}
+    {page.template === "contact" && <ContactForm client:idle />}
   </div>
 </BaseLayout>

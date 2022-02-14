@@ -2,9 +2,10 @@
 import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
 import { article, buildUrl, twitterLink } from "lib/utils"
+import { components } from "components/PortableTextComponents"
 import BaseLayout from "layouts/BaseLayout.astro"
+import CommentForm from "components/CommentForm.svelte"
 import PortableText from "components/PortableText.tsx"
-import { components } from "components/portableTextComponents"
 import { postsQuery } from "lib/queries"
 
 export async function getStaticPaths() {
@@ -27,7 +28,7 @@ const { post } = Astro.props
   slug={post.slug}
   twitterHandle={post.author.twitterHandle}
 >
-  <div>
+  <section>
     {post.title && <h1>{post.title}</h1>}
     {post.publishedAt && <p>
       published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
@@ -56,7 +57,16 @@ const { post } = Astro.props
           >{post.author.name}</a> : {post.author.name}}{" is "}
       {article(post.author.occupation)}{" "}{post.author.occupation}
     </p>}
-  </div>
+  </section>
+  <CommentForm client:idle />
+  <section>
+    {post.comments.map(comment =>
+      <p>{comment.message}</p>
+      <p>by {comment.name} on {
+        format(new Date(comment._createdAt), "eeee, do MMMM yyyy")
+      }</p>
+    )}
+  </section>
 </BaseLayout>
 
 <style lang="scss">
