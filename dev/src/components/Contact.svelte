@@ -18,7 +18,6 @@ const submitHandler = async () => {
   } else {
     errors.lastName = ""
   }
-  // if (regex.test(fields.email.trim())) {
   if (fields.email.trim().length < 1) {
     valid = false
     errors.email = "Please provide a valid email address"
@@ -32,16 +31,14 @@ const submitHandler = async () => {
     errors.message = ""
   }
   if (valid) {
-    await fetch("api/sendgrid", {
+    const res = await fetch("api/sendgrid", {
       body: JSON.stringify(fields),
       headers: {"Content-Type": "application/json"},
       method: "POST"
-    }).then(data => {
-      data.status === 200
-        ? submitMessage = "Thankyou! Your Message has been delivered."
-        : submitMessage = "Oops! Something went wrong, please try again."
     })
-    fields = { firstName: "", lastName: "", email: "", message: "" }
+    const { error } = await res.json()
+    if (error) submitMessage = "Oops! Something went wrong, please try again."
+    submitMessage = "Thankyou! Your Message has been delivered."
   }
 }
 </script>
