@@ -1,10 +1,5 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "module": "esnext",
-    "jsx": "react",
-    "moduleResolution": "node",
-    "types": ["vite/client"],
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
@@ -16,8 +11,8 @@
   },
   "include": [
     "src/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
     "src/**/*.svelte",
     "src/**/*.astro"
   ]
