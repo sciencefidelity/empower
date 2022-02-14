@@ -1,24 +1,12 @@
 ---
-import { Markdown } from "astro/components"
-import groq from "groq"
 import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import PortableText from "components/PortableText.svelte"
-import { dateOptions } from "lib/utils"
+import { authorQuery } from "lib/queries"
 
 export async function getStaticPaths( ) {
-  const query = groq`{
-    "authors": *[_type == "author"]{
-      bio,
-      name,
-      "posts": *[_type == "post" && author._ref == ^._id] | order(publishedAt desc){
-        publishedAt, title, slug
-      },
-      "slug": slug.current
-    }[count(posts) > 0]
-  }`
-  const data = await sanityClient.fetch(query).then(response => response)
+  const data = await sanityClient.fetch(authorQuery).then(response => response)
   return data.authors.map(author => {
     return {
       params: { slug: author.slug },

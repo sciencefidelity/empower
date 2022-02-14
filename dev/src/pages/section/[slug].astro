@@ -1,25 +1,13 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import PortableText from "components/PortableText.svelte"
 import Video from "components/Video.astro"
+import { sectionQuery } from "lib/queries"
 
 export async function getStaticPaths() {
-  const query = groq`{
-    "sections": *[_type == "section"]{
-      _id,
-      body,
-      menuTitle,
-      seoDescription,
-      seoTitle,
-      "slug": slug.current,
-      subtitle,
-      title,
-      video->{thumbnail, title, videoLink}
-    }
-  }`
-  const data = await sanityClient.fetch(query).then(response => response)
+  const data = await sanityClient.fetch(sectionQuery)
+    .then(response => response)
   return data.sections.map(section => {
     return {
       params: { slug: section.slug },
@@ -39,7 +27,8 @@ const { section } = Astro.props
   slug={section.slug}
 >
   <div>
-    <h1>{section.title}</h1>
-    <PortableText body={section.body} />
+    {section.title && <h1>{section.title}</h1>}
+    {section.body && <PortableText body={section.body} />}
+    {section.video && <p><a href={video.slug}>{video.title}</a></p>}
     {section.video && <Video video={section.video} />}
 </BaseLayout>

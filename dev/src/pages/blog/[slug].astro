@@ -1,31 +1,14 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import format from "date-fns/format"
 import BaseLayout from "layouts/BaseLayout.astro"
 import PortableText from "components/PortableText.tsx"
 import { components } from "components/portableTextComponents"
 // import PortableText from "components/PortableText.svelte"
+import { postQuery } from "lib/queries"
 
 export async function getStaticPaths() {
-  const query = groq`{
-    "posts": *[_type == "post"]{
-      _id,
-      author->{name, "slug": slug.current},
-      body[]{
-        ..., markDefs[]{
-          ..., item->{
-            _type, "slug": slug
-          }
-        }
-      },
-      categories[]->{_id, "slug": slug.current, title},
-      publishedAt,
-      "slug": slug.current,
-      title
-    }
-  }`
-  const data = await sanityClient.fetch(query).then(response => response)
+  const data = await sanityClient.fetch(postQuery).then(response => response)
   return data.posts.map(post => {
     return {
       params: { slug: post.slug },

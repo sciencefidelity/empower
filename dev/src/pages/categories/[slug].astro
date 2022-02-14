@@ -1,23 +1,13 @@
 ---
-import groq from "groq"
 import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { dateOptions } from "lib/utils"
+import { categoryQuery } from "lib/queries"
 
 export async function getStaticPaths() {
-  const query = groq`{
-    "categories": *[_type == "category"] | order(title){
-      _id,
-      "posts": *[_type == "post" && references(^._id)] | order(publishedAt desc){
-        publishedAt, title, slug
-      },
-      "slug": slug.current,
-      title,
-      _id
-    }[count(posts) > 0]
-  }`
-  const data = await sanityClient.fetch(query).then(response => response)
+  const data = await sanityClient.fetch(categoryQuery)
+    .then(response => response)
   return data.categories.map(category => {
     return {
       params: { slug: category.slug },

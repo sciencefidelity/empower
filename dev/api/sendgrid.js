@@ -4,8 +4,8 @@ import sendgrid from "@sendgrid/mail"
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
 async function sendEmail(req, res) {
-  const subject = "New Message from artsed.wales"
   const fullName = `${req.body.firstName} ${req.body.lastName}`
+  const subject = `New Message from ${fullName}`
   try {
     await sendgrid.send({
       to: "eMpower <hello@empower-us-all.org>",

@@ -1,20 +1,9 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
+import { indexQuery } from "lib/queries"
 
-const query = groq`{
-  "site": *[_type == "site"][0]{
-    keywords, siteDescription, siteName
-  },
-  "sections": *[_type == "section"] | order(menuTitle){
-    _id,
-    menuTitle,
-    "slug": slug.current,
-    subtitle
-  }
-}`
-const response = await sanityClient.fetch(query)
+const response = await sanityClient.fetch(indexQuery)
 const data = await response
 const title = data.site.siteName
 ---

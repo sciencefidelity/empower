@@ -2,7 +2,6 @@
 import getVideoId from "get-video-id"
 const { video } = Astro.props
 const { id } = getVideoId(video.videoLink)
-const hash = "b4c2a38ba8"
 const url = `https://player.vimeo.com/video/${id}?dnt=1`
 ---
 <iframe

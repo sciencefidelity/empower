@@ -1,24 +1,14 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
 import Blog from "components/Blog.astro"
 import Contact from "../components/Contact.svelte"
 import Image from "components/Image.astro"
 import PortableText from "components/PortableText.svelte"
+import { pageQuery } from "lib/queries"
 
 export async function getStaticPaths() {
-  const query = groq`{
-    "pages": *[_type == "page"]{
-      _id,
-      mainImage,
-      menuTitle,
-      "slug": slug.current,
-      template[0],
-      title
-    }
-  }`
-  const data = await sanityClient.fetch(query).then(response => response)
+  const data = await sanityClient.fetch(pageQuery).then(response => response)
   return data.pages.map(page => {
     return {
       params: { slug: page.slug },

@@ -16,7 +16,7 @@ const data = await response
 ---
 <ul>
   {data.posts.map(post =>
-    <li key={post._id}><a href="/blog/${post.slug}">{post.title}</a><br>
+    <li><a href="/blog/${post.slug}">{post.title}</a><br>
       {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
     </li>
   )}

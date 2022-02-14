@@ -1,16 +1,9 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
+import { categoriesQuery } from "lib/queries"
 
-const query = groq`{
-  "categories": *[_type == "category"] | order(title){
-    "slug": slug.current,
-    title,
-    "posts": *[_type == "post" && references(^._id)]
-  }[count(posts) > 0]
-}`
-const response = await sanityClient.fetch(query)
+const response = await sanityClient.fetch(categoriesQuery)
 const data = await response
 const title = "All Categories"
 ---

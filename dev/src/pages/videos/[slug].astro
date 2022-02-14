@@ -1,34 +1,20 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
-import format from "date-fns/format"
 import BaseLayout from "layouts/BaseLayout.astro"
-import PortableText from "components/PortableText.tsx"
-import { components } from "components/portableTextComponents"
-// import PortableText from "components/PortableText.svelte"
+import PortableText from "components/PortableText.svelte"
+import { videoQuery } from "lib/queries"
 
 export async function getStaticPaths() {
-  const query = groq`{
-    "posts": *[_type == "post"]{
-      _id,
-      author->{name, "slug": slug.current},
-      body,
-      categories[]->{_id, "slug": slug.current, title},
-      publishedAt,
-      "slug": slug.current,
-      title
-    }
-  }`
-  const data = await sanityClient.fetch(query).then(response => response)
-  return data.posts.map(post => {
+  const data = await sanityClient.fetch(videoQuery).then(response => response)
+  return data.videos.map(video => {
     return {
       params: { slug: post.slug },
-      props: { post }
+      props: { video }
     }
   })
 }
 const { slug } = Astro.request.params
-const { post } = Astro.props
+const { video } = Astro.props
 ---
 <BaseLayout
   title={post.title}
@@ -39,17 +25,11 @@ const { post } = Astro.props
   twitterHandle={post.author.twitterHandle}
 >
   <div>
-    <h1>{post.title}</h1>
-    <p>published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}</p>
-    {post.author && <p>by:
-      <a href="/authors/${post.author.slug}">{post.author.name}</a>
-    </p>}
-    {post.categories && <ul>
-      in: {post.categories.map(category =>
-        <li><a href="/categories/${category.slug}">{category.title}</a></li>
-      )}
-    </ul>}
-    <PortableText body={post.body} components={components} />
+    <h1>{video.title}</h1>
+    <p>
+      published on: {format(new Date(video.publishedAt), "eeee, do MMMM yyyy")}
+    </p>
+    {video.videoLink && <Video video={video} />}
   </div>
 </BaseLayout>
 

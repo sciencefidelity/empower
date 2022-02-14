@@ -1,16 +1,9 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
+import { authorsQuery } from "lib/queries"
 
-const query = groq`{
-  "authors": *[_type == "author"]{
-    name,
-    "posts": *[_type == "post" && author._ref == ^._id]{},
-    "slug": slug.current
-  }[count(posts) > 0]
-}`
-const response = await sanityClient.fetch(query)
+const response = await sanityClient.fetch(authorsQuery)
 const data = await response
 const title = "All Authors"
 ---

@@ -1,17 +1,8 @@
 ---
-import groq from "groq"
 import sanityClient from "lib/sanityClient"
+import { navbarQuery } from "lib/queries"
 
-const query = groq`{
-  "menu": *[_type == "menu"][0]{
-    "items": items[]->{
-      _id,
-      "slug": slug.current,
-      title
-    }
-  }
-}`
-const response = await sanityClient.fetch(query)
+const response = await sanityClient.fetch(navbarQuery)
 const data = await response
 ---
 <nav class="nav">
