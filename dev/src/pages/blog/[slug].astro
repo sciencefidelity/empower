@@ -49,12 +49,11 @@ const { post } = Astro.props
     {post.body && <PortableText body={post.body} components={components} />}
     {post.author && <p>
       {post.author.twitterHandle
-        ? <a href={twitterLink(post.author.twitterHandle)}>
-          {post.author.name}
-        </a>
-        : {post.author.name}
-      }
-      {" is "}
+        ? <a
+            href={twitterLink(post.author.twitterHandle)}
+            target="_blank"
+            rel="noreferrer"
+          >{post.author.name}</a> : {post.author.name}}{" is "}
       {article(post.author.occupation)}{" "}{post.author.occupation}
     </p>}
   </div>

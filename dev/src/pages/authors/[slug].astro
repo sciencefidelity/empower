@@ -1,7 +1,7 @@
 ---
 import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
+import { buildUrl, twitterLink } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import PortableText from "components/PortableText.svelte"
 import { authorQuery } from "lib/queries"
@@ -23,7 +23,9 @@ const title = `Author: ${author.name}`
 <BaseLayout title={title}>
   <div>
     <h1>{title}</h1>
-    <br>
+    {author.twitterHandle && <p><a href={twitterLink(author.twitterHandle)}>
+      {author.twitterHandle}
+    </a></p>}
     <h2>Bio</h2>
     <PortableText body={author.bio} />
     <br>

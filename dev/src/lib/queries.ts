@@ -69,7 +69,8 @@ export const authorQuery = groq`{
     name,
     "posts": *[_type == "post" && author._ref == ^._id]
       | order(publishedAt desc){_type, publishedAt, title, "slug": slug.current},
-    "slug": slug.current
+    "slug": slug.current,
+    twitterHandle
   }[count(posts) > 0]
 }`
 
@@ -77,7 +78,7 @@ export const postsQuery = groq`{
   "posts": *[_type == "post"]{
     _id,
     _type,
-    author->{_type, name, occupation, "slug": slug.current},
+    author->{_type, name, occupation, "slug": slug.current, twitterHandle},
     body[]{
       ..., markDefs[]{
         ..., item->{
