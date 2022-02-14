@@ -4,9 +4,9 @@ let lastName = ""
 let email = ""
 let message = ""
 //let showMessage = false
-let responseMessage = ""
+// let responseMessage = ""
 const submitForm = async () => {
-  const res = await fetch("https://empower-us-all.org/api/sendgrid", {
+  const res = await fetch("api/sendgrid", {
     body: JSON.stringify({
       firstName: firstName,
       lastName: lastName,
