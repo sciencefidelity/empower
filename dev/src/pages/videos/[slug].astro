@@ -1,14 +1,17 @@
 ---
+import format from "date-fns/format"
 import sanityClient from "lib/sanityClient"
+import { buildUrl } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import PortableText from "components/PortableText.svelte"
+import Video from "components/Video.astro"
 import { videoQuery } from "lib/queries"
 
 export async function getStaticPaths() {
   const data = await sanityClient.fetch(videoQuery).then(response => response)
   return data.videos.map(video => {
     return {
-      params: { slug: post.slug },
+      params: { slug: video.slug },
       props: { video }
     }
   })
@@ -17,19 +20,22 @@ const { slug } = Astro.request.params
 const { video } = Astro.props
 ---
 <BaseLayout
-  title={post.title}
-  seoDescription={post.seoDescription}
-  keywords={post.seoKeywords}
-  seoTitle={post.seoTitle}
-  slug={post.slug}
-  twitterHandle={post.author.twitterHandle}
+  title={video.title}
+  seoDescription={video.seoDescription}
+  keywords={video.seoKeywords}
+  seoTitle={video.seoTitle}
+  slug={video.slug}
 >
   <div>
     <h1>{video.title}</h1>
-    <p>
-      published on: {format(new Date(video.publishedAt), "eeee, do MMMM yyyy")}
+    <p>{video.introduction}</p>
+    <p>in:{" "}
+      <a href={buildUrl(video.section._type, video.section.slug)}>
+        {video.section.title}
+      </a>
     </p>
     {video.videoLink && <Video video={video} />}
+    {video.body && <PortableText body={video.body} />}
   </div>
 </BaseLayout>
 

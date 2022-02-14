@@ -91,20 +91,39 @@ export const categoryQuery = groq`{
 export const sectionQuery = groq`{
   "sections": *[_type == "section"]{
     _id,
-    body,
+    body[]{
+      ..., markDefs[]{
+        ..., item->{
+          _type, "slug": slug
+        }
+      }
+    },
     menuTitle,
     seoDescription,
     seoTitle,
     "slug": slug.current,
     subtitle,
     title,
-    video->{thumbnail, title, videoLink}
+    video->{_type, "slug": slug.current, thumbnail, title, videoLink}
   }
 }`
 
 export const videoQuery = groq`{
   "videos": *[_type == "video"]{
-    publishDate, thumbnail, title, videoLink
+    body[]{
+      ..., markDefs[]{
+        ..., item->{
+          _type, "slug": slug
+        }
+      }
+    },
+    introduction,
+    publishDate,
+    section->{"slug": slug.current, title, _type},
+    "slug": slug.current,
+    thumbnail,
+    title,
+    videoLink
   }
 }`
 

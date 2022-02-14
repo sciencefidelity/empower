@@ -2,12 +2,19 @@ import imageUrlBuilder from "@sanity/image-url"
 import sanityClient from "./sanityClient"
 import { Image } from "./interfaces"
 
-export const capitalize = (word: string): string => {
-  return word[0].toUpperCase() + word.slice(1, word.length)
+export const buildUrl = (type: string, slug: string): string => {
+  return `${subdir(type)}/${slug}`
 }
 
-export const kebabCase = (word: string): string => {
-  return word.toLowerCase().split(" ").join("-").replace(/[^a-z0-9\-]/g, "")
+export const capitalize = (str: string): string => {
+  return str
+    .split(/[\s-]/g)
+    .map(e => e.replace(e[0], e[0].toUpperCase()))
+    .join(" ")
+}
+
+export const kebabCase = (str: string): string => {
+  return str.toLowerCase().split(" ").join("-").replace(/[^a-z0-9-]/g, "")
 }
 
 export const socialImage = (image: Image) => {
@@ -19,29 +26,21 @@ export const socialImage = (image: Image) => {
     .url()}`
 }
 
-export const urlFor = (source: Image) => {
-  return imageUrlBuilder(sanityClient).image(source)
+export const subdir = (type: string): string => {
+  switch (type) {
+  case "author":
+    return "/authors"
+  case "post":
+    return "/blog"
+  case "section":
+    return "/section"
+  case "video":
+    return "/videos"
+  default:
+    return ""
+  }
 }
 
-export const buildUrl = (slugData: any): string => {
-  let slug = ""
-  if (slugData?.slug?.current) slug = slugData?.slug?.current
-  let directory: string
-  switch (slugData._type) {
-  case "author":
-    directory = "/authors"
-    break
-  case "post":
-    directory = "/blog"
-    break
-  case "section":
-    directory = "/section"
-    break
-  case "video":
-    directory = "/videos"
-    break
-  default:
-    directory = ""
-  }
-  return `${directory}/${slug}`
+export const urlFor = (source: Image) => {
+  return imageUrlBuilder(sanityClient).image(source)
 }

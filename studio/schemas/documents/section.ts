@@ -99,6 +99,7 @@ export default {
   preview: {
     select: {
       title: 'title',
+      subtitle: 'subtitle',
       media: 'mainImage'
     }
   }
