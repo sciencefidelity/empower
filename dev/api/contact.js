@@ -28,12 +28,12 @@ async function sendEmail(req, res) {
         </body>
         </html>
       `
-    }).then(() => {
+    }).then(res => {
       console.log("Email sent")
     })
   } catch (error) {
     return res.status(error.statusCode || 500).json({ error: error.message })
   }
-  return res.status(200).json({ error: "" })
+  return res.status(200).json({ success: "message sent" })
 }
 export default sendEmail
