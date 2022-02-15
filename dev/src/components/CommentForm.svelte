@@ -21,10 +21,11 @@ const submitHandler = async () => {
   }
   if (valid) {
     const res = await fetch("api/comment", {
-      body: JSON.stringify({...fields, _id}),
+      body: JSON.stringify({...fields, id}),
       headers: {"Content-Type": "application/json"},
       method: "POST"
     })
+    console.log(JSON.stringify({...fields, id}))
     const { error } = await res.json()
     if (error) submitMessage = "Oops! Something went wrong, please try again."
     submitMessage = "Thankyou! Your comment has been delivered."
