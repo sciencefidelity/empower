@@ -1,10 +1,9 @@
 <script lang="ts">
-export let _id
+export let id
 let fields = { name: "", email: "", twitterHandle: "", message: "" }
 let errors = { name: "", email: "", twitterHandle: "", message: "" }
 let valid = false
 let submitMessage = ""
-console.log(id)
 
 const submitHandler = async () => {
   valid = true
