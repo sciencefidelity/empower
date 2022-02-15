@@ -20,7 +20,7 @@ const submitHandler = async () => {
     errors.message = ""
   }
   if (valid) {
-    const res = await fetch("api/comment", {
+    const res = await fetch("/api/comment", {
       body: JSON.stringify({...fields, id}),
       headers: {"Content-Type": "application/json"},
       method: "POST"
