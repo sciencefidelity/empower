@@ -4,9 +4,9 @@ import sanityClient from "@sanity/client"
 async function sendComment(req, res) {
   try {
     await sanityClient.config({
-      projectId: process.env.PUBLIC_SANITY_PROJECT_ID,
-      dataset: process.env.PUBLIC_SANITY_DATASET,
-      apiVersion: process.env.PUBLIC_SANITY_API_VERSION,
+      projectId: process.env.SANITY_PROJECT_ID,
+      dataset: "production",
+      apiVersion: "2021-02-11",
       token: process.env.SANITY_API_TOKEN,
       useCdn: true
     })
