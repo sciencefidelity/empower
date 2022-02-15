@@ -58,7 +58,6 @@ const submitHandler = async () => {
         name="email"
         placeholder="Your email address..."
       >
-      <div class="errors">{ errors.email }</div>
       <!-- Twitter Handle -->
       <label for="twitterHandle">Twitter Handle</label>
       <input
@@ -69,7 +68,6 @@ const submitHandler = async () => {
         name="twitterHandle"
         placeholder="Your Twitter handle..."
       >
-      <div class="errors">{ errors.twitterHandle }</div>
       <!-- Message -->
       <label for="message">Comment<span class="required">*</span></label>
       <textarea
