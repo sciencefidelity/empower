@@ -11,14 +11,14 @@ async function sendComment(req, res) {
       token: process.env.SANITY_API_TOKEN
     }).create({
       _type: "comment",
-      email,
-      message,
-      name,
+      email: email,
+      message: message,
+      name: name,
       post: {
         _ref: id,
         _type: "reference"
       },
-      twitterHandle
+      twitterHandle: twitterHandle
     }).then(() => {
       console.log("Comment sent")
     })
