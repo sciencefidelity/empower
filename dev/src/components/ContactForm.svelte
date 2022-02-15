@@ -31,7 +31,7 @@ const submitHandler = async () => {
     errors.message = ""
   }
   if (valid) {
-    const res = await fetch("api/sendgrid", {
+    const res = await fetch("api/contact", {
       body: JSON.stringify(fields),
       headers: {"Content-Type": "application/json"},
       method: "POST"
@@ -49,7 +49,7 @@ const submitHandler = async () => {
     <form on:submit|preventDefault={submitHandler}>
       <p>Send a message</p>
       <!-- First Name -->
-      <label for="firstName">First Name</label>
+      <label for="firstName">First Name<span class="required">*</span></label>
       <input
         id="firstName"
         aria-label="First Name"
@@ -60,7 +60,7 @@ const submitHandler = async () => {
       >
       <div class="errors">{ errors.firstName }</div>
       <!-- Last Name -->
-      <label for="lastName">Last Name</label>
+      <label for="lastName">Last Name<span class="required">*</span></label>
       <input
         id="lastName"
         aria-label="Last Name"
@@ -71,7 +71,7 @@ const submitHandler = async () => {
       >
       <div class="errors">{ errors.lastName }</div>
       <!-- Email -->
-      <label for="email">Email</label>
+      <label for="email">Email<span class="required">*</span></label>
       <input
         id="email"
         aria-label="Email"
@@ -82,7 +82,7 @@ const submitHandler = async () => {
       >
       <div class="errors">{ errors.email }</div>
       <!-- Message -->
-      <label for="message">Message</label>
+      <label for="message">Message<span class="required">*</span></label>
       <textarea
         id="message"
         aria-label="message"
@@ -107,7 +107,8 @@ label {
 textarea {
   height: 200px;
 }
-.errors {
+.errors,
+.required {
   color: red;
 }
 </style>
