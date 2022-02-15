@@ -1,7 +1,7 @@
 require("dotenv").config()
 import sanityClient from "@sanity/client"
 
-async function sendComment(req, res) {
+export async function sendComment(req, res) {
   const { id, email, message, name, twitterHandle } = JSON.parse(req.body)
   try {
     await sanityClient.config({

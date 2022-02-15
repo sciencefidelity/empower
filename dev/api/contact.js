@@ -3,7 +3,7 @@ import sendgrid from "@sendgrid/mail"
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
 
-async function sendEmail(req, res) {
+export async function sendEmail(req, res) {
   const fullName = `${req.body.firstName} ${req.body.lastName}`
   const subject = `New Message from ${fullName}`
   try {
