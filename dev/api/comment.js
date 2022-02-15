@@ -1,5 +1,5 @@
 require("dotenv").config()
-import sanityClient from "@sanity/client"
+const sanityClient = require("@sanity/client")
 
 async function sendComment(req, res) {
   try {
