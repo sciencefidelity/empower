@@ -7,7 +7,7 @@ const response = await sanityClient.fetch(navbarQuery)
 const data = await response
 ---
 <nav class="nav">
-  <ul class="flex row">
+  <ul class="flex row gap-small">
     {data.menu.items.map(item =>
       <li>
         <a
