@@ -16,6 +16,14 @@
   flex-direction: row;
 }
 
+.text-black {
+  color: var(--black);
+}
+
+.text-white {
+  color: var(--white);
+}
+
 .inline-block {
   display: inline-block;
 }
