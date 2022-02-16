@@ -73,11 +73,11 @@ export interface Author extends SanityDocument {
   twitterHandle?: string;
 
   /**
-   * Bio — `markdown`
+   * Bio — `blockContent`
    *
    *
    */
-  bio?: Markdown;
+  bio?: BlockContent;
 
   /**
    * Avatar — `image`
@@ -90,6 +90,50 @@ export interface Author extends SanityDocument {
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
+}
+
+/**
+ * Comment
+ *
+ *
+ */
+export interface Comment extends SanityDocument {
+  _type: "comment";
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Email — `string`
+   *
+   *
+   */
+  email?: string;
+
+  /**
+   * Message — `text`
+   *
+   *
+   */
+  message?: string;
+
+  /**
+   * Twitter Handle — `string`
+   *
+   *
+   */
+  twitterHandle?: string;
+
+  /**
+   * Post — `reference`
+   *
+   *
+   */
+  post?: SanityReference<Post>;
 }
 
 /**
@@ -152,11 +196,11 @@ export interface Page extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Body — `markdown`
+   * Body — `blockContent`
    *
    *
    */
-  body?: Markdown;
+  body?: BlockContent;
 
   /**
    * Main image — `image`
@@ -255,11 +299,11 @@ export interface Post extends SanityDocument {
   excerpt?: string;
 
   /**
-   * Body — `markdown`
+   * Body — `blockContent`
    *
    *
    */
-  body?: Markdown;
+  body?: BlockContent;
 
   /**
    * Image — `image`
@@ -325,11 +369,11 @@ export interface Section extends SanityDocument {
   slug?: { _type: "slug"; current: string };
 
   /**
-   * Introduction — `markdown`
+   * Introduction — `blockContent`
    *
    *
    */
-  body?: Markdown;
+  body?: BlockContent;
 
   /**
    * Main image — `image`
@@ -433,6 +477,13 @@ export interface Site extends SanityDocument {
   };
 
   /**
+   * Introduction — `blockContent`
+   *
+   *
+   */
+  introduction?: BlockContent;
+
+  /**
    * SEO title — `string`
    *
    * Displayed on Facebook and Twitter shares (max 60 characters).
@@ -500,11 +551,18 @@ export interface Video extends SanityDocument {
   title?: string;
 
   /**
-   * Body — `markdown`
+   * Introduction — `text`
    *
    *
    */
-  body?: Markdown;
+  introduction?: string;
+
+  /**
+   * Body — `blockContent`
+   *
+   *
+   */
+  body?: BlockContent;
 
   /**
    * Video Link — `url`
@@ -519,6 +577,13 @@ export interface Video extends SanityDocument {
    *
    */
   publishDate?: string;
+
+  /**
+   * Section — `reference`
+   *
+   * Which section does this video belong to?
+   */
+  section?: SanityReference<Section>;
 
   /**
    * Slug — `slug`
@@ -582,6 +647,7 @@ export type BlockContent = Array<
 
 export type Documents =
   | Author
+  | Comment
   | Menu
   | Page
   | Post
@@ -590,10 +656,3 @@ export type Documents =
   | Social
   | Video
   | Category;
-
-/**
- * This interface is a stub. It was referenced in your sanity schema but
- * the definition was not actually found. Future versions of
- * sanity-codegen will let you type this explicity.
- */
-type Markdown = any;

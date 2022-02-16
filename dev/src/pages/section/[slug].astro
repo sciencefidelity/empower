@@ -28,7 +28,7 @@ const { section } = Astro.props
   slug={section.slug}
 >
   <div>
-    {section.title && <h1>{section.title}</h1>}
+    {section.title && <h2>{section.title}</h2>}
     {section.body && <PortableText body={section.body} />}
     {section.video &&
       <p>

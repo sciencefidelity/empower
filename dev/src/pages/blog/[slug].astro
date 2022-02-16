@@ -29,7 +29,7 @@ const { post } = Astro.props
   twitterHandle={post.author.twitterHandle}
 >
   <section>
-    {post.title && <h1>{post.title}</h1>}
+    {post.title && <h2>{post.title}</h2>}
     {post.publishedAt && <p>
       published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
     </p>}

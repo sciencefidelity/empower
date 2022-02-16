@@ -1,0 +1,46 @@
+.container {
+  width: 88%;
+  margin: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.colunm {
+  flex-direction: row;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.center {
+  text-align: center;
+  place-items: center;
+}
+
+.sacramento {
+  font-family: Sacramento;
+}
+
+.vh-100 {
+  height: 100vh;
+}
+
+vw-100 {
+  width: 100vw;
+}
+
+.p-small {
+  padding: 1rem 0;
+}
+
+.mb-large {
+  margin-bottom: 10rem;
+}

@@ -1,0 +1,43 @@
+@use 'breakpoints' as b;
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--sans);
+}
+
+body {
+  margin: auto;
+  font-size: calc(10px + 2vmin);
+  font-size: 1.8rem;
+}
+
+h1 {
+  font-family: Verveine;
+  color: var(--blue);
+  font-size: 8rem;
+  a {
+    text-decoration: none;
+  }
+}
+
+p {
+  font-size: 1.8rem;
+}
+
+a {
+  color: var(--blue);
+  // text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

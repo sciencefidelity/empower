@@ -46,6 +46,7 @@
     "tailwindcss": "^3.0.22"
   },
   "dependencies": {
-    "@sanity/client": "^3.0.6"
+    "@sanity/client": "^3.0.6",
+    "sanitize.css": "^13.0.0"
   }
 }

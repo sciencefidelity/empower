@@ -7,9 +7,13 @@ const response = await sanityClient.fetch(navbarQuery)
 const data = await response
 ---
 <nav class="nav">
-  <ul>
+  <ul class="red">
     {data.menu.items.map(item =>
       <li><a href={buildUrl(item._type, item.slug)}>{item.title}</a></li>
     )}
   </ul>
 </nav>
+
+<style lang="scss">
+
+</style>

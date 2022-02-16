@@ -27,7 +27,7 @@ const { video } = Astro.props
   slug={video.slug}
 >
   <div>
-    <h1>{video.title}</h1>
+    <h2>{video.title}</h2>
     <p>{video.introduction}</p>
     <p>in:{" "}
       <a href={buildUrl(video.section._type, video.section.slug)}>
