@@ -11,6 +11,10 @@ export default {
       title: 'Meta'
     },
     {
+      name: 'content',
+      title: 'Content'
+    },
+    {
       name: 'seo',
       title: 'SEO'
     }
@@ -59,6 +63,12 @@ export default {
         hotspot: true
       },
       group: 'meta'
+    },
+    {
+      name: 'introduction',
+      title: 'Introduction',
+      type: 'blockContent',
+      group: 'content'
     },
     {
       name: 'seoTitle',
