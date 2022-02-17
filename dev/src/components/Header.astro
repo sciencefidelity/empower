@@ -2,13 +2,16 @@
 import Navbar from "components/Navbar.astro"
 const { siteName } = Astro.props
 ---
-<header class="container flex mb-md">
+<header class="header container flex">
   <div class="gradient-background"></div>
   <h1 class="lh-1"><a href="/" class="logo text-white">{siteName}</a></h1>
   <Navbar />
 </header>
 
 <style lang="scss">
+.header {
+  margin: 0 auto 7rem;
+}
 .logo {
   position: relative;
   user-select: none;

@@ -72,15 +72,21 @@ const socialimageUrl = socialImage(data.site.seoImage)
 </head>
 <body>
   <div id="app">
-    <Header siteName={data.site.siteName} />
-    <main class="site-main container--body mb-lg">
-      <slot />
-    </main>
-    <Footer site={data.site} />
+    <div class="flex flex-wrapper">
+      <Header siteName={data.site.siteName} />
+      <main class="site-main container--body mb-lg">
+        <slot />
+      </main>
+      <Footer site={data.site} />
+    </div>
   </div>
 </body>
 
 <style lang="scss">
+.flex-wrapper {
+  min-height: 100vh;
+  flex-direction: column;
+}
 .site-main {
   position: relative;
   z-index: 5;

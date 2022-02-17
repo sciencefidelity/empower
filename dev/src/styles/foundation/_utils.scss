@@ -8,7 +8,7 @@
 .container--body {
   width: 94%;
   max-width: 120rem;
-  margin: auto;
+  margin: 0 auto;
   @include b.mq(lg) {
     width: 94%;
   }
