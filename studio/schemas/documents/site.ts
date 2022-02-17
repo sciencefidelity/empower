@@ -95,6 +95,14 @@ export default {
       title: 'Twitter Handle',
       type: 'string',
       group: 'seo'
+    },
+    {
+      name: 'sections',
+      title: 'Order of Sections',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'section' } }],
+      sortable: true,
+      group: 'content'
     }
   ],
   preview: {

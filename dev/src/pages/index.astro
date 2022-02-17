@@ -2,6 +2,7 @@
 import sanityClient from "lib/sanityClient"
 import { buildUrl, urlFor } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
+import Icon from "components/Icon.svelte"
 import { indexQuery } from "lib/queries"
 
 const response = await sanityClient.fetch(indexQuery)
@@ -17,10 +18,17 @@ const title = data.site.siteName
       </h2>
     </div>
     <div class="sections grid">
-      {data.sections.map((section, idx) =>
+      {data.sections.map(section =>
         <div class="section" key={section._id}>
           <a href={buildUrl(section._type, section.slug)} tabindex="-1">
-            <div class=`section__icon color-${idx}`></div>
+            <div class=`section__icon ${section.slug} relative`>
+              <Icon
+                name={section.slug}
+                class="absolute"
+                width="352"
+                height="352"
+              />
+            </div>
           </a>
           <a href={buildUrl(section._type, section.slug)}>
             <h3 class="section__text text-grey left">{section.menuTitle}</h3>
@@ -105,29 +113,55 @@ const title = data.site.siteName
   }
 }
 
-.color-0 {
+.empower {
   background: var(--yellow);
+  svg {
+    left: 0;
+    height: 100%;
+  }
 }
 
-.color-1 {
-  background: var(--violet);
-}
-
-.color-2 {
+.family-connect {
   background: var(--green);
+  svg {
+    left: 0;
+    height: 100%;
+  }
 }
 
-.color-3 {
-  background: var(--green);
-}
-
-.color-4 {
+.free-your-mind {
   background: var(--red);
+  svg {
+    left: -0.41em;
+    bottom: 0.01em;
+    height: 100.1%;
+  }
 }
 
-.color-5 {
+.generation-peace {
   background: var(--yellow);
+  svg {
+    left: -2em;
+    height: 100%;
+  }
 }
+
+.my-silent-space {
+  background: var(--violet);
+  svg {
+    left: -1.8em;
+    height: 100%;
+  }
+}
+
+.wellbeing-at-work {
+  background: var(--green);
+  svg {
+    left: -1.5em;
+    height: 100%;
+  }
+}
+
 
 .smaller {
   // font-size: 11rem;

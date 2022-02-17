@@ -17,7 +17,7 @@ export const indexQuery = groq`{
   "site": *[_type == "site"][0]{
     keywords, siteDescription, siteName
   },
-  "sections": *[_type == "section"] | order(menuTitle){
+  "sections": *[_type == "section"] | order(_createdAt){
     _id,
     _type,
     menuTitle,
