@@ -109,6 +109,11 @@
   place-items: center;
 }
 
+.right {
+  text-align: right;
+  margin-left: auto;
+}
+
 .md-left {
   @include b.mq(md) {
     text-align: left;

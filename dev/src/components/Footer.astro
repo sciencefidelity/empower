@@ -4,9 +4,15 @@ const year = new Date().getFullYear().toString()
 const { email, siteName } = site
 ---
 
-<footer class="footer container">
-  <p>Contact: <a href="mailto:${email}">{email}</a></p>
-  <p>&copy; {year} {siteName}</p>
+<footer class="footer container flex column">
+  <div>
+    <p><a href="mailto:${email}">{email}</a></p>
+    <p>&copy; {siteName} {year}</p>
+  </div>
+  <div class="right">
+    <p>&nbsp;</p>
+    <p>site by <a href="https://mattcook.dev" target="_blank" rel="noreferrer">matt</a></p>
+  </div>
 </footer>
 
 <style lang="scss">
