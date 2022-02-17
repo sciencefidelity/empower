@@ -64,14 +64,14 @@ const socialimageUrl = socialImage(data.site.seoImage)
 
   <link rel="icon" type="image/x-icon" href="/favicon.svg" />
   <link rel="mask-icon" href="/mask-icon.svg" color="#ff7a6b" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#2DA1DB" />
   <link rel="stylesheet" href={Astro.resolve('../styles/global.scss')}>
 
 </head>
 <body>
   <div id="app">
     <Header siteName={data.site.siteName} />
-    <main class="site-main container mb-large">
+    <main class="site-main container--body mb-lg">
       <slot />
     </main>
     <Footer site={data.site} />

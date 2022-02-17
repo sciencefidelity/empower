@@ -1,5 +1,10 @@
 .container {
-  width: 88%;
+  width: 94%;
+  margin: auto;
+}
+
+.container--body {
+  width: 75%;
   margin: auto;
 }
 
@@ -20,8 +25,16 @@
   color: var(--white);
 }
 
+.text-grey {
+  color: var(--grey);
+}
+
 .text-black {
   color: var(--black);
+}
+
+.text-yellow {
+  color: var(--yellow);
 }
 
 .bold {
@@ -73,6 +86,10 @@ vw-100 {
   padding: 1rem 0;
 }
 
-.mb-large {
+.mb-lg {
   margin-bottom: 10rem;
+}
+
+.mb-md {
+  margin-bottom: 7rem;
 }

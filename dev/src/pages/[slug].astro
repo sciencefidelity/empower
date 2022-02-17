@@ -29,7 +29,7 @@ const { page } = Astro.props
 >
   <div>
     <h2>{page.title}</h2>
-    {page.mainImage &&
+<!--     {page.mainImage &&
       <Image
         caption={page.title}
         image={page.mainImage}
@@ -37,7 +37,7 @@ const { page } = Astro.props
         height={600}
         lazy={false}
       />
-    }
+    } -->
     {page.body &&
       <PortableText body={page.body} />
     }

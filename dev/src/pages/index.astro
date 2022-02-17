@@ -10,13 +10,51 @@ const title = data.site.siteName
 ---
 <BaseLayout>
   <section>
-    <ul>
-      {data.sections.map(section =>
-        <li key={section.id}>
-          <a href={buildUrl(section._type, section.slug)}>{section.menuTitle}</a><br />
-          {section.subtitle}
-        </li>
+    <div class="mb-md">
+      <h2 class="text-white center">
+        A resource to help everyone improve their wellbeing, self&#8209;esteem and
+        mental health through <span class="text-yellow">meditation</span>.
+      </h2>
+    </div>
+    <div class="sections grid">
+      {data.sections.map((section, idx) =>
+        <a href={buildUrl(section._type, section.slug)}>
+          <div key={section.id} class=`section color-${idx}`></div>
+          <h3 class="text-grey center">{section.menuTitle}</h3>
+        </a>
       )}
-    </ul>
+    </div>
   </section>
 </BaseLayout>
+
+<style lang="scss">
+.sections {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6rem;
+}
+
+.section {
+  width: 100%;
+  border: 0.4em solid var(--white);
+  aspect-ratio: 1 / 1;
+}
+
+.color-0 {
+  background: var(--yellow);
+}
+.color-1 {
+  background: var(--violet);
+}
+.color-2 {
+  background: var(--green);
+}
+.color-3 {
+  background: var(--green);
+}
+.color-4 {
+  background: var(--red);
+}
+.color-5 {
+  background: var(--yellow);
+}
+</style>
