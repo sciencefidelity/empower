@@ -531,6 +531,13 @@ export interface Site extends SanityDocument {
    *
    */
   twitterHandle?: string;
+
+  /**
+   * Order of Sections — `array`
+   *
+   *
+   */
+  sections?: Array<SanityKeyedReference<Section>>;
 }
 
 /**
