@@ -23,6 +23,9 @@ export const indexQuery = groq`{
     menuTitle,
     "slug": slug.current,
     subtitle
+  },
+  "photograph": *[_type == "photography"] | order(_createdAt)[0]{
+    image, title
   }
 }`
 

@@ -1,6 +1,6 @@
 ---
 import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
+import { buildUrl, urlFor } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { indexQuery } from "lib/queries"
 
@@ -16,9 +16,9 @@ const title = data.site.siteName
         and mental health through <span class="text-yellow">meditation</span>.
       </h2>
     </div>
-    <div class="sections grid mb-md">
+    <div class="sections grid">
       {data.sections.map((section, idx) =>
-        <div class="section" key={section.id}>
+        <div class="section" key={section._id}>
           <a href={buildUrl(section._type, section.slug)} tabindex="-1">
             <div class=`section__icon color-${idx}`></div>
           </a>
@@ -28,20 +28,34 @@ const title = data.site.siteName
         </div>
       )}
     </div>
-<!--     <div class="mb-lg">
-      <h1 class="smaller center serif bold">
+    <div class="mb-xl">
+      <h1 class="smaller center">
         <span class="text-violet">#</span> How are you feeling today?
       </h1>
-    </div> -->
-    <div>
-      <p>
-        Wellbeing is the birthright of every person, regardless of background
-        or life circumstances. An established body of evidence links stress
-        with poor health and behavioural outcomes. eMpower offers very simple
-        meditation techniques that harness inner strength and potential,
-        enabling the body's natural ability to heal, balance itself and build
-        resilience to stress.
-      </p>
+    </div>
+    <div class="split-container grid relative">
+      <div>
+        <p class="side-text text-white">
+          Wellbeing is the birthright of every person, regardless of background
+          or life circumstances. An established body of evidence links stress
+          with poor health and behavioural outcomes. eMpower offers very simple
+          meditation techniques that harness inner strength and potential,
+          enabling the body's natural ability to heal, balance itself and build
+          resilience to stress.
+        </p>
+      </div>
+      <div class="side-image">
+        <img
+          src={urlFor(data.photograph.image)
+            .auto("format")
+            .quality(75)
+            .url()}
+          alt={data.photograph.title}
+          width="700"
+          height="1000"
+          loading="lazy"
+        />
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -52,6 +66,7 @@ const title = data.site.siteName
 .sections {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4em;
+  margin-bottom: 8rem;
   @include b.mq(xl) {
     gap: 2vw;
   }
@@ -115,6 +130,60 @@ const title = data.site.siteName
 }
 
 .smaller {
-  font-size: 5rem;
+  // font-size: 11rem;
+  font-size: 7.3vw;
+  @include b.mq(md) {
+    font-size: 9vw;
+  }
+  @include b.mq(sm) {
+    font-size: 6rem;
+  }
+}
+
+.split-container {
+  grid-template-columns: 1fr 43%;
+  gap: 7rem;
+  @include b.mq(lg) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.side-text {
+  background-color: var(--teal);
+  margin: -5.5rem -17rem -5.5rem -8rem;
+}
+
+p {
+  font-size: 3.5rem;
+  font-size: 2.3vw;
+  padding: 5.5rem 17rem 7rem 8rem;
+  @include b.mq(lg) {
+    font-size: 2.3rem;
+    padding: 5.5rem 21rem 7rem 12rem;
+  }
+  @include b.mq(sm) {
+    font-size: 2rem;
+    padding: 5.5rem 17rem 7rem 8rem;
+  }
+}
+
+.side-image {
+  border: 0.4em solid var(--white);
+  @include b.mq(lg) {
+    width: 60%;
+    margin-left: auto;
+  }
+  @include b.mq(md) {
+    width: 80%;
+    margin-left: auto;
+  }
+  @include b.mq(sm) {
+    width: 100%;
+    margin-left: auto;
+  }
+  img {
+    filter: brightness(1.2) contrast(0.8);
+  }
 }
 </style>

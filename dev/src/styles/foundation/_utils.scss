@@ -43,6 +43,14 @@
   flex-direction: row;
 }
 
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
 .verveine {
   font-family: Verveine, cursive;
   font-weight: 400;
@@ -121,6 +129,10 @@ vw-100 {
 
 .p-small {
   padding: 1rem 0;
+}
+
+.mb-xl {
+  margin-bottom: 15rem;
 }
 
 .mb-lg {
