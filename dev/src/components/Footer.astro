@@ -13,5 +13,18 @@ const { email, siteName } = site
 .footer {
   position: relative;
   z-index: 5;
+  margin-block: 3rem;
+  p {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    a {
+      color: var(--blue);
+      transition: background-color 0.3s ease-in-out;
+      &:hover {
+        background-color: hsla(200, 71%, 52%, 0.1);
+        transition: background-color 0.3s ease-in-out;
+      }
+    }
+  }
 }
 </style>

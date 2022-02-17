@@ -13,5 +13,13 @@ const url = `https://player.vimeo.com/video/${id}?dnt=1`
   webkitallowfullscreen
   mozallowfullscreen
   allowfullscreen
+  class="video-embed"
 >
 </iframe>
+
+<style lang="scss">
+.video-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+</style>

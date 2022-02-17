@@ -12,8 +12,8 @@ const title = data.site.siteName
   <section>
     <div class="mb-lg">
       <h2 class="text-white center">
-        A resource to help everyone improve their wellbeing, self&#8209;esteem and
-        mental health through <span class="text-yellow">meditation</span>.
+        A resource to help everyone improve their wellbeing, self&#8209;esteem
+        and mental health through <span class="text-yellow">meditation</span>.
       </h2>
     </div>
     <div class="sections grid mb-md">
@@ -29,6 +29,16 @@ const title = data.site.siteName
         <span class="text-violet">#</span> How are you feeling today?
       </h1>
     </div>
+    <div>
+      <p>
+        Wellbeing is the birthright of every person, regardless of background
+        or life circumstances. An established body of evidence links stress
+        with poor health and behavioural outcomes. eMpower offers very simple
+        meditation techniques that harness inner strength and potential,
+        enabling the body's natural ability to heal, balance itself and build
+        resilience to stress.
+      </p>
+    </div>
   </section>
 </BaseLayout>
 
@@ -36,6 +46,9 @@ const title = data.site.siteName
 .sections {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4em;
+  a {
+    text-decoration: none;
+  }
 }
 
 .section {

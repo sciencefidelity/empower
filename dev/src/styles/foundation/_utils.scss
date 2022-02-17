@@ -21,6 +21,15 @@
   flex-direction: row;
 }
 
+.verveine {
+  font-family: Verveine, cursive;
+  font-weight: 400;
+}
+
+.serif {
+  font-family: var(--serif);
+}
+
 .text-white {
   color: var(--white);
 }
@@ -92,5 +101,9 @@ vw-100 {
 
 .mb-md {
   margin-bottom: 7rem;
+}
+
+.mb-sm {
+  margin-bottom: 3rem;
 }
 

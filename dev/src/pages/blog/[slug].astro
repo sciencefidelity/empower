@@ -29,15 +29,13 @@ const { post } = Astro.props
   twitterHandle={post.author.twitterHandle}
 >
   <section>
-    {post.title && <h2>{post.title}</h2>}
-    {post.publishedAt && <p>
-      published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
-    </p>}
-    {post.author && <p>{"by: "}
-      <a href={buildUrl(post.author._type, post.author.slug)}>
-        {post.author.name}
-      </a>
-    </p>}
+    {post.title && <h1 class="title text-white serif bold">{post.title}</h1>}
+    published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
+    {"by: "}<br>
+    <a href={buildUrl(post.author._type, post.author.slug)}>
+      {post.author.name}
+    </a>
+    </p>
     {post.categories && <ul>
       {"in: "}{post.categories.map(category =>
         <li>
@@ -47,16 +45,18 @@ const { post } = Astro.props
         </li>
       )}
     </ul>}
-    {post.body && <PortableText body={post.body} components={components} />}
-    {post.author && <p>
-      {post.author.twitterHandle
-        ? <a
-            href={twitterLink(post.author.twitterHandle)}
-            target="_blank"
-            rel="noreferrer"
-          >{post.author.name}</a> : {post.author.name}}{" is "}
-      {article(post.author.occupation)}{" "}{post.author.occupation}
-    </p>}
+    <div class="body">
+      {post.body && <PortableText body={post.body} components={components} />}
+      {post.author && <p>
+        {post.author.twitterHandle
+          ? <a
+              href={twitterLink(post.author.twitterHandle)}
+              target="_blank"
+              rel="noreferrer"
+            >{post.author.name}</a> : {post.author.name}}{" is "}
+        {article(post.author.occupation)}{" "}{post.author.occupation}
+      </p>}
+    </div>
   </section>
   <CommentForm client:idle id={post._id} />
   <section>
@@ -75,5 +75,14 @@ li {
   &:not(:last-child)::after {
     content: ', ';
   }
+}
+
+.title {
+  font-size: 7rem;
+  margin-bottom: 4rem;
+}
+
+.body {
+  margin-top: 7rem;
 }
 </style>

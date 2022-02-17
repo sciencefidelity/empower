@@ -28,7 +28,7 @@ const { page } = Astro.props
   slug={page.slug}
 >
   <div>
-    <h2>{page.title}</h2>
+    <h1 class="title bold text-white serif">{page.title}</h1>
 <!--     {page.mainImage &&
       <Image
         caption={page.title}
@@ -45,3 +45,9 @@ const { page } = Astro.props
     {page.template === "contact" && <ContactForm client:idle />}
   </div>
 </BaseLayout>
+
+<style lang="scss">
+.title {
+  font-size: 7rem;
+}
+</style>

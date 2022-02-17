@@ -28,7 +28,7 @@ const { section } = Astro.props
   slug={section.slug}
 >
   <div>
-    {section.title && <h2>{section.title}</h2>}
+    {section.title && <h1 class="title mb-sm serif text-white bold">{section.title}</h1>}
     {section.body && <PortableText body={section.body} />}
     {section.video &&
       <p>
@@ -39,3 +39,9 @@ const { section } = Astro.props
     }
     {section.video && <Video video={section.video} />}
 </BaseLayout>
+
+<style lang="scss">
+.title {
+  font-size: 7rem;
+}
+</style>
