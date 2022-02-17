@@ -9,6 +9,7 @@ import author from './documents/author'
 import comment from './documents/comment'
 import menu from './documents/menu'
 import page from './documents/page'
+import photography from './documents/photography'
 import post from './documents/post'
 import section from './documents/section'
 import site from './documents/site'
@@ -29,6 +30,7 @@ export default createSchema({
     comment,
     menu,
     page,
+    photography,
     post,
     section,
     site,
