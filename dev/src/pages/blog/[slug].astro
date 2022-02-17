@@ -57,9 +57,7 @@ const { post } = Astro.props
         {article(post.author.occupation)}{" "}{post.author.occupation}
       </p>}
     </div>
-  </section>
-  <CommentForm client:idle id={post._id} />
-  <section>
+    <CommentForm client:idle id={post._id} />
     {post.comments.map(comment =>
       <p>{comment.message}</p>
       <p>by {comment.name} on {
