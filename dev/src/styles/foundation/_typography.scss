@@ -2,20 +2,62 @@
   font-family: 'Verveine';
   font-size: normal;
   font-weight: 400;
-  src: url('/assets/fonts/verveine_std_rg-subset.woff2') format('woff2');
-  font-display: block;
+  src: url('/assets/fonts/verveine_std_rg.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Akkurat';
+  font-family: 'ALS Hauss';
   font-size: normal;
   font-weight: 400;
-  src: url('/assets/fonts/akkurat-subset.woff2') format('woff2');
-  font-display: block;
+  src: url('/assets/fonts/alshauss-regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 400;
+  font-style: italic;
+  src: url('/assets/fonts/alshauss-regularitalic.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 500;
+  src: url('/assets/fonts/alshauss-medium.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 500;
+  font-style: italic;
+  src: url('/assets/fonts/alshauss-mediumitalic.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/alshauss-bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 700;
+  font-style: italic;
+  src: url('/assets/fonts/alshauss-bolditalic.woff2') format('woff2');
+  font-display: swap;
 }
 
 :root {
-  --sans: Akkurat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",
-          Arial,"Noto Sans",sans-serif;
+  --sans: 'ALS Hauss',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;
   --cursive: Verveine, sans-serif;
 }

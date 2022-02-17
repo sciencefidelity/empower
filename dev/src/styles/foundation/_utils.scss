@@ -4,7 +4,7 @@
 }
 
 .container--body {
-  width: 75%;
+  width: 79%;
   margin: auto;
 }
 
@@ -37,6 +37,10 @@
   color: var(--yellow);
 }
 
+.text-violet {
+  color: var(--violet);
+}
+
 .bold {
   font-weight: 700;
 }
@@ -54,11 +58,7 @@
 }
 
 .gap-sm {
-  gap: 3rem;
-}
-
-.text-white {
-  color: var(--white);
+  gap: 4rem;
 }
 
 .inline-block {
@@ -93,3 +93,4 @@ vw-100 {
 .mb-md {
   margin-bottom: 7rem;
 }
+
