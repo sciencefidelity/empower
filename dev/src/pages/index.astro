@@ -8,6 +8,7 @@ import { indexQuery } from "lib/queries"
 const response = await sanityClient.fetch(indexQuery)
 const data = await response
 const title = data.site.siteName
+console.log(data.site.sections)
 ---
 <BaseLayout>
   <section>
@@ -18,7 +19,7 @@ const title = data.site.siteName
       </h2>
     </div>
     <div class="sections grid">
-      {data.sections.map(section =>
+      {data.site.sections.map(section =>
         <div class="section" key={section._id}>
           <a href={buildUrl(section._type, section.slug)} tabindex="-1">
             <div class=`section__icon ${section.slug} relative`>
@@ -31,7 +32,7 @@ const title = data.site.siteName
             </div>
           </a>
           <a href={buildUrl(section._type, section.slug)}>
-            <h3 class="section__text text-grey left">{section.menuTitle}</h3>
+            <h3 class="section__text text-grey left">{section.title}</h3>
           </a>
         </div>
       )}

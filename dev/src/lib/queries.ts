@@ -15,14 +15,10 @@ export const layoutQuery = groq`{
 
 export const indexQuery = groq`{
   "site": *[_type == "site"][0]{
-    keywords, siteDescription, siteName
-  },
-  "sections": *[_type == "section"] | order(_createdAt){
-    _id,
-    _type,
-    menuTitle,
-    "slug": slug.current,
-    subtitle
+    keywords, siteDescription, siteName,
+    "sections": sections[]->{
+      _id, _type, menuTitle, "slug": slug.current, subtitle, title
+    }
   },
   "photograph": *[_type == "photography"] | order(_createdAt)[0]{
     image, title
