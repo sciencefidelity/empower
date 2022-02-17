@@ -117,6 +117,7 @@ const title = data.site.siteName
   background: var(--yellow);
   svg {
     left: 0;
+    width: 100%;
     height: 100%;
   }
 }
@@ -125,6 +126,7 @@ const title = data.site.siteName
   background: var(--green);
   svg {
     left: 0;
+    width: 100%;
     height: 100%;
   }
 }
@@ -132,9 +134,8 @@ const title = data.site.siteName
 .free-your-mind {
   background: var(--red);
   svg {
-    left: -0.41em;
-    bottom: 0.01em;
-    height: 100.1%;
+    width: 100%;
+    height: 100%;
   }
 }
 
@@ -142,7 +143,17 @@ const title = data.site.siteName
   background: var(--yellow);
   svg {
     left: -2em;
+    width: 100%;
     height: 100%;
+    @include b.mq(lg) {
+      left: -1.3em;
+    }
+    @include b.mq(md) {
+      left: -1.2em;
+    }
+    @include b.mq(sm) {
+      left: -0.9em;
+    }
   }
 }
 
@@ -150,6 +161,7 @@ const title = data.site.siteName
   background: var(--violet);
   svg {
     left: -1.8em;
+    width: 100%;
     height: 100%;
   }
 }
@@ -158,6 +170,7 @@ const title = data.site.siteName
   background: var(--green);
   svg {
     left: -1.5em;
+    width: 100%;
     height: 100%;
   }
 }
