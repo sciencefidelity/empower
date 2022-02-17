@@ -8,9 +8,9 @@ const data = await response
 ---
 <nav class="nav">
   <div class="lg-hide">
-    <ul class="flex row gap-sm">
+    <ul class="nav__row flex row">
       {data.menu.items.map(item =>
-        <li>
+        <li key={item._id}>
           <a
             href={buildUrl(item._type, item.slug)}
             class="nav__link text-white bold td-none"
@@ -27,13 +27,18 @@ const data = await response
 </nav>
 
 <style lang="scss">
+@use '../styles/foundation/breakpoints' as b;
+
 .nav {
   position: relative;
   z-index: 4;
   margin-top: 1em;
   margin-left: auto;
+  &__row {
+    gap: 2.7vw;
+  }
   &__link {
-    font-size: 2.8rem;
+    font-size: 1.9vw;
     border-bottom: 5px solid rgba(255, 255, 255, 0);
     transition: border-bottom 0.3s ease-in-out;
     &:hover {

@@ -10,10 +10,15 @@ const { email, siteName } = site
 </footer>
 
 <style lang="scss">
+@use '../styles/foundation/breakpoints' as b;
+
 .footer {
   position: relative;
   z-index: 5;
-  margin-block: 3rem;
+  margin-bottom: 2vw;
+  @include b.mq(md) {
+    margin-bottom: 1rem;
+  }
   p {
     font-size: 1.8rem;
     margin-bottom: 0;
