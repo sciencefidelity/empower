@@ -242,6 +242,34 @@ export interface Page extends SanityDocument {
 }
 
 /**
+ * Photography
+ *
+ *
+ */
+export interface Photography extends SanityDocument {
+  _type: "photography";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+}
+
+/**
  * Post
  *
  *
@@ -650,6 +678,7 @@ export type Documents =
   | Comment
   | Menu
   | Page
+  | Photography
   | Post
   | Section
   | Site
