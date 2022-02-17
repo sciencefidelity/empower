@@ -8,7 +8,6 @@ import { indexQuery } from "lib/queries"
 const response = await sanityClient.fetch(indexQuery)
 const data = await response
 const title = data.site.siteName
-console.log(data.site.sections)
 ---
 <BaseLayout>
   <section>
