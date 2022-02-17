@@ -11,24 +11,28 @@ const title = data.site.siteName
 <BaseLayout>
   <section>
     <div class="mb-lg">
-      <h2 class="text-white center">
+      <h2 class="text-white center md-left">
         A resource to help everyone improve their wellbeing, self&#8209;esteem
         and mental health through <span class="text-yellow">meditation</span>.
       </h2>
     </div>
     <div class="sections grid mb-md">
       {data.sections.map((section, idx) =>
-        <a href={buildUrl(section._type, section.slug)}>
-          <div key={section.id} class=`section color-${idx}`></div>
-          <h3 class="section__text text-grey center">{section.menuTitle}</h3>
-        </a>
+        <div key={section.id}>
+          <a href={buildUrl(section._type, section.slug)}>
+            <div class=`section color-${idx}`></div>
+          </a>
+          <a href={buildUrl(section._type, section.slug)}>
+            <h3 class="section__text text-grey left">{section.menuTitle}</h3>
+          </a>
+        </div>
       )}
     </div>
-    <div class="mb-lg">
-      <h1 class="smaller center">
+<!--     <div class="mb-lg">
+      <h1 class="smaller center serif bold">
         <span class="text-violet">#</span> How are you feeling today?
       </h1>
-    </div>
+    </div> -->
     <div>
       <p>
         Wellbeing is the birthright of every person, regardless of background
@@ -43,9 +47,21 @@ const title = data.site.siteName
 </BaseLayout>
 
 <style lang="scss">
+@use '../styles/foundation/breakpoints' as b;
+
 .sections {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4em;
+  @include b.mq(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include b.mq(md) {
+    gap: 1em;
+  }
+  @include b.mq(sm) {
+    grid-template-columns: 1fr;
+    gap: 4em;
+  }
   a {
     text-decoration: none;
   }
@@ -57,29 +73,35 @@ const title = data.site.siteName
   aspect-ratio: 1 / 1;
   &__text {
     margin-bottom: -0.7em;
+    margin-left: 0.4em;
   }
 }
 
 .color-0 {
   background: var(--yellow);
 }
+
 .color-1 {
   background: var(--violet);
 }
+
 .color-2 {
   background: var(--green);
 }
+
 .color-3 {
   background: var(--green);
 }
+
 .color-4 {
   background: var(--red);
 }
+
 .color-5 {
   background: var(--yellow);
 }
 
 .smaller {
-  font-size: 8.5rem;
+  font-size: 5rem;
 }
 </style>

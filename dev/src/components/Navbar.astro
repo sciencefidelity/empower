@@ -7,18 +7,23 @@ const response = await sanityClient.fetch(navbarQuery)
 const data = await response
 ---
 <nav class="nav">
-  <ul class="flex row gap-sm">
-    {data.menu.items.map(item =>
-      <li>
-        <a
-          href={buildUrl(item._type, item.slug)}
-          class="nav__link text-white bold td-none"
-        >
-          {item.title}
-        </a>
-      </li>
-    )}
-  </ul>
+  <div class="lg-hide">
+    <ul class="flex row gap-sm">
+      {data.menu.items.map(item =>
+        <li>
+          <a
+            href={buildUrl(item._type, item.slug)}
+            class="nav__link text-white bold td-none"
+          >
+            {item.title}
+          </a>
+        </li>
+      )}
+    </ul>
+  </div>
+  <div class="hamburger-container" tabindex=0>
+    <div class="hamburger lg-show hide"></div>
+  <div>
 </nav>
 
 <style lang="scss">
@@ -35,6 +40,35 @@ const data = await response
       border-bottom: 2px solid rgba(255, 255, 255, 0.8);
       transition: border-bottom 0.3s ease-in-out;
     }
+  }
+}
+
+.hamburger-container {
+  cursor: pointer;
+  height: 1.85em;
+  margin: 0.5em 0 0 0;
+}
+
+.hamburger {
+  position: relative;
+  width: 3em;
+  height: 0.25em;
+  background-color: var(--white);
+  border-radius: 0.2em;
+  &::before,
+  &::after {
+    position: absolute;
+    background-color: var(--white);
+    border-radius: 0.2em;
+    content: '';
+    width: 3em;
+    height: 0.25em;
+  }
+  &::before {
+    top: 0.8em;
+  }
+  &::after {
+    top: 1.6em;
   }
 }
 </style>

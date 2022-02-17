@@ -1,11 +1,33 @@
+@use 'breakpoints' as b;
+
 .container {
   width: 94%;
   margin: auto;
 }
 
 .container--body {
-  width: 79%;
+  width: 94%;
+  max-width: 120rem;
   margin: auto;
+  @include b.mq(lg) {
+    width: 94%;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.lg-hide {
+  @include b.mq(lg) {
+    display: none;
+  }
+}
+
+.lg-show {
+  @include b.mq(lg) {
+    display: block;
+  }
 }
 
 .grid {
@@ -77,6 +99,12 @@
 .center {
   text-align: center;
   place-items: center;
+}
+
+.md-left {
+  @include b.mq(md) {
+    text-align: left;
+  }
 }
 
 .sacramento {
