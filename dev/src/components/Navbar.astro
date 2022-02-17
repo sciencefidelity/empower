@@ -7,12 +7,12 @@ const response = await sanityClient.fetch(navbarQuery)
 const data = await response
 ---
 <nav class="nav">
-  <ul class="flex row gap-small">
+  <ul class="flex row gap-sm">
     {data.menu.items.map(item =>
       <li>
         <a
           href={buildUrl(item._type, item.slug)}
-          class="text-black"
+          class="nav__link text-white bold td-none"
         >
           {item.title}
         </a>
@@ -22,5 +22,19 @@ const data = await response
 </nav>
 
 <style lang="scss">
-
+.nav {
+  position: relative;
+  z-index: 4;
+  margin-top: 1em;
+  margin-left: auto;
+  &__link {
+    font-size: 2.4rem;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0);
+    transition: border-bottom 0.3s ease-in-out;
+    &:hover {
+      border-bottom: 1.5px solid rgba(255, 255, 255, 0.8);
+      transition: border-bottom 0.3s ease-in-out;
+    }
+  }
+}
 </style>

@@ -24,8 +24,24 @@
   color: var(--black);
 }
 
-.gap-small {
-  gap: 2rem;
+.bold {
+  font-weight: 700;
+}
+
+.td-none {
+  text-decoration: none;
+}
+
+.lh-1 {
+  line-height: 1;
+}
+
+.gap-lg {
+  gap: 10rem;
+}
+
+.gap-sm {
+  gap: 3rem;
 }
 
 .text-white {

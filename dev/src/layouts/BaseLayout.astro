@@ -71,9 +71,16 @@ const socialimageUrl = socialImage(data.site.seoImage)
 <body>
   <div id="app">
     <Header siteName={data.site.siteName} />
-    <main class="container mb-large">
+    <main class="site-main container mb-large">
       <slot />
     </main>
     <Footer site={data.site} />
   </div>
 </body>
+
+<style lang="scss">
+.site-main {
+  position: relative;
+  z-index: 5;
+}
+</style>
