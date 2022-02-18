@@ -1,3 +1,3 @@
 # eMpower 🧘
 
-Meditation for all.
+A resource to help everyone improve their wellbeing, self‑esteem and mental health through meditation.
