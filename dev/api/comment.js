@@ -2,7 +2,7 @@ require("dotenv").config()
 import sanityClient from "@sanity/client"
 
 async function sendComment(req, res) {
-  const client = sanityClient.config({
+  const client = sanityClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
     apiVersion: "2021-09-20",
