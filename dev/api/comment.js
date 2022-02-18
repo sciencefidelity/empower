@@ -1,12 +1,12 @@
 require("dotenv").config()
-const sanityClient = require("@sanity/client")
+import sanityClient from "lib/sanityClient"
 
 async function sendComment(req, res) {
   const client = sanityClient.config({
-    projectId: process.env.SANITY_PROJECT_ID,
-    dataset: "production",
-    apiVersion: "2021-02-11",
-    token: process.env.SANITY_API_TOKEN,
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+    apiVersion: "2021-09-20",
+    token: process.env.SANITY_API_TOKEN || "",
     useCdn: true
   })
   const doc = {
@@ -21,7 +21,7 @@ async function sendComment(req, res) {
     twitterHandle: req.body.twitterHandle
   }
   try {
-    await client.create(doc).then((res) => {
+    await client.create(doc).then(res => {
       console.log(`Comment was created, document ID is ${res._id}`)
     })
   } catch (error) {

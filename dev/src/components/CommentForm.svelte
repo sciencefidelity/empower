@@ -1,5 +1,5 @@
 <script lang="ts">
-export let id
+export let id: string
 let fields = { name: "", email: "", twitterHandle: "", message: "", id: id }
 let errors = { name: "", message: "" }
 let valid = false
@@ -28,7 +28,7 @@ const submitHandler = async () => {
     const { error } = await res.json()
     if (error) submitMessage = "Oops! Something went wrong, please try again."
     submitMessage = "Thankyou! Your comment has been delivered."
-    fields = { name: "", email: "", twitterHandle: "", message: "" }
+    fields = { name: "", email: "", twitterHandle: "", message: "", id: id }
   }
 }
 </script>
