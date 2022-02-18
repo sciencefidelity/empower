@@ -86,7 +86,7 @@ export const postsQuery = groq`{
       }
     },
     categories[]->{_id, _type, "slug": slug.current, title},
-    "comments": *[_type == "comment" && post._ref == ^._id]
+    "comments": *[_type == "comment" && post._ref == ^._id && approved == true]
       | order(_createdAt desc){_createdAt, message, name},
     publishedAt,
     "slug": slug.current,

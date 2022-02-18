@@ -30,6 +30,12 @@ export default {
       type: 'text'
     },
     {
+      name: 'approved',
+      title: 'Approve Comment',
+      description: 'Comments won\'t appear on the site until this is checked',
+      type: 'boolean'
+    },
+    {
       name: 'twitterHandle',
       title: 'Twitter Handle',
       type: 'string'
