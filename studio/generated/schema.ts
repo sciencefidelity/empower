@@ -122,6 +122,13 @@ export interface Comment extends SanityDocument {
   message?: string;
 
   /**
+   * Approve Comment — `boolean`
+   *
+   * Comments won't appear on the site until this is checked
+   */
+  approved?: boolean;
+
+  /**
    * Twitter Handle — `string`
    *
    *
