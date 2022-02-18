@@ -3,8 +3,8 @@ import sanityClient from "@sanity/client"
 
 async function sendComment(req, res) {
   const client = sanityClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+    projectId: process.env.SANITY_PROJECT_ID || "",
+    dataset: process.env.SANITY_DATASET || "production",
     apiVersion: "2021-09-20",
     token: process.env.SANITY_API_TOKEN || "",
     useCdn: true
