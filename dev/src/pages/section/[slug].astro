@@ -23,12 +23,11 @@ const { section } = Astro.props as { section: Section }
 const { body, seoDescription, seoKeywords, seoTitle, title, video } = section
 ---
 <BaseLayout
-  title={title}
-  seoDescription={seoDescription}
   keywords={seoKeywords}
+  seoDescription={seoDescription}
   seoTitle={seoTitle}
-  siteDescription={seoDescription}
   slug={slug}
+  title={title}
 >
   <div>
     {title && <h1 class="title mb-sm serif text-white bold">{title}</h1>}

@@ -10,13 +10,13 @@ import "styles/global.scss"
 
 interface Props {
   title: string
-  keywords: string
-  slug: string
-  seoTitle: string
-  seoDescription: string
-  seoImage: Image
-  twitter: string
-  twitterHandle: string
+  keywords?: string
+  slug?: string
+  seoTitle?: string
+  seoDescription?: string
+  seoImage?: Image
+  twitter?: string
+  twitterHandle?: string
 }
 const response = await sanityClient.fetch(layoutQuery)
 const data: { site: Site } = await response

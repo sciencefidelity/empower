@@ -10,7 +10,9 @@ import { pageQuery } from "../lib/queries"
 import { Page } from "../lib/interfaces"
 
 export async function getStaticPaths() {
-  const data: { pages: Page[] } = await sanityClient.fetch(pageQuery).then(response => response)
+  const data: { pages: Page[] } = await sanityClient
+    .fetch(pageQuery)
+    .then(response => response)
   return data.pages.map(page => {
     return {
       params: { slug: page.slug },
@@ -20,15 +22,22 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.request.params
 const { page } = Astro.props as { page: Page }
-const { body, mainImage, seoDescription, seoKeywords, seoTitle, template, title } = page
+const {
+  body,
+  mainImage,
+  seoDescription,
+  seoKeywords,
+  seoTitle,
+  template,
+  title
+} = page
 ---
 <BaseLayout
-  title={title}
-  seoDescription={seoDescription}
   keywords={seoKeywords}
+  seoDescription={seoDescription}
   seoTitle={seoTitle}
-  siteDescription={seoDescription}
   slug={slug}
+  title={title}
 >
   <div>
     <h1 class="title bold text-white serif">{title}</h1>
@@ -41,9 +50,7 @@ const { body, mainImage, seoDescription, seoKeywords, seoTitle, template, title 
         lazy={false}
       />
     } -->
-    {body &&
-      <PortableText value={body} />
-    }
+    {body && <PortableText value={body} components={components} />}
     {template === "blog" && <Blog />}
     {template === "contact" && <ContactForm client:idle />}
   </div>
