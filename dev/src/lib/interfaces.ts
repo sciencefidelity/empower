@@ -7,7 +7,7 @@ import type {
   SanityImageHotspot,
   SanityReference
 } from "../generated/schema"
-export type { Photography }
+export type { BlockContent, Photography }
 
 export interface Author {
   _type: "author"
