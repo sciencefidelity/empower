@@ -1,6 +1,7 @@
 import { resolve } from "path"
 
 export default {
+  projectRoot: '.'
   // https://docs.astro.build/en/reference/configuration-reference/
   buildOptions: {
     site: "https://empower-us-all.org",
@@ -10,7 +11,6 @@ export default {
     hostname: "0.0.0.0",
   },
   renderers: ["@astrojs/renderer-react", "@astrojs/renderer-svelte"],
-  // renderers: ["@astrojs/renderer-svelte"],
   vite: {
     resolve: {
       alias: {
