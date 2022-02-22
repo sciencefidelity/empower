@@ -3,41 +3,30 @@ import format from "date-fns/format"
 import sanityClient from "../../lib/sanityClient.ts"
 import { buildUrl, twitterLink } from "../../lib/utils.ts"
 import BaseLayout from "../../layouts/BaseLayout.astro"
-import PortableText from "../../components/PortableText.svelte"
+import PortableText from "../../components/PortableText.tsx"
+import { components } from "../../components/PortableTextComponents.tsx"
 import { authorQuery } from "../../lib/queries"
-// import type { AuthorData } from "../../lib/interfaces.ts"
-import { Author, Post } from "../../generated/schema"
-
-export interface AuthorPosts extends Author {
-  posts: Post[]
-  slugCurrent: string
-}
-export interface Data {
-  authors: AuthorPosts[]
-  slugCurrent: string
-}
+import { Author } from "../../lib/interfaces"
 
 export async function getStaticPaths( ) {
-  const data: Data = await sanityClient.fetch(authorQuery)
+  const data: { authors: Author[] } = await sanityClient.fetch(authorQuery)
     .then((response: any) => response)
   return data.authors.map(author => {
     return {
-      params: { slug: author.slugCurrent },
+      params: { slug: author.slug },
       props: { author }
     }
   })
 }
 
 const { slug } = Astro.request.params
-const { author } = Astro.props
+const { author } = Astro.props as { author: Author }
 const {
-  _type,
   bio,
   name,
   posts,
-  slugCurrent,
   twitterHandle
-} = author as AuthorPosts
+} = author
 const title = `Author: ${name}`
 ---
 <BaseLayout title={title}>
@@ -50,13 +39,13 @@ const title = `Author: ${name}`
         rel="noreferrer">{twitterHandle}</a>
     </p>}
     <h2>Bio</h2>
-    <PortableText body={bio} />
+    <PortableText value={bio} components={components} />
     <br>
     <h2>Posts</h2>
     <ul>
       {posts.map(post =>
         <li>
-          <a href={buildUrl(_type, slugCurrent)}>{post.title}</a><br>
+          <a href={buildUrl(post._type, post.slug)}>{post.title}</a><br>
           {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
         </li>
       )}

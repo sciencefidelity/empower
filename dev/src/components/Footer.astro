@@ -1,5 +1,6 @@
 ---
-const { site } = Astro.props
+import { Site } from "../lib/interfaces"
+const { site } = Astro.props as { site: Site }
 const year = new Date().getFullYear().toString()
 const { email, siteName } = site
 ---

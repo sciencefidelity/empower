@@ -1,3 +1,4 @@
+import * as React from "react"
 import { PortableTextComponents } from "@portabletext/react"
 import { buildUrl } from "../lib/utils"
 

@@ -1,13 +1,14 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import { dateOptions } from "lib/utils"
-import { categoryQuery } from "lib/queries"
+import sanityClient from "../../lib/sanityClient"
+import { buildUrl } from "../../lib/utils"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import { categoryQuery } from "../../lib/queries"
+import { Category } from "../../lib/interfaces"
 
 export async function getStaticPaths() {
-  const data = await sanityClient.fetch(categoryQuery)
+  const data: { categories: Category[] } = await sanityClient
+    .fetch(categoryQuery)
     .then(response => response)
   return data.categories.map(category => {
     return {
@@ -18,15 +19,15 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.request.params
-const { category } = Astro.props
-const title = `Category: ${category.title}`
+const { category } = Astro.props as { category: Category }
+const { title, posts } = category
 ---
 <BaseLayout title={title}>
   <div>
-    {title && <h2>{title}</h2>}
+    {title && <h2>Category: {title}</h2>}
     <br>
     <ul>
-      {category.posts.map(post =>
+      {posts.map(post =>
         <li>
           <p><a href={buildUrl(post._type, post.slug)}>{post.title}</a></p>
           <p>{format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}</p>

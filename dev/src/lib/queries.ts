@@ -15,10 +15,18 @@ export const layoutQuery = groq`{
 
 export const indexQuery = groq`{
   "site": *[_type == "site"][0]{
-    keywords, siteDescription, siteName,
-    "sectionPages": sections[]->{
-      _id, _type, menuTitle, "slugCurrent": slug.current, subtitle, title
-    }
+    email,
+    keywords,
+    introduction,
+    "sections": sections[]->{
+      _id, _type, menuTitle, "slug": slug.current, subtitle, title
+    },
+    seoDescription,
+    seoTitle,
+    seoImage,
+    siteDescription,
+    siteName,
+    siteURL
   },
   "photograph": *[_type == "photography"] | order(_createdAt)[0]{
     image, title
@@ -31,7 +39,7 @@ export const pageQuery = groq`{
     _type,
     mainImage,
     menuTitle,
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     template[0],
     title
   }
@@ -42,16 +50,16 @@ export const authorsQuery = groq`{
     _type,
     name,
     "posts": *[_type == "post" && author._ref == ^._id] | order(date desc){
-      _type, publishedAt, "slugCurrent": slug.current, title
+      _type, publishedAt, "slug": slug.current, title
     },
-    "slugCurrent": slug.current
+    "slug": slug.current
   }[count(posts) > 0]
 }`
 
 export const categoriesQuery = groq`{
   "categories": *[_type == "category"] | order(title){
     _type,
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     title,
     "posts": *[_type == "post" && references(^._id)]
   }[count(posts) > 0]
@@ -62,15 +70,15 @@ export const authorQuery = groq`{
     _type,
     bio[]{
       ..., markDefs[]{
-        ..., item->{_type, "slugCurrent": slug.current}
+        ..., item->{_type, "slug": slug.current}
       }
     },
     name,
     "posts": *[_type == "post" && author._ref == ^._id]
       | order(publishedAt desc){
-        _type, publishedAt, title, "slugCurrent": slug.current
+        _type, publishedAt, title, "slug": slug.current
       },
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     twitterHandle
   }[count(posts) > 0]
 }`
@@ -80,20 +88,20 @@ export const postsQuery = groq`{
     _id,
     _type,
     author->{
-      _type, name, occupation, "slugCurrent": slug.current, twitterHandle
+      _type, name, occupation, "slug": slug.current, twitterHandle
     },
     body[]{
       ..., markDefs[]{
         ..., item->{
-          _type, "slugCurrent": slug.current
+          _type, "slug": slug.current
         }
       }
     },
-    categories[]->{_id, _type, "slugCurrent": slug.current, title},
+    categories[]->{_id, _type, "slug": slug.current, title},
     "comments": *[_type == "comment" && post._ref == ^._id && approved == true]
       | order(_createdAt desc){_createdAt, message, name},
     publishedAt,
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     title
   }
 }`
@@ -104,9 +112,9 @@ export const categoryQuery = groq`{
     _type,
     "posts": *[_type == "post" && references(^._id)]
       | order(publishedAt desc){
-        _type, publishedAt, "slugCurrent": slug.current, title
+        _type, publishedAt, "slug": slug.current, title
     },
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     title,
     _id
   }[count(posts) > 0]
@@ -119,17 +127,17 @@ export const sectionQuery = groq`{
     body[]{
       ..., markDefs[]{
         ..., item->{
-          _type, "slugCurrent": slug.current
+          _type, "slug": slug.current
         }
       }
     },
     menuTitle,
     seoDescription,
     seoTitle,
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     subtitle,
     title,
-    video->{_type, "slugCurrent": slug.current, thumbnail, title, videoLink}
+    video->{_type, "slug": slug.current, thumbnail, title, videoLink}
   }
 }`
 
@@ -139,14 +147,14 @@ export const videoQuery = groq`{
     body[]{
       ..., markDefs[]{
         ..., item->{
-          _type, "slugCurrent": slug.current
+          _type, "slug": slug.current
         }
       }
     },
     introduction,
     publishDate,
-    section->{"slugCurrent": slug.current, title, _type},
-    "slugCurrent": slug.current,
+    section->{"slug": slug.current, title, _type},
+    "slug": slug.current,
     thumbnail,
     title,
     videoLink
@@ -158,7 +166,7 @@ export const blogQuery = groq`{
     _id,
     _type,
     publishedAt,
-    "slugCurrent": slug.current,
+    "slug": slug.current,
     title
   }
 }`
@@ -168,7 +176,7 @@ export const navbarQuery = groq`{
     "items": items[]->{
       _id,
       _type,
-      "slugCurrent": slug.current,
+      "slug": slug.current,
       title
     }
   }

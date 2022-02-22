@@ -4,23 +4,26 @@ import { buildUrl, urlFor } from "../lib/utils"
 import BaseLayout from "../layouts/BaseLayout.astro"
 import Icon from "../components/Icon.svelte"
 import { indexQuery } from "../lib/queries"
-import { Section, Site, Photography } from "../generated/schema"
-// import type { IndexData } from "../lib/interfaces.ts"
-
-interface SiteRefs extends Site {
-  sectionPages: Section[]
-}
-
-interface Data {
-  site: SiteRefs
-  photograph: Photography
-}
+import { Site, Photography } from "../lib/interfaces"
 
 const response = await sanityClient.fetch(indexQuery)
-const data: Data = await response
-const title = data.site.siteName
+const data: { site: Site; photograph: Photography } = await response
+const {
+  keywords,
+  sections,
+  seoDescription,
+  seoTitle,
+  siteDescription,
+  siteName
+} = data.site
 ---
-<BaseLayout>
+<BaseLayout
+  title={siteName}
+  seoDescription={seoDescription}
+  keywords={keywords}
+  seoTitle={seoTitle}
+  siteDescription={siteDescription}
+>
   <section>
     <div class="mb-lg">
       <h2 class="text-white center md-left">
@@ -29,9 +32,9 @@ const title = data.site.siteName
       </h2>
     </div>
     <div class="sections grid">
-      {data.site.sectionPages.map((section, idx) =>
+      {sections.map((section, idx) =>
         <div class="section" key={idx}>
-          <a href={buildUrl(section._type, section.slug.current)} tabindex="-1">
+          <a href={buildUrl(section._type, section.slug)} tabindex="-1">
             <div class="section__icon ${section.slug} relative">
               <Icon
                 name={section.slug}
@@ -41,7 +44,7 @@ const title = data.site.siteName
               />
             </div>
           </a>
-          <a href={buildUrl(section._type, section.slug.current)}>
+          <a href={buildUrl(section._type, section.slug)}>
             <h3 class="section__text text-grey left">{section.title}</h3>
           </a>
         </div>
