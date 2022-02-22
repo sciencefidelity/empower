@@ -1,0 +1,71 @@
+---
+interface Props {
+  description: string
+  keywords: string
+  permalink: string
+  seoTitle: string
+  seoDescription: string
+  seoImage: string
+  siteName: string
+  siteURL: string
+  title: string
+  twitterHandle: string
+}
+const {
+  description,
+  keywords,
+  permalink,
+  seoTitle,
+  seoDescription,
+  seoImage,
+  siteName,
+  siteURL,
+  title,
+  twitterHandle
+} = Astro.props
+---
+<!-- Global Metadata -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+
+<!-- Fonts -->
+<link
+  rel="preload"
+  href="/assets/fonts/verveine_std_rg.woff2"
+  as="font" type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/assets/fonts/alshauss-bold.woff2"
+  as="font" type="font/woff2"
+  crossorigin
+/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content={seoTitle} />
+<meta property="og:description" content={seoDescription} />
+<meta property="og:url" content={permalink} />
+<meta property="og:image" content={seoImage} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="en_GB"/>
+<meta property="og:type" content="article"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={seoTitle} />
+<meta name="twitter:description" content={seoDescription} />
+<meta name="twitter:site" content={siteURL} />
+<meta name="twitter:image" content={seoImage} />
+<meta name="twitter:creator" content={twitterHandle} />
+
+<!-- Theme -->
+<link rel="icon" type="image/x-icon" href="/favicon.svg" />
+<link rel="mask-icon" href="/mask-icon.svg" color="#ff7a6b" />
+<meta name="theme-color" content="#2DA1DB" />

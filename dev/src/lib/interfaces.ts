@@ -91,6 +91,7 @@ export interface Site {
   siteDescription: string
   siteName: string
   siteURL: string
+  twitterHandle: string
 }
 export interface Video {
   _type: "video"

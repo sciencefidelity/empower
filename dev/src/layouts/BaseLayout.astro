@@ -1,14 +1,25 @@
 ---
-import groq from "groq"
-import sanityClient from "lib/sanityClient"
-import { socialImage } from "lib/utils"
-import Footer from "components/Footer.astro"
-import Header from "components/Header.astro"
-import { layoutQuery } from "lib/queries"
+import sanityClient from "../lib/sanityClient"
+import { socialImage } from "../lib/utils"
+import BaseHead from "../components/BaseHead.astro"
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import { layoutQuery } from "../lib/queries"
+import { Image, Site } from "../lib/interfaces"
 import "styles/global.scss"
 
+interface Props {
+  title: string
+  keywords: string
+  slug: string
+  seoTitle: string
+  seoDescription: string
+  seoImage: Image
+  twitter: string
+  twitterHandle: string
+}
 const response = await sanityClient.fetch(layoutQuery)
-const data = await response
+const data: { site: Site } = await response
 const {
   title,
   keywords,
@@ -16,73 +27,43 @@ const {
   seoTitle,
   seoDescription,
   seoImage,
-  twitter,
   twitterHandle
 } = Astro.props
-const socialimageUrl = socialImage(data.site.seoImage)
+const pageTitle = `
+  ${title && title + " | "}${data.site.siteName}
+  | Improve wellbeing through meditation
+`
+const socialimageUrl = socialImage(seoImage || data.site.seoImage)
 ---
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>
-    {title && title + " | "}{data.site.siteName}
-     | Improve wellbeing through meditation
-   </title>
-  <meta name="Description" content={data.site.siteDescription} />
-  <meta name="keywords" content={data.site.keywords}>
-
-  <link
-    rel="preload"
-    href="/assets/fonts/verveine_std_rg.woff2"
-    as="font" type="font/woff2"
-    crossorigin
-  />
-  <link
-    rel="preload"
-    href="/assets/fonts/alshauss-bold.woff2"
-    as="font" type="font/woff2"
-    crossorigin
-  />
-
-  <meta property="og:title" content={seoTitle || data.site.seoTitle}>
-  <meta property="og:description" content={seoDescription || data.site.seoDescription}>
-  <meta property="og:url" content="${data.site.siteURL}/${slug || ''}">
-  <meta property="og:image" content={socialimageUrl}>
-  <meta property="og:site_name" content={data.site.siteName}>
-  <meta property="og:locale" content="en_GB">
-  <meta property="og:type" content="article">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content={seoTitle || data.site.seoTitle}>
-  <meta name="twitter:description" content={seoDescription || data.site.seoDescription}>
-  {data.site.twitterHandle !== undefined &&
-    <meta name="twitter:site" content={data.site.twitterHandle}>
-  }
-  <meta name="twitter:image" content={socialimageUrl}>
-  {twitterHandle !== undefined &&
-    <meta name="twitter:creator" content={twitterHandle}>
-  }
-
-  <link rel="icon" type="image/x-icon" href="/favicon.svg" />
-  <link rel="mask-icon" href="/mask-icon.svg" color="#ff7a6b" />
-  <meta name="theme-color" content="#2DA1DB" />
-  <link rel="stylesheet" href={Astro.resolve('../styles/global.scss')}>
-
-</head>
-<body>
-  <div id="app">
-    <div class="flex flex-wrapper">
-      <Header siteName={data.site.siteName} />
-      <main class="site-main container--body mb-lg">
-        <slot />
-      </main>
-      <Footer site={data.site} />
+  <head>
+    <BaseHead
+      title={pageTitle}
+      description={seoDescription || data.site.siteDescription}
+      keywords={keywords || data.site.keywords}
+      permalink={`${data.site.siteURL}/${slug || ''}`}
+      seoTitle={seoTitle || data.site.seoTitle}
+      seoDescription={seoDescription || data.site.seoDescription}
+      seoImage={socialimageUrl}
+      siteName={data.site.siteName}
+      siteURL={data.site.siteURL}
+      twitterHandle={twitterHandle || data.site.twitterHandle}
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div class="flex flex-wrapper">
+        <Header siteName={data.site.siteName} />
+        <main class="site-main container--body mb-lg">
+          <slot />
+        </main>
+        <Footer site={data.site} />
+      </div>
     </div>
-  </div>
-</body>
+  </body>
+</html>
 
-<style lang="scss">
+<style>
 .flex-wrapper {
   min-height: 100vh;
   flex-direction: column;
