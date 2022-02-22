@@ -41,19 +41,19 @@ const { menu } = data
   }
   &__link {
     font-size: 1.9vw;
-    border-bottom: 5px solid rgba(255, 255, 255, 0);
+    border-bottom: 5px solid rgba(255, 255, 255, 0%);
     transition: border-bottom 0.3s ease-in-out;
     &:hover {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+      border-bottom: 2px solid rgba(255, 255, 255, 80%);
       transition: border-bottom 0.3s ease-in-out;
     }
   }
 }
 
 .hamburger-container {
-  cursor: pointer;
   height: 1.85em;
-  margin: 0.5em 0 0 0;
+  margin: 0.5em 0 0;
+  cursor: pointer;
 }
 
 .hamburger {
@@ -65,11 +65,11 @@ const { menu } = data
   &::before,
   &::after {
     position: absolute;
-    background-color: var(--white);
-    border-radius: 0.2em;
-    content: '';
     width: 3em;
     height: 0.25em;
+    content: '';
+    background-color: var(--white);
+    border-radius: 0.2em;
   }
   &::before {
     top: 0.8em;

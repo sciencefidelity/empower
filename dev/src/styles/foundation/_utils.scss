@@ -105,13 +105,13 @@
 }
 
 .center {
-  text-align: center;
   place-items: center;
+  text-align: center;
 }
 
 .right {
-  text-align: right;
   margin-left: auto;
+  text-align: right;
 }
 
 .md-left {
@@ -121,7 +121,7 @@
 }
 
 .sacramento {
-  font-family: Sacramento;
+  font-family: Sacramento, cursive;
 }
 
 .vh-100 {
@@ -151,4 +151,3 @@ vw-100 {
 .mb-sm {
   margin-bottom: 3rem;
 }
-
