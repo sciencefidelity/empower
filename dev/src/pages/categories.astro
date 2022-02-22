@@ -10,7 +10,7 @@ const response = await sanityClient.fetch(categoriesQuery)
 const data: { categories: Category[] } = await response
 const title = "All Categories"
 ---
-<BaseLayout title="{title} | eMpower">
+<BaseLayout title={`${title} | eMpower`}>
   <div>
     <h2>{title}</h2>
     <br>

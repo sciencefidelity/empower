@@ -7,7 +7,7 @@ const { email, siteName } = site
 
 <footer class="footer container flex column">
   <div>
-    <p><a href="mailto:${email}">{email}</a></p>
+    <p><a href={`mailto:${email}`}>{email}</a></p>
     <p>&copy; {siteName} {year}</p>
   </div>
   <div class="right">

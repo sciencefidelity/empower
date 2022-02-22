@@ -35,7 +35,7 @@ const {
       {sections.map((section, idx) =>
         <div class="section" key={idx}>
           <a href={buildUrl(section._type, section.slug)} tabindex="-1">
-            <div class="section__icon ${section.slug} relative">
+            <div class={`section__icon ${section.slug} relative`}>
               <Icon
                 name={section.slug}
                 class="absolute"
