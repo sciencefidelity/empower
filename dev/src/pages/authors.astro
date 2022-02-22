@@ -1,18 +1,23 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import { authorsQuery } from "lib/queries"
+import sanityClient from "../lib/sanityClient"
+import { buildUrl } from "../lib/utils"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { authorsQuery } from "../lib/queries"
+import { Author } from "../lib/interfaces"
 
 const response = await sanityClient.fetch(authorsQuery)
-const data = await response
+const data: { authors: Author[] } = await response
 const title = "All Authors"
 ---
-<BaseLayout title={title}>
+<BaseLayout
+  title={`${title} | eMpower`}
+  seoTitle={`${title} | eMpower`}
+  slug="/authors"
+>
   <div>
     <h2>{title}</h2>
-    <br>
+    <br />
     <ul>
       {data.authors.map(author =>
         <li>
@@ -20,8 +25,8 @@ const title = "All Authors"
           <ul>
             {author.posts.map(post =>
               <li>
-                <p><a href={buildUrl(post._type, post.slug)}>{post.title}</a><p>
-                <p>{format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}<p>
+                <p><a href={buildUrl(post._type, post.slug)}>{post.title}</a></p>
+                <p>{format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}</p>
               </li>
             )}
           </ul>

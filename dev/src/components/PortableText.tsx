@@ -1,10 +1,16 @@
-import * as React from "react"
-import { PortableText } from "@portabletext/react"
+import React, { FC } from "react"
+import { PortableText, PortableTextComponents } from "@portabletext/react"
+import { BlockContent } from "../lib/interfaces"
 
-const PortableTextComponent = ({ body, components }) => {
+interface Props {
+  value: BlockContent
+  components: PortableTextComponents
+}
+
+const PortableTextComponent: FC<Props> = ({ value, components }) => {
   return (
     <PortableText
-      value={body}
+      value={value}
       components={components}
     />
   )

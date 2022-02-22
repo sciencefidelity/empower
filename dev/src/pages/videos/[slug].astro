@@ -1,14 +1,17 @@
 ---
-import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import PortableText from "components/PortableText.svelte"
-import Video from "components/Video.astro"
-import { videoQuery } from "lib/queries"
+import sanityClient from "../../lib/sanityClient"
+import { buildUrl } from "../../lib/utils"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import PortableText from "../../components/PortableText"
+import { components } from "../../components/PortableTextComponents"
+import VideoComponent from "../../components/VideoComponent.astro"
+import { videoQuery } from "../../lib/queries"
+import { Video } from "../../lib/interfaces"
 
 export async function getStaticPaths() {
-  const data = await sanityClient.fetch(videoQuery).then(response => response)
+  const data: { videos: Video[] } = await sanityClient
+    .fetch(videoQuery)
+    .then(response => response)
   return data.videos.map(video => {
     return {
       params: { slug: video.slug },
@@ -17,25 +20,35 @@ export async function getStaticPaths() {
   })
 }
 const { slug } = Astro.request.params
-const { video } = Astro.props
+const { video } = Astro.props as { video: Video }
+const {
+  body,
+  introduction,
+  section,
+  seoDescription,
+  seoKeywords,
+  seoTitle,
+  title,
+  videoLink
+} = video
 ---
 <BaseLayout
-  title={video.title}
-  seoDescription={video.seoDescription}
-  keywords={video.seoKeywords}
-  seoTitle={video.seoTitle}
-  slug={video.slug}
+  keywords={seoKeywords}
+  seoDescription={seoDescription}
+  seoTitle={seoTitle}
+  slug={slug}
+  title={title}
 >
   <div>
-    <h2>{video.title}</h2>
-    <p>{video.introduction}</p>
+    <h2>{title}</h2>
+    <p>{introduction}</p>
     <p>in:{" "}
-      <a href={buildUrl(video.section._type, video.section.slug)}>
-        {video.section.title}
+      <a href={buildUrl(section._type, section.slug)}>
+        {section.title}
       </a>
     </p>
-    {video.videoLink && <Video video={video} />}
-    {video.body && <PortableText body={video.body} />}
+    {videoLink && <VideoComponent video={video} />}
+    {body && <PortableText value={body} components={components} />}
   </div>
 </BaseLayout>
 

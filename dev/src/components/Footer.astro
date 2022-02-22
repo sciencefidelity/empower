@@ -1,12 +1,13 @@
 ---
-const { site } = Astro.props
+import { Site } from "../lib/interfaces"
+const { site } = Astro.props as { site: Site }
 const year = new Date().getFullYear().toString()
 const { email, siteName } = site
 ---
 
 <footer class="footer container flex column">
   <div>
-    <p><a href="mailto:${email}">{email}</a></p>
+    <p><a href={`mailto:${email}`}>{email}</a></p>
     <p>&copy; {siteName} {year}</p>
   </div>
   <div class="right">

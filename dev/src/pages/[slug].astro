@@ -1,14 +1,18 @@
 ---
-import sanityClient from "lib/sanityClient"
-import BaseLayout from "layouts/BaseLayout.astro"
-import Blog from "components/Blog.astro"
+import sanityClient from "../lib/sanityClient"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Blog from "../components/Blog.astro"
 import ContactForm from "../components/ContactForm.svelte"
-import Image from "components/Image.astro"
-import PortableText from "components/PortableText.svelte"
-import { pageQuery } from "lib/queries"
+// import Image from "../../components/Image.astro"
+import PortableText from "../components/PortableText"
+import { components } from "../components/PortableTextComponents"
+import { pageQuery } from "../lib/queries"
+import { Page } from "../lib/interfaces"
 
 export async function getStaticPaths() {
-  const data = await sanityClient.fetch(pageQuery).then(response => response)
+  const data: { pages: Page[] } = await sanityClient
+    .fetch(pageQuery)
+    .then(response => response)
   return data.pages.map(page => {
     return {
       params: { slug: page.slug },
@@ -17,32 +21,38 @@ export async function getStaticPaths() {
   })
 }
 const { slug } = Astro.request.params
-const { page } = Astro.props
+const { page } = Astro.props as { page: Page }
+const {
+  body,
+  mainImage,
+  seoDescription,
+  seoKeywords,
+  seoTitle,
+  template,
+  title
+} = page
 ---
 <BaseLayout
-  title={page.title}
-  seoDescription={page.seoDescription}
-  keywords={page.seoKeywords}
-  seoTitle={page.seoTitle}
-  siteDescription={page.seoDescription}
-  slug={page.slug}
+  keywords={seoKeywords}
+  seoDescription={seoDescription}
+  seoTitle={seoTitle}
+  slug={slug}
+  title={title}
 >
   <div>
-    <h1 class="title bold text-white serif">{page.title}</h1>
-<!--     {page.mainImage &&
+    <h1 class="title bold text-white serif">{title}</h1>
+    <!-- {mainImage &&
       <Image
-        caption={page.title}
-        image={page.mainImage}
+        caption={title}
+        image={mainImage}
         width={900}
         height={600}
         lazy={false}
       />
     } -->
-    {page.body &&
-      <PortableText body={page.body} />
-    }
-    {page.template === "blog" && <Blog />}
-    {page.template === "contact" && <ContactForm client:idle />}
+    {body && <PortableText value={body} components={components} />}
+    {template === "blog" && <Blog />}
+    {template === "contact" && <ContactForm client:idle />}
   </div>
 </BaseLayout>
 

@@ -1,6 +1,6 @@
 ---
-import Navbar from "components/Navbar.astro"
-const { siteName } = Astro.props
+import Navbar from "./Navbar.astro"
+const { siteName } = Astro.props as { siteName: string }
 ---
 <header class="header container flex">
   <div class="gradient-background"></div>

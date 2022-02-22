@@ -15,10 +15,18 @@ export const layoutQuery = groq`{
 
 export const indexQuery = groq`{
   "site": *[_type == "site"][0]{
-    keywords, siteDescription, siteName,
+    email,
+    keywords,
+    introduction,
     "sections": sections[]->{
       _id, _type, menuTitle, "slug": slug.current, subtitle, title
-    }
+    },
+    seoDescription,
+    seoTitle,
+    seoImage,
+    siteDescription,
+    siteName,
+    siteURL
   },
   "photograph": *[_type == "photography"] | order(_createdAt)[0]{
     image, title
@@ -42,7 +50,7 @@ export const authorsQuery = groq`{
     _type,
     name,
     "posts": *[_type == "post" && author._ref == ^._id] | order(date desc){
-      _type, publishedAt,"slug": slug.current, title
+      _type, publishedAt, "slug": slug.current, title
     },
     "slug": slug.current
   }[count(posts) > 0]
@@ -62,12 +70,14 @@ export const authorQuery = groq`{
     _type,
     bio[]{
       ..., markDefs[]{
-        ..., item->{_type, "slug": slug}
+        ..., item->{_type, "slug": slug.current}
       }
     },
     name,
     "posts": *[_type == "post" && author._ref == ^._id]
-      | order(publishedAt desc){_type, publishedAt, title, "slug": slug.current},
+      | order(publishedAt desc){
+        _type, publishedAt, title, "slug": slug.current
+      },
     "slug": slug.current,
     twitterHandle
   }[count(posts) > 0]
@@ -77,11 +87,13 @@ export const postsQuery = groq`{
   "posts": *[_type == "post"]{
     _id,
     _type,
-    author->{_type, name, occupation, "slug": slug.current, twitterHandle},
+    author->{
+      _type, name, occupation, "slug": slug.current, twitterHandle
+    },
     body[]{
       ..., markDefs[]{
         ..., item->{
-          _type, "slug": slug
+          _type, "slug": slug.current
         }
       }
     },
@@ -115,7 +127,7 @@ export const sectionQuery = groq`{
     body[]{
       ..., markDefs[]{
         ..., item->{
-          _type, "slug": slug
+          _type, "slug": slug.current
         }
       }
     },
@@ -135,7 +147,7 @@ export const videoQuery = groq`{
     body[]{
       ..., markDefs[]{
         ..., item->{
-          _type, "slug": slug
+          _type, "slug": slug.current
         }
       }
     },

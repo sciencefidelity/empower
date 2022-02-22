@@ -1,15 +1,18 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { article, buildUrl, twitterLink } from "lib/utils"
-import { components } from "components/PortableTextComponents.tsx"
-import BaseLayout from "layouts/BaseLayout.astro"
+import sanityClient from "../../lib/sanityClient"
+import { article, buildUrl, twitterLink } from "../../lib/utils"
+import BaseLayout from "../../layouts/BaseLayout.astro"
 import CommentForm from "../../components/CommentForm.svelte"
-import PortableText from "components/PortableText.tsx"
-import { postsQuery } from "lib/queries"
+import PortableText from "../../components/PortableText"
+import { components } from "../../components/PortableTextComponents"
+import { postsQuery } from "../../lib/queries"
+import { Post } from "../../lib/interfaces"
 
 export async function getStaticPaths() {
-  const data = await sanityClient.fetch(postsQuery).then(response => response)
+  const data: { posts: Post[] } = await sanityClient
+    .fetch(postsQuery)
+    .then(response => response)
   return data.posts.map(post => {
     return {
       params: { slug: post.slug },
@@ -18,26 +21,38 @@ export async function getStaticPaths() {
   })
 }
 const { slug } = Astro.request.params
-const { post } = Astro.props
+const { post } = Astro.props as { post: Post }
+const {
+  _id,
+  author,
+  body,
+  categories,
+  comments,
+  publishedAt,
+  seoDescription,
+  seoKeywords,
+  seoTitle,
+  title,
+} = post
 ---
 <BaseLayout
-  title={post.title}
-  seoDescription={post.seoDescription}
-  keywords={post.seoKeywords}
-  seoTitle={post.seoTitle}
-  slug={post.slug}
-  twitterHandle={post.author.twitterHandle}
+  title={title}
+  seoDescription={seoDescription}
+  keywords={seoKeywords}
+  seoTitle={seoTitle}
+  slug={slug}
+  twitterHandle={author.twitterHandle}
 >
   <section>
-    {post.title && <h1 class="title text-white serif bold">{post.title}</h1>}
-    published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
-    {"by: "}<br>
-    <a href={buildUrl(post.author._type, post.author.slug)}>
-      {post.author.name}
-    </a>
+    {title && <h1 class="title text-white serif bold">{title}</h1>}
+    published on: {format(new Date(publishedAt), "eeee, do MMMM yyyy")}
+    <p>
+      {"by: "}<a href={buildUrl(author._type, author.slug)}>
+        {author.name}
+      </a>
     </p>
-    {post.categories && <ul>
-      {"in: "}{post.categories.map(category =>
+    {categories && <ul>
+      {"in: "}{categories.map(category =>
         <li>
           <a href={buildUrl(category._type, category.slug)}>
             {category.title}
@@ -46,19 +61,19 @@ const { post } = Astro.props
       )}
     </ul>}
     <div class="body">
-      {post.body && <PortableText body={post.body} components={components} />}
-      {post.author && <p>
-        {post.author.twitterHandle
+      {body && <PortableText value={body} components={components} />}
+      {author && <p>
+        {author.twitterHandle
           ? <a
-              href={twitterLink(post.author.twitterHandle)}
+              href={twitterLink(author.twitterHandle)}
               target="_blank"
               rel="noreferrer"
-            >{post.author.name}</a> : {post.author.name}}{" is "}
-        {article(post.author.occupation)}{" "}{post.author.occupation}
+            >{author.name}</a> : {author.name}}{" is "}
+        {article(author.occupation)}{" "}{author.occupation}
       </p>}
     </div>
-    <CommentForm client:idle id={post._id} />
-    {post.comments.map(comment =>
+    <CommentForm client:idle id={_id} />
+    {comments.map(comment =>
       <p>{comment.message}</p>
       <p>by {comment.name} on {
         format(new Date(comment._createdAt), "eeee, do MMMM yyyy")

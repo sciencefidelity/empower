@@ -1,15 +1,16 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import { categoriesQuery } from "lib/queries"
+import sanityClient from "../lib/sanityClient"
+import { buildUrl } from "../lib/utils"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { categoriesQuery } from "../lib/queries"
+import { Category } from "../lib/interfaces"
 
 const response = await sanityClient.fetch(categoriesQuery)
-const data = await response
+const data: { categories: Category[] } = await response
 const title = "All Categories"
 ---
-<BaseLayout title={title}>
+<BaseLayout title={`${title} | eMpower`}>
   <div>
     <h2>{title}</h2>
     <br>
