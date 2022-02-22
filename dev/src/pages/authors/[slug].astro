@@ -1,16 +1,28 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { buildUrl, twitterLink } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import PortableText from "components/PortableText.svelte"
-import { authorQuery } from "lib/queries"
+import sanityClient from "../../lib/sanityClient.ts"
+import { buildUrl, twitterLink } from "../../lib/utils.ts"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import PortableText from "../../components/PortableText.svelte"
+import { authorQuery } from "../../lib/queries"
+// import type { AuthorData } from "../../lib/interfaces.ts"
+import { Author, Post } from "../../generated/schema"
+
+export interface AuthorPosts extends Author {
+  posts: Post[]
+  slugCurrent: string
+}
+export interface Data {
+  authors: AuthorPosts[]
+  slugCurrent: string
+}
 
 export async function getStaticPaths( ) {
-  const data = await sanityClient.fetch(authorQuery).then(response => response)
+  const data: Data = await sanityClient.fetch(authorQuery)
+    .then((response: any) => response)
   return data.authors.map(author => {
     return {
-      params: { slug: author.slug },
+      params: { slug: author.slugCurrent },
       props: { author }
     }
   })
@@ -18,24 +30,33 @@ export async function getStaticPaths( ) {
 
 const { slug } = Astro.request.params
 const { author } = Astro.props
-const title = `Author: ${author.name}`
+const {
+  _type,
+  bio,
+  name,
+  posts,
+  slugCurrent,
+  twitterHandle
+} = author as AuthorPosts
+const title = `Author: ${name}`
 ---
 <BaseLayout title={title}>
   <div>
     <h2>{title}</h2>
-    {author.twitterHandle && <p>
+    {twitterHandle && <p>
       <a
-        href={twitterLink(author.twitterHandle)}
+        href={twitterLink(twitterHandle)}
         target="_blank"
-        rel="noreferrer">{author.twitterHandle}</a>
+        rel="noreferrer">{twitterHandle}</a>
     </p>}
     <h2>Bio</h2>
-    <PortableText body={author.bio} />
+    <PortableText body={bio} />
     <br>
     <h2>Posts</h2>
     <ul>
-      {author.posts.map(post =>
-        <li><a href={buildUrl(post._type, post.slug)}>{post.title}</a><br>
+      {posts.map(post =>
+        <li>
+          <a href={buildUrl(_type, slugCurrent)}>{post.title}</a><br>
           {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
         </li>
       )}

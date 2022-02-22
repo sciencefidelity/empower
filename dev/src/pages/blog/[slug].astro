@@ -1,15 +1,40 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "lib/sanityClient"
-import { article, buildUrl, twitterLink } from "lib/utils"
-import { components } from "components/PortableTextComponents.tsx"
-import BaseLayout from "layouts/BaseLayout.astro"
+import sanityClient from "../../lib/sanityClient"
+import { article, buildUrl, twitterLink } from "../../lib/utils"
+import { components } from "../../components/PortableTextComponents"
+import BaseLayout from "../../layouts/BaseLayout.astro"
 import CommentForm from "../../components/CommentForm.svelte"
-import PortableText from "components/PortableText.tsx"
-import { postsQuery } from "lib/queries"
+import PortableText from "../../components/PortableText"
+import { postsQuery } from "../../lib/queries"
+import {
+  Author,
+  Category,
+  Comment,
+  Post,
+  SanityKeyedReference,
+  SanityReference
+} from "../../generated/schema"
+
+export interface AuthorRef extends SanityReference<Author> {
+  author: Author
+}
+export interface CategoryRef extends SanityKeyedReference<Category> {
+  category: Category
+}
+export interface PostCategories extends Post {
+  posts: Post[]
+  categories: CategoryRef[]
+  comments: Comment[]
+  author: AuthorRef
+  slugCurrent: string
+}
+export interface Data {
+  posts: PostCategories[]
+}
 
 export async function getStaticPaths() {
-  const data = await sanityClient.fetch(postsQuery).then(response => response)
+  const data: Data = await sanityClient.fetch(postsQuery).then(response => response)
   return data.posts.map(post => {
     return {
       params: { slug: post.slug },
@@ -19,6 +44,7 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.request.params
 const { post } = Astro.props
+
 ---
 <BaseLayout
   title={post.title}
@@ -31,10 +57,10 @@ const { post } = Astro.props
   <section>
     {post.title && <h1 class="title text-white serif bold">{post.title}</h1>}
     published on: {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
-    {"by: "}<br>
-    <a href={buildUrl(post.author._type, post.author.slug)}>
-      {post.author.name}
-    </a>
+    <p>
+      {"by: "}<a href={buildUrl(post.author._type, post.author.slug)}>
+        {post.author.name}
+      </a>
     </p>
     {post.categories && <ul>
       {"in: "}{post.categories.map(category =>

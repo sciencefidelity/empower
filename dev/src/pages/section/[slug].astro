@@ -1,10 +1,10 @@
 ---
-import sanityClient from "lib/sanityClient"
-import { buildUrl } from "lib/utils"
-import BaseLayout from "layouts/BaseLayout.astro"
-import PortableText from "components/PortableText.svelte"
-import Video from "components/Video.astro"
-import { sectionQuery } from "lib/queries"
+import sanityClient from "../../lib/sanityClient"
+import { buildUrl } from "../../lib/utils"
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import PortableText from "../../components/PortableText.svelte"
+import Video from "../../components/Video.astro"
+import { sectionQuery } from "../../lib/queries"
 
 export async function getStaticPaths() {
   const data = await sanityClient.fetch(sectionQuery)
@@ -38,6 +38,7 @@ const { section } = Astro.props
       </p>
     }
     {section.video && <Video video={section.video} />}
+  </div>
 </BaseLayout>
 
 <style lang="scss">

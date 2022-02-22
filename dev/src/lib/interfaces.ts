@@ -1,8 +1,14 @@
 import type {
+  Author,
+  Photography,
+  Post,
   SanityImageAsset,
   SanityImageCrop,
   SanityImageHotspot,
-  SanityReference
+  SanityKeyedReference,
+  SanityReference,
+  Section,
+  Site
 } from "../generated/schema"
 
 export interface Image {
@@ -10,4 +16,26 @@ export interface Image {
   asset: SanityReference<SanityImageAsset>
   crop?: SanityImageCrop
   hotspot?: SanityImageHotspot
+}
+
+// export interface SlugCurrent extends Slug {
+//   slug: string
+// }
+
+export interface SiteRefs extends Site {
+  sections: SanityKeyedReference<Section>[]
+}
+
+export interface IndexData {
+  site: SiteRefs
+  photograph: Photography
+}
+
+export interface AuthorPosts extends Author {
+  posts: Post[]
+}
+
+export interface AuthorData {
+  authors: AuthorPosts[]
+  slug: string
 }
