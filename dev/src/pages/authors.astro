@@ -23,7 +23,7 @@ const title = "All Authors"
         <li>
           <a href={buildUrl(author._type, author.slug)}>{author.name}</a>
           <ul>
-            {author.posts.map(post => (
+            {author.posts.map(post =>
               <li>
                 <p><a href={buildUrl(post._type, post.slug)}>{post.title}</a></p>
                 <p>{format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}</p>

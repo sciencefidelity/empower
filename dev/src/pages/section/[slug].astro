@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     .then(response => response)
   return data.sections.map(section => {
     return {
-      params: { slug: slug },
+      params: { slug: section.slug },
       props: { section }
     }
   })
