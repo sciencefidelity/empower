@@ -1,7 +1,7 @@
 import { resolve } from "path"
 
 export default {
-  projectRoot: '.'
+  projectRoot: '.',
   // https://docs.astro.build/en/reference/configuration-reference/
   buildOptions: {
     site: "https://empower-us-all.org",
