@@ -9,6 +9,7 @@
     "dev": "sanity start",
     "start": "sanity start",
     "build": "sanity build",
+    "clean": "rm -rf dist",
     "format": "prettier --write '**/*.{ts,js,tsx,jsx,json,md,yml}'"
   },
   "keywords": [
