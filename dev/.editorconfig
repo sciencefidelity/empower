@@ -14,7 +14,7 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
-# html
+# Astro
 [*.astro]
 indent_style = space
 indent_size = 2
