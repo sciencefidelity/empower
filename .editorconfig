@@ -14,6 +14,16 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
+# html
+[*.html]
+indent_style = space
+indent_size = 2
+
+# Astro
+[*.astro]
+indent_style = space
+indent_size = 2
+
 # scss
 [*.scss]
 indent_style = space
@@ -21,5 +31,10 @@ indent_size = 2
 
 # json
 [*.json]
+indent_style = space
+indent_size = 2
+
+# yml
+[*.yml]
 indent_style = space
 indent_size = 2
