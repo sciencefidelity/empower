@@ -10,7 +10,7 @@ export default {
   devOptions: {
     hostname: "0.0.0.0",
   },
-  renderers: ["@astrojs/renderer-react", "@astrojs/renderer-svelte"],
+  integrations: ["@astrojs/renderer-react", "@astrojs/renderer-svelte"],
   vite: {
     resolve: {
       alias: {
