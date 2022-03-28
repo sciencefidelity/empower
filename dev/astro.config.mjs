@@ -1,4 +1,6 @@
 import { resolve } from "path"
+import react from '@astrojs/react';
+import svelte from '@astrojs/svelte';
 
 export default {
   projectRoot: '.',
@@ -10,7 +12,7 @@ export default {
   devOptions: {
     hostname: "0.0.0.0",
   },
-  integrations: ["@astrojs/renderer-react", "@astrojs/renderer-svelte"],
+  integrations: [react(), svelte()],
   vite: {
     resolve: {
       alias: {
