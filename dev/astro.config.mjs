@@ -3,12 +3,8 @@ import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 
 export default defineConfig({
-  projectRoot: '.',
-  buildOptions: {
-    site: "https://empower-us-all.org",
-    sitemap: true
-  },
-  devOptions: {
+  site: "https://empower-stage.vercel.app/",
+  server: {
     host: false
   },
   integrations: [react(), svelte()],
