@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config"
-// import { resolve } from "path"
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 
