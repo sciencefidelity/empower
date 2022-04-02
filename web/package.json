@@ -15,22 +15,22 @@
     "fix:styles": "stylelint --fix '**/*.{astro,scss}' --ignore-path .eslintignore"
   },
   "devDependencies": {
-    "astro": "^0.23.0",
-    "concurrently": "^7.0.0",
-    "postcss": "^8.4.6",
+    "astro": "^0.26.0",
+    "concurrently": "^7.1.0",
+    "postcss": "^8.4.12",
     "postcss-html": "^1.3.0",
     "postcss-scss": "^4.0.3",
     "sanitize.css": "^13.0.0",
-    "sass": "^1.49.8",
-    "stylelint": "^14.5.1",
+    "sass": "^1.49.11",
+    "stylelint": "^14.6.1",
     "stylelint-config-html": "^1.0.0",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-recommended-scss": "^5.0.2",
+    "stylelint-config-recommended-scss": "^6.0.0",
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard": "^25.0.0",
     "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.1.0",
+    "stylelint-scss": "^4.2.0",
     "stylelint-selector-bem-pattern": "^2.1.1"
   }
 }

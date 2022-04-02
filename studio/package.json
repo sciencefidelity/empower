@@ -16,20 +16,20 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.29.2",
+    "@sanity/base": "^2.29.3",
     "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.28.1",
-    "@sanity/default-layout": "^2.29.2",
-    "@sanity/default-login": "^2.29.2",
-    "@sanity/desk-tool": "^2.29.2",
-    "@sanity/vision": "^2.29.2",
+    "@sanity/core": "^2.29.3",
+    "@sanity/default-layout": "^2.29.3",
+    "@sanity/default-login": "^2.29.3",
+    "@sanity/desk-tool": "^2.29.4",
+    "@sanity/vision": "^2.29.3",
     "prop-types": "^15.8.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "styled-components": "^5.3.3"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
-    "prettier": "^2.5.1",
+    "prettier": "^2.6.2",
     "sanity-codegen": "^0.9.8"
   }
 }
