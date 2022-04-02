@@ -1,8 +1,9 @@
 <script lang="ts">
+  export const className = ""
+  export let focusable = "false"
+  export let height = "1rem"
   export let name: string
   export let width = "1rem"
-  export let height = "1rem"
-  export let focusable = "false"
   let icons = [
     {
       width: width,
@@ -45,7 +46,7 @@
 </script>
 
 <svg
-  class={$$props.class}
+  class={$$props.className}
   {focusable}
   {width}
   {height}

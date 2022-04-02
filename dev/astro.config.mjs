@@ -10,7 +10,7 @@ export default defineConfig({
     sitemap: true
   },
   devOptions: {
-    host: true
+    host: false
   },
   integrations: [react(), svelte()],
 })

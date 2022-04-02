@@ -11,8 +11,8 @@ const { menu } = data
 <nav class="nav">
   <div class="lg-hide">
     <ul class="nav__row flex row">
-      {menu.items.map(item =>
-        <li key={item._id}>
+      {menu.items && menu.items.map(item =>
+        <li>
           <a
             href={buildUrl(item._type, item.slug)}
             class="nav__link text-white bold td-none"

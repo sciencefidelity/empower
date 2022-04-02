@@ -31,12 +31,12 @@ const {
     </div>
     <div class="sections grid">
       {sections.map((section, idx) =>
-        <div class="section" key={idx}>
+        <div class="section">
           <a href={buildUrl(section._type, section.slug)} tabindex={-1}>
             <div class={`section__icon ${section.slug} relative`}>
               <Icon
                 name={section.slug}
-                class="absolute"
+                className="absolute"
                 width="352"
                 height="352"
               />
