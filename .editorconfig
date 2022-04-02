@@ -8,33 +8,33 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 charset = utf-8
-
-# TypeScript, JavaScript
-[*.{ts,tsx,js,jsx}]
 indent_style = space
-indent_size = 2
 
 # html
 [*.html]
-indent_style = space
 indent_size = 2
 
-# Astro
-[*.astro]
-indent_style = space
+# Framework components
+[*.{astro,svelte,vue}]
 indent_size = 2
 
-# scss
-[*.scss]
-indent_style = space
+# TypeScript, JavaScript
+[*.{ts,js,tsx,jsx}]
+indent_size = 2
+
+# css, scss
+[*.{css,scss}]
 indent_size = 2
 
 # json
 [*.json]
-indent_style = space
 indent_size = 2
 
 # yml
 [*.yml]
-indent_style = space
 indent_size = 2
+
+# shell script
+[*.sh]
+indent_size = 2
+

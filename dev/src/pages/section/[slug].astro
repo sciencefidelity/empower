@@ -1,12 +1,12 @@
 ---
-import sanityClient from "../../lib/sanityClient"
-import { buildUrl } from "../../lib/utils"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import PortableText from "../../components/PortableText"
-import { components } from "../../components/PortableTextComponents"
-import Video from "../../components/VideoComponent.astro"
-import { sectionQuery } from "../../lib/queries"
-import { Section } from "../../lib/interfaces"
+import sanityClient from "lib/sanityClient"
+import { PortableText } from "@portabletext/react"
+import { buildUrl } from "lib/utils"
+import BaseLayout from "layouts/BaseLayout.astro"
+import { components } from "components/PortableTextComponents"
+import Video from "components/VideoComponent.astro"
+import { sectionQuery } from "lib/queries"
+import { Section } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: { sections: Section[] } = await sanityClient.fetch(sectionQuery)

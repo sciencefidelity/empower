@@ -1,12 +1,12 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "../../lib/sanityClient.ts"
-import { buildUrl, twitterLink } from "../../lib/utils.ts"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import PortableText from "../../components/PortableText"
-import { components } from "../../components/PortableTextComponents"
-import { authorQuery } from "../../lib/queries"
-import { Author } from "../../lib/interfaces"
+import { PortableText } from "@portabletext/react"
+import sanityClient from "lib/sanityClient.ts"
+import { buildUrl, twitterLink } from "lib/utils.ts"
+import BaseLayout from "layouts/BaseLayout.astro"
+import { components } from "components/PortableTextComponents"
+import { authorQuery } from "lib/queries"
+import { Author } from "lib/interfaces"
 
 export async function getStaticPaths( ) {
   const data: { authors: Author[] } = await sanityClient.fetch(authorQuery)

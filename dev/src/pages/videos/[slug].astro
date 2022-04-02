@@ -1,12 +1,12 @@
 ---
-import sanityClient from "../../lib/sanityClient"
-import { buildUrl } from "../../lib/utils"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import PortableText from "../../components/PortableText"
-import { components } from "../../components/PortableTextComponents"
-import VideoComponent from "../../components/VideoComponent.astro"
-import { videoQuery } from "../../lib/queries"
-import { Video } from "../../lib/interfaces"
+import { PortableText } from "@portabletext/react"
+import sanityClient from "lib/sanityClient"
+import { buildUrl } from "lib/utils"
+import BaseLayout from "layouts/BaseLayout.astro"
+import { components } from "components/PortableTextComponents"
+import VideoComponent from "components/VideoComponent.astro"
+import { videoQuery } from "lib/queries"
+import { Video } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: { videos: Video[] } = await sanityClient

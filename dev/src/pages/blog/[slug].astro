@@ -1,13 +1,13 @@
 ---
 import format from "date-fns/format"
-import sanityClient from "../../lib/sanityClient"
-import { article, buildUrl, twitterLink } from "../../lib/utils"
-import BaseLayout from "../../layouts/BaseLayout.astro"
-import CommentForm from "../../components/CommentForm.svelte"
-import PortableText from "../../components/PortableText"
-import { components } from "../../components/PortableTextComponents"
-import { postsQuery } from "../../lib/queries"
-import { Post } from "../../lib/interfaces"
+import { PortableText } from "@portabletext/react"
+import sanityClient from "lib/sanityClient"
+import { article, buildUrl, twitterLink } from "lib/utils"
+import BaseLayout from "layouts/BaseLayout.astro"
+import CommentForm from "components/CommentForm.svelte"
+import { components } from "components/PortableTextComponents"
+import { postsQuery } from "lib/queries"
+import { Post } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: { posts: Post[] } = await sanityClient
@@ -32,7 +32,7 @@ const {
   seoDescription,
   seoKeywords,
   seoTitle,
-  title,
+  title
 } = post
 ---
 <BaseLayout

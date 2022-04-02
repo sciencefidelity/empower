@@ -1,13 +1,13 @@
 ---
-import sanityClient from "../lib/sanityClient"
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Blog from "../components/Blog.astro"
-import ContactForm from "../components/ContactForm.svelte"
-// import Image from "../../components/Image.astro"
-import PortableText from "../components/PortableText"
-import { components } from "../components/PortableTextComponents"
-import { pageQuery } from "../lib/queries"
-import { Page } from "../lib/interfaces"
+import { PortableText } from "@portabletext/react"
+import sanityClient from "lib/sanityClient"
+import BaseLayout from "layouts/BaseLayout.astro"
+import Blog from "components/Blog.astro"
+import ContactForm from "components/ContactForm.svelte"
+// import Image from "components/Image.astro"
+import { components } from "components/PortableTextComponents"
+import { pageQuery } from "lib/queries"
+import { Page } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: { pages: Page[] } = await sanityClient
