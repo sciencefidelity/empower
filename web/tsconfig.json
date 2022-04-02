@@ -1,5 +1,25 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node"
-  }
+    "esModuleInterop": true,
+    "module": "esnext",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "lib/*": ["src/lib/*"],
+      "generated/*": ["src/generated/*"],
+      "pages/*": ["src/pages/*"],
+      "styles/*": ["src/styles/*"]
+    }
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.svelte",
+    "src/**/*.astro"
+  ]
 }
