@@ -1,12 +1,9 @@
 import { defineConfig } from "astro/config"
 
 export default defineConfig({
-  projectRoot: '.',
-  buildOptions: {
-    site: "https://empower-stage.vercel.app/",
-    sitemap: true
-  },
-  devOptions: {
+  site: "https://empower-us-all.org/",
+  sitemap: true,
+  server: {
     host: false
   }
 })
