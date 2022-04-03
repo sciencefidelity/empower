@@ -18,7 +18,7 @@ export async function getStaticPaths() {
     }
   })
 }
-const { slug } = Astro.request.params
+const { slug } = Astro.params
 const { section } = Astro.props as { section: Section }
 const { body, seoDescription, seoKeywords, seoTitle, title, video } = section
 ---

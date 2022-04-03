@@ -19,7 +19,7 @@ export async function getStaticPaths() {
     }
   })
 }
-const { slug } = Astro.request.params
+const { slug } = Astro.params
 const { video } = Astro.props as { video: Video }
 const {
   body,
