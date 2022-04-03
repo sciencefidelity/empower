@@ -14,12 +14,12 @@ indent_style = space
 [*.html]
 indent_size = 2
 
-# Framework components
+# Framework component
 [*.{astro,svelte,vue}]
 indent_size = 2
 
 # TypeScript, JavaScript
-[*.{ts,js,tsx,jsx}]
+[*.{ts,js,cjs,mjs,tsx,jsx}]
 indent_size = 2
 
 # css, scss
