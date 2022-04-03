@@ -7,6 +7,7 @@ import { Menu } from "lib/interfaces"
 const response = await sanityClient.fetch(navbarQuery)
 const data: { menu: Menu } = await response
 const { menu } = data
+const { pathname } = Astro.props as { pathname: string }
 ---
 <nav class="nav">
   <div class="lg-hide">
@@ -15,7 +16,10 @@ const { menu } = data
         <li>
           <a
             href={buildUrl(item._type, item.slug)}
-            class="nav__link text-white bold td-none"
+            class={`
+              nav__link text-white bold td-none
+              ${pathname === '/' + item.slug + '/' ? 'active' : ''}
+            `}
           >
             {item.title}
           </a>
@@ -48,6 +52,11 @@ const { menu } = data
       transition: border-bottom 0.3s ease-in-out;
     }
   }
+}
+
+.active {
+  border-bottom: 2px solid rgba(255, 255, 255, 80%);
+  cursor: unset;
 }
 
 .hamburger-container {
