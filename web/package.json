@@ -15,7 +15,7 @@
     "fix:styles": "stylelint --fix '**/*.{astro,scss}' --ignore-path .eslintignore"
   },
   "devDependencies": {
-    "astro": "^0.26.0",
+    "astro": "^1.0.0-beta.4",
     "concurrently": "^7.1.0",
     "postcss": "^8.4.12",
     "postcss-html": "^1.3.0",
