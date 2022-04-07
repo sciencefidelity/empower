@@ -6,6 +6,12 @@
     "stylelint-config-recess-order",
     "stylelint-config-html"
   ],
+  "overrides": [
+    {
+      "files": ["*.astro", "**/*.astro", "*.svelte", "**/*.svelte"],
+      "customSyntax": "postcss-html"
+    }
+  ],
   "plugins": ["stylelint-scss", "stylelint-selector-bem-pattern"],
   "rules": {
     "at-rule-empty-line-before": [
@@ -33,6 +39,7 @@
         "combined": "^\\.combined-{componentName}-[a-z]+$"
       },
       "utilitySelectors": "^\\.util-[a-z]+$"
-    }
+    },
+    "function-no-unknown": [true, { "ignoreFunctions": ["map.get"] }]
   }
 }

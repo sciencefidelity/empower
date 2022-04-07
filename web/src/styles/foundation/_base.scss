@@ -5,11 +5,11 @@
 }
 
 html {
+  font-family: var(--sans);
   font-size: 62.5%;
   background-color: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: var(--sans);
 }
 
 body {
@@ -18,10 +18,10 @@ body {
 }
 
 h1 {
-  font-family: Verveine;
-  color: var(--blue);
+  font-family: Verveine, sans-serif;
   font-size: 17rem;
   line-height: 1.3;
+  color: var(--blue);
   @include b.mq(lg) {
     font-size: 14rem;
   }
