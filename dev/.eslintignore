@@ -7,4 +7,4 @@ generated
 pnpm-lock.yaml
 .nova
 .vscode
-Icon.astro
+# Icon.astro
