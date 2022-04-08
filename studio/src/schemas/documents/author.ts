@@ -8,8 +8,9 @@ export default {
   fields: [
     {
       name: 'name',
-      title: 'Name',
-      type: 'string'
+      title: 'Full name',
+      type: 'string',
+      description: 'Use your real name so people can recognize you'
     },
     {
       name: 'slug',
@@ -26,9 +27,16 @@ export default {
       type: 'string'
     },
     {
-      name: 'twitterHandle',
-      title: 'Twitter Handle',
-      type: 'string'
+      name: 'facebook',
+      title: 'Facebook profile',
+      type: 'url',
+      description: 'URL of your personal Facebook Profile'
+    },
+    {
+      name: 'twitter',
+      title: 'Twitter profile',
+      type: 'url',
+      description: 'URL of your personal Twitter Profile'
     },
     {
       name: 'bio',

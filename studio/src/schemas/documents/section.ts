@@ -7,39 +7,67 @@ export default {
   icon: Lotus,
   groups: [
     {
-      name: 'info',
-      title: 'Info'
+      name: 'post',
+      title: 'Section'
     },
     {
-      name: 'content',
-      title: 'Content'
+      name: 'settings',
+      title: 'Settings'
     },
     {
-      name: 'seo',
-      title: 'SEO'
+      name: 'meta',
+      title: 'Meta data'
+    },
+    {
+      name: 'twitter',
+      title: 'Twitter card'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook card'
     }
   ],
   fields: [
+    {
+      name: 'image',
+      title: 'Feature image',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      group: 'post'
+    },
+    {
+      name: 'imageData',
+      title: 'Image data',
+      type: 'imageData',
+      group: 'post'
+    },
+    {
+      name: 'video',
+      title: 'Video',
+      type: 'reference',
+      to: { type: 'video' },
+      group: 'post'
+    },
     {
       name: 'title',
       title: 'Section Title',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
-      group: 'info'
+      group: 'post'
     },
     {
       name: 'subtitle',
       title: 'Subitle',
       type: 'string',
-      group: 'info'
+      group: 'post'
     },
     {
-      name: 'menuTitle',
-      title: 'Menu Title',
-      type: 'string',
-      description:
-        'The title shown in the main navigation if defferent from Title',
-      group: 'info'
+      name: 'body',
+      title: 'Introduction',
+      type: 'portableText',
+      group: 'post'
     },
     {
       name: 'slug',
@@ -52,50 +80,22 @@ export default {
       group: 'info'
     },
     {
-      name: 'body',
-      title: 'Introduction',
-      type: 'portableText',
-      group: 'content'
+      name: 'meta',
+      title: 'Meta data',
+      type: 'metaData',
+      group: 'meta'
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      group: 'content'
+      name: 'twitterCard',
+      title: 'Twitter Card',
+      type: 'twitterCard',
+      group: 'twitter'
     },
     {
-      name: 'video',
-      title: 'Video',
-      type: 'reference',
-      to: { type: 'video' },
-      group: 'content'
-    },
-    {
-      name: 'seoTitle',
-      title: 'SEO title',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 60 characters).',
-      group: 'seo'
-    },
-    {
-      name: 'seoDescription',
-      title: 'SEO description',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 65 characters).',
-      group: 'seo'
-    },
-    {
-      name: 'seoImage',
-      title: 'SEO Image',
-      type: 'image',
-      description:
-        'Ideal size 1200 x 630px (if not added main image will be used).',
-      group: 'seo'
+      name: 'facebookCard',
+      title: 'Facebook Card',
+      type: 'facebookCard',
+      group: 'facebook'
     }
   ],
 

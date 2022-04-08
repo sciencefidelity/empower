@@ -1,11 +1,4 @@
-import { Rule } from '@sanity/types'
 import { WritingHand } from '../../components/twemoji'
-
-interface Selection {
-  author?: string
-  title?: string
-  media?: string
-}
 
 export default {
   name: 'post',
@@ -14,24 +7,53 @@ export default {
   icon: WritingHand,
   groups: [
     {
-      name: 'info',
-      title: 'Information'
+      name: 'post',
+      title: 'Post'
     },
     {
-      name: 'content',
-      title: 'Content'
+      name: 'settings',
+      title: 'Settings'
     },
     {
-      name: 'seo',
-      title: 'SEO'
+      name: 'meta',
+      title: 'Meta data'
+    },
+    {
+      name: 'twitter',
+      title: 'Twitter card'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook card'
     }
   ],
   fields: [
     {
+      name: 'image',
+      title: 'Feature image',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      group: 'post'
+    },
+    {
+      name: 'imageData',
+      title: 'Image data',
+      type: 'imageData',
+      group: 'post'
+    },
+    {
       name: 'title',
-      title: 'Title',
+      title: 'Post title',
       type: 'string',
-      group: 'info'
+      group: 'post'
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'portableText',
+      group: 'post'
     },
     {
       name: 'slug',
@@ -41,94 +63,58 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      group: 'info'
+      group: 'settings'
     },
     {
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: { type: 'author' },
-      group: 'info'
+      name: 'settings',
+      title: 'Post settings',
+      type: 'pageSettings',
+      group: 'settings'
     },
     {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-      options: {
-        dateFormat: 'dddd, MMMM Do YYYY,',
-        timeFormat: 'h:mm a',
-        calendarTodayLabel: 'Today'
-      },
-      initialValue: new Date().toISOString(),
-      group: 'info'
+      name: 'meta',
+      title: 'Meta data',
+      type: 'metaData',
+      group: 'meta'
     },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'tag' } }],
-      group: 'info'
+      name: 'twitterCard',
+      title: 'Twitter Card',
+      type: 'twitterCard',
+      group: 'twitter'
     },
     {
-      name: 'keywords',
-      title: 'Keywords (tags)',
-      type: 'string',
-      group: 'info'
+      name: 'facebookCard',
+      title: 'Facebook Card',
+      type: 'facebookCard',
+      group: 'facebook'
     },
     {
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      group: 'info'
-    },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'portableText',
-      group: 'content'
-    },
-    {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      group: 'content'
-    },
-    {
-      name: 'ogTitle',
-      title: 'Social title',
-      description:
-        'Displayed on Facebook and Twitter shares (max 60 characters)',
-      type: 'string',
-      validation: (Rule: Rule) =>
-        Rule.max(60).warning(`Only 60 characters will be visible.`),
-      group: 'seo'
-    },
-    {
-      name: 'ogDescription',
-      title: 'Social description',
-      description:
-        'Displayed on Facebook and Twitter shares (max 65 characters)',
-      type: 'string',
-      validation: (Rule: Rule) =>
-        Rule.max(65).warning(`Only 65 characters will be visible.`),
-      group: 'seo'
+      name: 'feature',
+      title: 'Feature this post',
+      type: 'boolean',
+      group: 'settings'
     }
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
-      media: 'mainImage'
+      author0: 'settings.authors.0.name',
+      author1: 'settings.authors.1.name',
+      author2: 'settings.authors.2.name',
+      author3: 'settings.authors.3.name',
+      media: 'image'
     },
-    prepare(selection: Selection) {
-      const { author } = selection
-      return Object.assign({}, selection, {
-        subtitle: author && `by ${author}`
-      })
+    prepare: ({ title, author0, author1, author2, author3, media }) => {
+      const authors = [author0, author1, author2].filter(Boolean)
+      const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
+      const hasMoreAuthors = Boolean(author3)
+      return {
+        title,
+        subtitle: hasMoreAuthors ? `${subtitle}…` : subtitle,
+        media
+      }
     }
   }
 }

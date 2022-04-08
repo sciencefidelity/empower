@@ -1,4 +1,3 @@
-import { Rule } from '@sanity/types'
 import { Books } from '../../components/twemoji'
 
 export default {
@@ -8,53 +7,53 @@ export default {
   icon: Books,
   groups: [
     {
-      name: 'info',
-      title: 'Info'
+      name: 'page',
+      title: 'Page'
     },
     {
-      name: 'content',
-      title: 'Content'
+      name: 'settings',
+      title: 'Settings'
     },
     {
-      name: 'seo',
-      title: 'SEO'
+      name: 'meta',
+      title: 'Meta data'
+    },
+    {
+      name: 'twitter',
+      title: 'Twitter card'
+    },
+    {
+      name: 'facebook',
+      title: 'Facebook card'
     }
   ],
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: (Rule: Rule) => Rule.required(),
-      group: 'info'
-    },
-    {
-      name: 'menuTitle',
-      title: 'Menu Title',
-      type: 'string',
-      description: 'The title shown in the main navigation',
-      validation: (Rule: Rule) => Rule.required(),
-      group: 'info'
-    },
-    {
-      name: 'template',
-      title: 'Template',
-      type: 'array',
-      of: [{ type: 'string' }],
+      name: 'image',
+      title: 'Feature image',
+      type: 'image',
       options: {
-        layout: 'grid',
-        list: [
-          { title: 'Page', value: 'page' },
-          { title: 'Blog', value: 'blog' },
-          { title: 'Contact', value: 'contact' }
-        ]
+        hotspot: true
       },
-      initialValue: {
-        title: 'Page',
-        value: 'page'
-      },
-      validation: (Rule: Rule) => Rule.required(),
-      group: 'info'
+      group: 'page'
+    },
+    {
+      name: 'imageData',
+      title: 'Image data',
+      type: 'imageData',
+      group: 'page'
+    },
+    {
+      name: 'title',
+      title: 'Page title',
+      type: 'string',
+      group: 'page'
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'portableText',
+      group: 'page'
     },
     {
       name: 'slug',
@@ -64,53 +63,57 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      group: 'info'
+      group: 'settings'
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'portableText',
-      group: 'content'
+      name: 'settings',
+      title: 'Page settings',
+      type: 'pageSettings',
+      group: 'settings'
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      group: 'content'
+      name: 'meta',
+      title: 'Meta data',
+      type: 'metaData',
+      group: 'meta'
     },
     {
-      name: 'seoTitle',
-      title: 'SEO title',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 60 characters).',
-      group: 'seo'
+      name: 'twitterCard',
+      title: 'Twitter Card',
+      type: 'twitterCard',
+      group: 'twitter'
     },
     {
-      name: 'seoDescription',
-      title: 'SEO description',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 65 characters).',
-      group: 'seo'
+      name: 'facebookCard',
+      title: 'Facebook Card',
+      type: 'facebookCard',
+      group: 'facebook'
     },
     {
-      name: 'seoImage',
-      title: 'SEO Image',
-      type: 'image',
-      description:
-        'Ideal size 1200 x 630px (if not added main image will be used).',
-      group: 'seo'
+      name: 'feature',
+      title: 'Feature this page',
+      type: 'boolean',
+      group: 'settings'
     }
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage'
+      author0: 'settings.authors.0.name',
+      author1: 'settings.authors.1.name',
+      author2: 'settings.authors.2.name',
+      author3: 'settings.authors.3.name',
+      media: 'image'
+    },
+    prepare: ({ title, author0, author1, author2, author3 }) => {
+      const authors = [author0, author1, author2].filter(Boolean)
+      const subtitle = authors.length > 0 ? `by ${authors.join(', ')}` : ''
+      const hasMoreAuthors = Boolean(author3)
+      return {
+        title,
+        subtitle: hasMoreAuthors ? `${subtitle}…` : subtitle
+      }
     }
   }
 }
