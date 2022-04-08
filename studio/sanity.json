@@ -5,7 +5,6 @@
   },
   "plugins": [
     "@sanity/base",
-    "@sanity/components",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
@@ -21,7 +20,15 @@
   "parts": [
     {
       "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema"
+      "path": "./src/schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/base/theme/variables/override-style",
+      "path": "./src/styles/theme.css"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./src/dashboard"
     }
   ]
 }

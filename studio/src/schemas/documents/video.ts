@@ -16,7 +16,7 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent'
+      type: 'portableText'
     },
     {
       name: 'videoLink',

@@ -67,7 +67,7 @@ export default {
     {
       name: 'introduction',
       title: 'Introduction',
-      type: 'blockContent',
+      type: 'portableText',
       group: 'content'
     },
     {

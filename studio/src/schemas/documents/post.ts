@@ -63,7 +63,7 @@ export default {
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }],
+      of: [{ type: 'reference', to: { type: 'tag' } }],
       group: 'info'
     },
     {
@@ -81,7 +81,7 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'portableText',
       group: 'content'
     },
     {

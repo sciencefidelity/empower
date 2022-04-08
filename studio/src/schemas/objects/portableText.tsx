@@ -107,9 +107,6 @@ export default {
       options: { hotspot: true }
     },
     {
-      type: 'code'
-    },
-    {
       type: 'youtube'
     }
   ]
