@@ -1,9 +1,11 @@
 import { Rule } from '@sanity/types'
+import { Books } from '../../components/twemoji'
 
 export default {
   name: 'page',
   title: 'Page',
   type: 'document',
+  icon: Books,
   groups: [
     {
       name: 'info',

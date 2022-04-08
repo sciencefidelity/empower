@@ -1,7 +1,10 @@
+import { CameraFlash } from '../../components/twemoji'
+
 export default {
   name: 'photography',
   title: 'Photography',
   type: 'document',
+  icon: CameraFlash,
   fields: [
     {
       name: 'title',

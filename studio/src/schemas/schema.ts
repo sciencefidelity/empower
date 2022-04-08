@@ -3,18 +3,18 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // objects
 import portableText from './objects/portableText'
+import socialLinks from './objects/socialLinks'
 import youtube from './objects/youtube'
 
 // documents
 import author from './documents/author'
 import comment from './documents/comment'
-import menu from './documents/menu'
+import navigation from './documents/navigation'
 import page from './documents/page'
 import photography from './documents/photography'
 import post from './documents/post'
 import section from './documents/section'
-import site from './documents/site'
-import social from './documents/social'
+import settings from './documents/settings'
 import video from './documents/video'
 
 // taxonomy
@@ -25,18 +25,18 @@ export default createSchema({
   types: schemaTypes.concat([
     // objects
     portableText,
+    socialLinks,
     youtube,
 
     // documents
     author,
     comment,
-    menu,
+    navigation,
     page,
     photography,
     post,
     section,
-    site,
-    social,
+    settings,
     video,
 
     // taxonomy

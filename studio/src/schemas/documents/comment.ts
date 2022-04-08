@@ -1,4 +1,5 @@
-import { Rule } from "@sanity/types"
+import { Rule } from '@sanity/types'
+import { SpeechBalloon } from '../../components/twemoji'
 
 interface Selection {
   title?: string
@@ -9,6 +10,7 @@ export default {
   name: 'comment',
   title: 'Comment',
   type: 'document',
+  icon: SpeechBalloon,
   fields: [
     {
       name: 'name',

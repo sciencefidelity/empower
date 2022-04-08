@@ -1,7 +1,10 @@
+import { FilmProjector } from '../../components/twemoji'
+
 export default {
   name: 'video',
   title: 'Video',
   type: 'document',
+  icon: FilmProjector,
   fields: [
     {
       name: 'title',

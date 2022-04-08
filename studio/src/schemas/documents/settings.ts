@@ -1,10 +1,12 @@
-import { Rule } from "@sanity/types"
+import { Rule } from '@sanity/types'
+import { Gear } from '../../components/twemoji'
 
 export default {
-  name: 'site',
-  title: 'Site',
+  name: 'settings',
+  title: 'Settings',
   type: 'document',
-  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+  icon: Gear,
+  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   groups: [
     {
       name: 'meta',

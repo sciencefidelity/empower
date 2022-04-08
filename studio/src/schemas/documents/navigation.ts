@@ -1,8 +1,11 @@
+import { Compass } from '../../components/twemoji'
+
 export default {
-  name: 'menu',
-  title: 'Menu',
+  name: 'navigation',
+  title: 'Navigation',
   type: 'document',
-  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+  icon: Compass,
+  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   fields: [
     {
       name: 'title',

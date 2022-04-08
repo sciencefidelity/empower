@@ -1,4 +1,5 @@
-import { Rule } from "@sanity/types"
+import { Rule } from '@sanity/types'
+import { WritingHand } from '../../components/twemoji'
 
 interface Selection {
   author?: string
@@ -10,6 +11,7 @@ export default {
   name: 'post',
   title: 'Post',
   type: 'document',
+  icon: WritingHand,
   groups: [
     {
       name: 'info',
@@ -57,6 +59,7 @@ export default {
         timeFormat: 'h:mm a',
         calendarTodayLabel: 'Today'
       },
+      initialValue: new Date().toISOString(),
       group: 'info'
     },
     {

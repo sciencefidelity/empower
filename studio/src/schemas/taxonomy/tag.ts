@@ -1,7 +1,10 @@
+import { Label } from '../../components/twemoji'
+
 export default {
   name: 'tag',
   title: 'Tag',
   type: 'document',
+  icon: Label,
   fields: [
     {
       name: 'title',

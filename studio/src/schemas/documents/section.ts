@@ -1,7 +1,10 @@
+import { Lotus } from '../../components/twemoji'
+
 export default {
   name: 'section',
   title: 'Section',
   type: 'document',
+  icon: Lotus,
   groups: [
     {
       name: 'info',

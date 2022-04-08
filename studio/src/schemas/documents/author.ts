@@ -1,7 +1,10 @@
+import { LotusPosition } from '../../components/twemoji'
+
 export default {
   name: 'author',
   title: 'Author',
   type: 'document',
+  icon: LotusPosition,
   fields: [
     {
       name: 'name',
