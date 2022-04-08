@@ -42,15 +42,6 @@ const {
 >
   <div>
     <h1 class="title bold text-white serif">{title}</h1>
-    <!-- {mainImage &&
-      <Image
-        caption={title}
-        image={mainImage}
-        width={900}
-        height={600}
-        lazy={false}
-      />
-    } -->
     {body && <PortableText value={body} components={components} />}
     {template === "blog" && <Blog />}
     {template === "contact" && <ContactForm client:idle />}
