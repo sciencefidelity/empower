@@ -1,8 +1,10 @@
-import * as React from 'react'
+import React from 'react'
+import { MdOutlineAddLink, MdOutlineAlternateEmail } from 'react-icons/md'
+import { RiExternalLinkLine } from 'react-icons/ri'
 
 export default {
-  title: 'Block Content',
-  name: 'blockContent',
+  title: 'Rich Text',
+  name: 'portableText',
   type: 'array',
   of: [
     {
@@ -24,7 +26,7 @@ export default {
         ],
         annotations: [
           {
-            title: 'Internal Link',
+            title: 'Internal link',
             name: 'internalLink',
             type: 'object',
             fields: [
@@ -33,15 +35,24 @@ export default {
                 type: 'reference',
                 to: [
                   { type: 'author' },
+                  { type: 'tag' },
                   { type: 'page' },
-                  { type: 'post' },
-                  { type: 'section' },
-                  { type: 'video' }
+                  { type: 'post' }
                 ]
               }
             ],
             blockEditor: {
-              icon: () => '🔗'
+              icon: MdOutlineAddLink,
+              render: ({ children }) => (
+                <span
+                  style={{
+                    color: '#7aa9f3',
+                    borderBottom: '1px solid #7aa9f3'
+                  }}
+                >
+                  {children}
+                </span>
+              )
             }
           },
           {
@@ -50,18 +61,42 @@ export default {
             type: 'object',
             fields: [
               {
-                title: 'URL',
                 name: 'href',
                 type: 'url'
               },
               {
                 title: 'Open in a new window',
                 name: 'blank',
-                type: 'boolean'
+                type: 'boolean',
+                initialValue: true
               }
             ],
             blockEditor: {
-              icon: () => '🌎'
+              icon: RiExternalLinkLine
+            }
+          },
+          {
+            title: 'Email',
+            name: 'mailto',
+            type: 'object',
+            fields: [
+              {
+                name: 'mailto',
+                type: 'email'
+              }
+            ],
+            blockEditor: {
+              icon: MdOutlineAlternateEmail,
+              render: ({ children }) => (
+                <span
+                  style={{
+                    color: '#7aa9f3',
+                    borderBottom: '1px solid #7aa9f3'
+                  }}
+                >
+                  {children}
+                </span>
+              )
             }
           }
         ]
@@ -70,6 +105,12 @@ export default {
     {
       type: 'image',
       options: { hotspot: true }
+    },
+    {
+      type: 'code'
+    },
+    {
+      type: 'youtube'
     }
   ]
 }

@@ -2,7 +2,8 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // objects
-import blockContent from './objects/blockContent'
+import portableText from './objects/portableText'
+import youtube from './objects/youtube'
 
 // documents
 import author from './documents/author'
@@ -17,13 +18,14 @@ import social from './documents/social'
 import video from './documents/video'
 
 // taxonomy
-import category from './taxonomy/category'
+import tag from './taxonomy/tag'
 
 export default createSchema({
   name: 'default',
   types: schemaTypes.concat([
     // objects
-    blockContent,
+    portableText,
+    youtube,
 
     // documents
     author,
@@ -38,6 +40,6 @@ export default createSchema({
     video,
 
     // taxonomy
-    category
+    tag
   ])
 })
