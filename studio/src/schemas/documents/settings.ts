@@ -9,108 +9,86 @@ export default {
   // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   groups: [
     {
+      name: 'site',
+      title: 'Title and description'
+    },
+    {
       name: 'meta',
       title: 'Meta'
     },
     {
-      name: 'content',
-      title: 'Content'
+      name: 'twitter',
+      title: 'Twitter'
     },
     {
-      name: 'seo',
-      title: 'SEO'
+      name: 'facebook',
+      title: 'Facebook'
+    },
+    {
+      name: 'social',
+      title: 'Social'
     }
   ],
   fields: [
     {
       name: 'siteName',
-      title: 'Site Name',
+      title: 'Site name',
       type: 'string',
-      group: 'meta'
+      description: 'The name of your site',
+      group: 'site'
     },
     {
       name: 'siteDescription',
-      title: 'Site Description',
+      title: 'Site description',
       type: 'string',
-      group: 'meta'
+      description: 'Used in your theme, meta data and search results',
+      group: 'site'
     },
     {
-      name: 'keywords',
-      title: 'Keywords',
+      name: 'language',
+      title: 'Publication language',
       type: 'string',
-      description: 'A list of keywords seperated by commas.',
-      group: 'meta'
-    },
-    {
-      name: 'siteURL',
-      title: 'Site URL',
-      type: 'url',
-      group: 'meta'
+      description: 'Default: English (en)',
+      placeholder: 'en',
+      group: 'site'
     },
     {
       name: 'email',
-      title: 'Email Address',
-      type: 'string',
-      group: 'meta',
-      validation: (Rule: Rule) =>
-        Rule.regex(
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        ).error('Not a valid email address')
+      title: 'Email address',
+      type: 'email',
+      group: 'site'
     },
     {
-      name: 'seoImage',
-      title: 'SEO image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
+      name: 'meta',
+      title: 'Site meta',
+      type: 'metaData',
       group: 'meta'
     },
     {
-      name: 'introduction',
-      title: 'Introduction',
-      type: 'portableText',
-      group: 'content'
+      name: 'twitterCard',
+      title: 'Twitter Card',
+      type: 'twitterCard',
+      group: 'twitter'
     },
     {
-      name: 'seoTitle',
-      title: 'SEO title',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 60 characters).',
-      validation: (Rule: Rule) =>
-        Rule.max(60).warning('Only 60 characters will be visible.'),
-      group: 'seo'
+      name: 'facebookCard',
+      title: 'Facebook Card',
+      type: 'facebookCard',
+      group: 'facebook'
     },
     {
-      name: 'seoDescription',
-      title: 'SEO description',
-      type: 'string',
-      description:
-        'Displayed on Facebook and Twitter shares (max 65 characters).',
-      validation: (Rule: Rule) =>
-        Rule.max(65).warning('Only 65 characters will be visible.'),
-      group: 'seo'
-    },
-    {
-      name: 'twitterHandle',
-      title: 'Twitter Handle',
-      type: 'string',
-      group: 'seo'
-    },
-    {
-      name: 'sections',
-      title: 'Order of Sections',
-      type: 'array',
-      of: [{ type: 'reference', to: { type: 'section' } }],
-      sortable: true,
-      group: 'content'
+      name: 'socialLinks',
+      title: 'Social links',
+      type: 'socialLinks',
+      description: 'URLs of your social profiles',
+      group: 'social'
     }
   ],
   preview: {
     select: {
       title: 'siteName',
-      media: 'mainImage'
+      subtitle: 'siteDescription',
+      media: 'twitterCard.image'
     }
   }
 }

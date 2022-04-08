@@ -77,7 +77,7 @@ export default {
         source: 'title',
         maxLength: 96
       },
-      group: 'info'
+      group: 'settings'
     },
     {
       name: 'meta',

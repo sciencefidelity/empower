@@ -1,3 +1,4 @@
+import { Rule } from '@sanity/types'
 import { Books } from '../../components/twemoji'
 
 export default {
@@ -54,6 +55,26 @@ export default {
       title: 'Body',
       type: 'portableText',
       group: 'page'
+    },
+    {
+      name: 'template',
+      title: 'Template',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'grid',
+        list: [
+          { title: 'Page', value: 'page' },
+          { title: 'Blog', value: 'blog' },
+          { title: 'Contact', value: 'contact' }
+        ]
+      },
+      initialValue: {
+        title: 'Page',
+        value: 'page'
+      },
+      validation: (Rule: Rule) => Rule.required(),
+      group: 'settings'
     },
     {
       name: 'slug',
