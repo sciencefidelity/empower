@@ -23,6 +23,10 @@
       "path": "./src/schemas/schema"
     },
     {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./src/desk-structure"
+    },
+    {
       "implements": "part:@sanity/base/theme/variables/override-style",
       "path": "./src/styles/theme.css"
     },
