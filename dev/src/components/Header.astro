@@ -1,14 +1,16 @@
 ---
 import Navbar from "components/Navbar.astro"
-const { pathname, siteName } = Astro.props as {
-  pathname: string
-  siteName: string
+
+import { Navigation, Settings } from "lib/interfaces"
+const { navigation, settings } = Astro.props as {
+  navigation: Navigation
+  settings: Settings
 }
 ---
 <header class="header container flex">
   <div class="gradient-background"></div>
-  <h1 class="lh-1"><a href="/" class="logo text-white">{siteName}</a></h1>
-  <Navbar {pathname} />
+  <h1 class="lh-1"><a href="/" class="logo text-white">{settings.siteName}</a></h1>
+  <Navbar {navigation} />
 </header>
 
 <style lang="scss">

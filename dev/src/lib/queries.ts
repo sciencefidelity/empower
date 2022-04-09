@@ -1,183 +1,68 @@
 import groq from "groq"
 
-export const layoutQuery = groq`{
-  "site": *[_type == "site"][0]{
-    email,
-    keywords,
-    seoDescription,
-    seoImage,
-    seoTitle,
-    siteDescription,
-    siteName,
-    siteURL
+const omitDrafts = `!(_id in path('drafts.**'))`
+const slug = `"slug": slug.current`
+const body = `body[]{ ..., markDefs[]{ ..., item->{ _type, ${slug} } } }`
+const navFields = `label, url->{ _type, "slug": slug.current }`
+
+const seo = `
+  facebookCard{ description, image, title },
+  meta{ canonicalURL, description, title },
+  twitterCard{ description, image, title }
+`
+
+const pageSettings = `settings{
+  excerpt, publishedAt,
+  authors[]->{ _id, _type, image, name, ${slug} },
+  tags[]->{ _id, _type, ${slug}, title }
+}`
+
+const pagePostFields = `
+  _id, _type, ${body}, feature, image, ${slug}, title, ${pageSettings}, ${seo}
+`
+
+const authors = `"authors": *[_type == "author"]{
+  _id, _type, avatar, bio, name, occupation, ${slug}
+}`
+
+const navigation = `
+  "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
+    primary[]{${navFields}},
+    secondary[]{${navFields}},
+    sections[]{${navFields}}
   }
+`
+
+const pages = `"pages": *[_type == "page" && ${omitDrafts}]{
+  template, ${pagePostFields}
+}`
+
+const posts = `"posts": *[_type == "post" && ${omitDrafts}]{
+  ${pagePostFields}
+}`
+
+const sections = `"sections": *[_type == "section"][0]{
+  _id, _type, body, image, ${slug}, subtitle, title, ${seo}
+  video->{ videoLink, title, ${slug}, section, publishDate }
+}`
+
+const settings = `"settings": *[_type == "settings" && ${omitDrafts}][0]{
+  email, siteDescription, siteName, socialLinks[]{ name, url }, ${seo}
+}`
+
+const tags = `"tags": *[_type == "tag" && ${omitDrafts}]{
+  _id, _type, ${slug}, title
+}`
+
+const videos = `"videos": *[_type == "video" && ${omitDrafts}]{
+  _id, _type, ${body}, introduction, publishDate, ${slug}, thumbnail, title,
+  videoLink, section->{ _type, title, ${slug} },
 }`
 
 export const indexQuery = groq`{
-  "site": *[_type == "site"][0]{
-    email,
-    keywords,
-    introduction,
-    "sections": sections[]->{
-      _id, _type, menuTitle, "slug": slug.current, subtitle, title
-    },
-    seoDescription,
-    seoTitle,
-    seoImage,
-    siteDescription,
-    siteName,
-    siteURL
-  },
-  "photograph": *[_type == "photography"] | order(_createdAt)[0]{
-    image, title
-  }
-}`
-
-export const pageQuery = groq`{
-  "pages": *[_type == "page"]{
-    _id,
-    _type,
-    mainImage,
-    menuTitle,
-    "slug": slug.current,
-    template[0],
-    title
-  }
-}`
-
-export const authorsQuery = groq`{
-  "authors": *[_type == "author"]{
-    _type,
-    name,
-    "posts": *[_type == "post" && author._ref == ^._id] | order(date desc){
-      _type, publishedAt, "slug": slug.current, title
-    },
-    "slug": slug.current
-  }[count(posts) > 0]
-}`
-
-export const categoriesQuery = groq`{
-  "categories": *[_type == "category"] | order(title){
-    _type,
-    "slug": slug.current,
-    title,
-    "posts": *[_type == "post" && references(^._id)]
-  }[count(posts) > 0]
-}`
-
-export const authorQuery = groq`{
-  "authors": *[_type == "author"]{
-    _type,
-    bio[]{
-      ..., markDefs[]{
-        ..., item->{_type, "slug": slug.current}
-      }
-    },
-    name,
-    "posts": *[_type == "post" && author._ref == ^._id]
-      | order(publishedAt desc){
-        _type, publishedAt, title, "slug": slug.current
-      },
-    "slug": slug.current,
-    twitterHandle
-  }[count(posts) > 0]
-}`
-
-export const postsQuery = groq`{
-  "posts": *[_type == "post"]{
-    _id,
-    _type,
-    author->{
-      _type, name, occupation, "slug": slug.current, twitterHandle
-    },
-    body[]{
-      ..., markDefs[]{
-        ..., item->{
-          _type, "slug": slug.current
-        }
-      }
-    },
-    categories[]->{_id, _type, "slug": slug.current, title},
-    "comments": *[_type == "comment" && post._ref == ^._id && approved == true]
-      | order(_createdAt desc){_createdAt, message, name},
-    publishedAt,
-    "slug": slug.current,
-    title
-  }
-}`
-
-export const categoryQuery = groq`{
-  "categories": *[_type == "category"] | order(title){
-    _id,
-    _type,
-    "posts": *[_type == "post" && references(^._id)]
-      | order(publishedAt desc){
-        _type, publishedAt, "slug": slug.current, title
-    },
-    "slug": slug.current,
-    title,
-    _id
-  }[count(posts) > 0]
-}`
-
-export const sectionQuery = groq`{
-  "sections": *[_type == "section"]{
-    _id,
-    _type,
-    body[]{
-      ..., markDefs[]{
-        ..., item->{
-          _type, "slug": slug.current
-        }
-      }
-    },
-    menuTitle,
-    seoDescription,
-    seoTitle,
-    "slug": slug.current,
-    subtitle,
-    title,
-    video->{_type, "slug": slug.current, thumbnail, title, videoLink}
-  }
-}`
-
-export const videoQuery = groq`{
-  "videos": *[_type == "video"]{
-    _type,
-    body[]{
-      ..., markDefs[]{
-        ..., item->{
-          _type, "slug": slug.current
-        }
-      }
-    },
-    introduction,
-    publishDate,
-    section->{"slug": slug.current, title, _type},
-    "slug": slug.current,
-    thumbnail,
-    title,
-    videoLink
-  }
-}`
-
-export const blogQuery = groq`{
-  "posts": *[_type == "post"] | order(publishedAt desc){
-    _id,
-    _type,
-    publishedAt,
-    "slug": slug.current,
-    title
-  }
-}`
-
-export const navbarQuery = groq`{
-  "menu": *[_type == "menu"][0]{
-    "items": items[]->{
-      _id,
-      _type,
-      "slug": slug.current,
-      title
-    }
-  }
+  ${navigation}, ${settings},
+  "photography": *[
+    _type == "photography"
+    && _id == "3d60db54-c190-48d8-a17f-396f9a6f5c05"
+  ][0] { image, title }
 }`

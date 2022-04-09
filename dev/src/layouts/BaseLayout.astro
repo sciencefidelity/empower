@@ -3,46 +3,23 @@ import "sanitize.css/sanitize.css"
 import "sanitize.css/assets.css"
 import "sanitize.css/reduce-motion.css"
 import "styles/global.scss"
-import sanityClient from "lib/sanityClient"
-import { socialImage } from "lib/utils"
-import BaseHead from "components/BaseHead.astro"
 import Footer from "components/Footer.astro"
 import Header from "components/Header.astro"
-import { layoutQuery } from "lib/queries"
-import { Image, Site } from "lib/interfaces"
+import { Navigation, Settings } from "lib/interfaces"
 
-interface Props {
-  title: string
-  keywords?: string
-  pathname: string
-  slug?: string
-  seoTitle?: string
-  seoDescription?: string
-  seoImage?: Image
-  twitter?: string
-  twitterHandle?: string
+const { navigation, settings } = Astro.props as {
+  navigation: Navigation
+  settings: Settings
 }
-const response = await sanityClient.fetch(layoutQuery)
-const data: { site: Site } = await response
-const {
-  title,
-  keywords,
-  pathname,
-  slug,
-  seoTitle,
-  seoDescription,
-  seoImage,
-  twitterHandle
-} = Astro.props
-const pageTitle = `
-  ${title && title + " | "}${data.site.siteName}
-  | Improve wellbeing through meditation
-`
-const socialimageUrl = socialImage(seoImage || data.site.seoImage)
+// const pageTitle = `
+//   ${title && title + " | "}${data.site.siteName}
+//   | Improve wellbeing through meditation
+// `
+// const socialimageUrl = socialImage(seoImage || data.site.seoImage)
 ---
 <html lang="en">
   <head>
-    <BaseHead
+    <!-- <BaseHead
       title={pageTitle}
       description={seoDescription || data.site.siteDescription}
       keywords={keywords || data.site.keywords}
@@ -53,16 +30,16 @@ const socialimageUrl = socialImage(seoImage || data.site.seoImage)
       siteName={data.site.siteName}
       siteURL={data.site.siteURL}
       twitterHandle={twitterHandle || data.site.twitterHandle}
-    />
+    /> -->
   </head>
   <body>
     <div id="app">
       <div class="flex flex-wrapper">
-        <Header siteName={data.site.siteName} {pathname} />
+        <Header {navigation} {settings} />
         <main class="site-main container--body mb-lg">
           <slot />
         </main>
-        <Footer site={data.site} />
+        <Footer site={settings} />
       </div>
     </div>
   </body>

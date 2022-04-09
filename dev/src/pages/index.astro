@@ -2,27 +2,19 @@
 import sanityClient from "lib/sanityClient"
 import { buildUrl, urlFor } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
-// import Icon from "components/Icon.svelte"
 import Icon from "components/Icon.astro"
 import { indexQuery } from "lib/queries"
-import { Site, Photography } from "lib/interfaces"
+import { Navigation, Photography, Settings } from "lib/interfaces"
 
 const response = await sanityClient.fetch(indexQuery)
-const data: { site: Site; photograph: Photography } = await response
-const {
-  keywords,
-  sections,
-  seoDescription,
-  seoTitle,
-  siteName
-} = data.site
+const data: {
+  navigation: Navigation
+  photography: Photography
+  settings: Settings
+} = await response
+const { navigation, photography, settings } = data
 ---
-<BaseLayout
-  title={siteName}
-  seoDescription={seoDescription}
-  keywords={keywords}
-  seoTitle={seoTitle}
->
+<BaseLayout {navigation} {settings}>
   <section>
     <div class="mb-lg">
       <h2 class="text-white center md-left">
@@ -31,20 +23,20 @@ const {
       </h2>
     </div>
     <div class="sections grid">
-      {sections.map((section, idx) =>
+      {navigation.sections.map(section =>
         <div class="section">
-          <a href={buildUrl(section._type, section.slug)} tabindex={-1}>
-            <div class={`section__icon ${section.slug} relative`}>
+          <a href={buildUrl(section.url._type, section.url.slug)} tabindex={-1}>
+            <div class={`section__icon ${section.url.slug} relative`}>
               <Icon
-                name={section.slug}
+                name={section.url.slug}
                 className="absolute"
                 width="352"
                 height="352"
               />
             </div>
           </a>
-          <a href={buildUrl(section._type, section.slug)}>
-            <h3 class="section__text text-grey left">{section.title}</h3>
+          <a href={buildUrl(section.url._type, section.url.slug)}>
+            <h3 class="section__text text-grey left">{section.label}</h3>
           </a>
         </div>
       )}
@@ -67,11 +59,11 @@ const {
       </div>
       <div class="side-image">
         <img
-          src={urlFor(data.photograph.image)
+          src={urlFor(photography.image)
             .auto("format")
             .quality(75)
             .url()}
-          alt={data.photograph.title}
+          alt={photography.title}
           width="700"
           height="1000"
           loading="lazy"
