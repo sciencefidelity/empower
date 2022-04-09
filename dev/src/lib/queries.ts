@@ -77,6 +77,10 @@ export const indexQuery = groq`{
   ${navigation}, ${settings}
 }`
 
+export const notFoundQuery = groq`{
+  ${navigation}, ${settings}, ${videos}
+}`
+
 export const pagesQuery = groq`{
   ${pages}, ${posts}, ${navigation}, ${settings}
 }`

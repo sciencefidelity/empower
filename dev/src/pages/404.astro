@@ -1,8 +1,20 @@
 ---
+import sanityClient from "lib/sanityClient"
 import BaseLayout from "layouts/BaseLayout.astro"
-const title = "404"
+import { notFoundQuery } from "lib/queries"
+import { Navigation, Settings } from "lib/interfaces"
+
+const response = await sanityClient.fetch(notFoundQuery)
+const data: {
+  navigation: Navigation
+  settings: Settings
+} = await response
+const { navigation, settings } = data as {
+  navigation: Navigation
+  settings: Settings
+}
 ---
-<BaseLayout title={title}>
+<BaseLayout {navigation} {settings}>
   <div class="sans center">
     <h1>not found</h1>
     <p>this path does not exist</p>
