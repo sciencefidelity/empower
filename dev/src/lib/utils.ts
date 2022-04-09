@@ -34,12 +34,12 @@ export const subdir = (type: string): string => {
   switch (type) {
   case "author":
     return "/authors"
-  case "category":
-    return "/categories"
   case "post":
     return "/blog"
   case "section":
     return "/section"
+  case "tag":
+    return "/tags"
   case "video":
     return "/videos"
   default:

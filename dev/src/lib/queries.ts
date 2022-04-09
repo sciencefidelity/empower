@@ -26,7 +26,7 @@ const authors = `"authors": *[_type == "author" && ${omitDrafts}] | order(name){
   "posts": *[_type == "post" && references(^._id)] | order(date desc){
     _type, settings{ publishedAt }, ${slug}, title
   }
-}`
+}[count(posts) > 0]`
 
 const navigation = `
   "navigation": *[_type == "navigation" && ${omitDrafts}][0]{
