@@ -3,24 +3,14 @@ import "sanitize.css/sanitize.css"
 import "sanitize.css/assets.css"
 import "sanitize.css/reduce-motion.css"
 import "styles/global.scss"
-import sanityClient from "lib/sanityClient"
 import Footer from "components/Footer.astro"
 import Header from "components/Header.astro"
-import { layoutQuery } from "lib/queries"
 import { Navigation, Settings } from "lib/interfaces"
 
-const response = await sanityClient.fetch(layoutQuery)
-const data: {
+const { navigation, settings } = Astro.props as {
   navigation: Navigation
   settings: Settings
-} = await response
-const { navigation, settings } = data
-
-// const pageTitle = `
-//   ${title && title + " | "}${data.site.siteName}
-//   | Improve wellbeing through meditation
-// `
-// const socialimageUrl = socialImage(seoImage || data.site.seoImage)
+}
 ---
 <html lang="en">
   <head>

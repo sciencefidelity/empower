@@ -34,10 +34,10 @@ const navigation = `
 `
 
 const pages = `"pages": *[_type == "page" && ${omitDrafts}]{
-  template[], ${pagePostFields}
+  template[0], ${pagePostFields}
 }`
 
-const posts = `"posts": *[_type == "post" && ${omitDrafts}]{
+const posts = `"posts": *[_type == "post" && ${omitDrafts}] | order(publishedAt){
   ${pagePostFields}
 }`
 
@@ -59,12 +59,16 @@ const videos = `"videos": *[_type == "video" && ${omitDrafts}]{
   videoLink, section->{ _type, title, ${slug} },
 }`
 
+export const blogQuery = groq`{
+  ${posts}
+}`
+
 export const indexQuery = groq`{
-  ${navigation}, ${settings},
   "photography": *[
     _type == "photography"
     && _id == "3d60db54-c190-48d8-a17f-396f9a6f5c05"
-  ][0] { image, title }
+  ][0] { image, title },
+  ${navigation}
 }`
 
 export const layoutQuery = groq`{
@@ -72,5 +76,5 @@ export const layoutQuery = groq`{
 }`
 
 export const pagesQuery = groq`{
-  ${pages}
+  ${pages}, ${navigation}, ${settings}
 }`
