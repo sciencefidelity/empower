@@ -1,45 +1,51 @@
 ---
+import { Maybe } from "astro-control"
 import sanityClient from "lib/sanityClient"
 import { PortableText } from "@portabletext/react"
 import { buildUrl } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { components } from "components/PortableTextComponents"
 import Video from "components/VideoComponent.astro"
-import { sectionQuery } from "lib/queries"
-import { Section } from "lib/interfaces"
+import { sectionsQuery } from "lib/queries"
+import { Navigation, Section, Settings } from "lib/interfaces"
 
 export async function getStaticPaths() {
-  const data: { sections: Section[] } = await sanityClient.fetch(sectionQuery)
-    .then(response => response)
+  const data: {
+    navigation: Navigation
+    sections: Section[]
+    settings: Settings
+  } = await sanityClient.fetch(sectionsQuery).then(response => response)
+  const { navigation, settings } = data
   return data.sections.map(section => {
     return {
       params: { slug: section.slug },
-      props: { section }
+      props: { navigation, section, settings }
     }
   })
 }
-const { slug } = Astro.params
-const { section } = Astro.props as { section: Section }
-const { body, seoDescription, seoKeywords, seoTitle, title, video } = section
+// const { slug } = Astro.params
+const {  navigation, section, settings } = Astro.props as {
+  navigation: Navigation
+  section: Section
+  settings: Settings
+}
 ---
-<BaseLayout
-  keywords={seoKeywords}
-  seoDescription={seoDescription}
-  seoTitle={seoTitle}
-  slug={slug}
-  title={title}
->
+<BaseLayout {navigation} {settings}>
   <div>
-    {title && <h1 class="title mb-sm serif text-white bold">{title}</h1>}
-    {body && <PortableText value={body} components={components} />}
-    {video &&
+    <Maybe as="h1" class="title mb-sm serif text-white bold">
+      {section.title}
+    </Maybe>
+    {section.body &&
+      <PortableText value={section.body} components={components} />
+    }
+    {section.video &&
       <p>
-        <a href={buildUrl(video._type, video.slug)}>
-          {video.title}
+        <a href={buildUrl(section.video._type, section.video.slug)}>
+          {section.video.title}
         </a>
       </p>
     }
-    {video && <Video video={video} />}
+    {section.video && <Video video={section.video} />}
   </div>
 </BaseLayout>
 

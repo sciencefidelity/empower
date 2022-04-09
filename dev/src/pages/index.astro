@@ -4,17 +4,17 @@ import { buildUrl, urlFor } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import Icon from "components/Icon.astro"
 import { indexQuery } from "lib/queries"
-import { Navigation, Photography } from "lib/interfaces"
+import { Navigation, Photography, Settings } from "lib/interfaces"
 
 const response = await sanityClient.fetch(indexQuery)
 const data: {
   navigation: Navigation
   photography: Photography
+  settings: Settings
 } = await response
-const { navigation, photography } = data
-console.log(photography)
+const { navigation, photography, settings } = data
 ---
-<BaseLayout>
+<BaseLayout {navigation} {settings}>
   <section>
     <div class="mb-lg">
       <h2 class="text-white center md-left">

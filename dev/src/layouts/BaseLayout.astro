@@ -34,7 +34,7 @@ const { navigation, settings } = Astro.props as {
         <main class="site-main container--body mb-lg">
           <slot />
         </main>
-        <Footer site={settings} />
+        <Footer {settings} />
       </div>
     </div>
   </body>
