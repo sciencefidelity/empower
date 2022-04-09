@@ -46,7 +46,7 @@ const posts = `"posts": *[_type == "post" && ${omitDrafts}] | order(publishedAt)
 
 const sections = `"sections": *[_type == "section"]{
   _id, _type, body, image, ${slug}, subtitle, title, ${seo},
-  video->{ videoLink, title, ${slug}, section, publishDate }
+  video->{ _type, videoLink, title, ${slug}, section, publishDate }
 }`
 
 const settings = `"settings": *[_type == "settings" && ${omitDrafts}][0]{
@@ -91,4 +91,8 @@ export const sectionsQuery = groq`{
 
 export const tagsQuery = groq`{
   ${navigation}, ${settings}, ${tags}
+}`
+
+export const videosQuery = groq`{
+  ${navigation}, ${settings}, ${videos}
 }`

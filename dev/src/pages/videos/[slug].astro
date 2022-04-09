@@ -1,54 +1,47 @@
 ---
+import { Maybe } from "astro-control"
 import { PortableText } from "@portabletext/react"
 import sanityClient from "lib/sanityClient"
 import { buildUrl } from "lib/utils"
 import BaseLayout from "layouts/BaseLayout.astro"
 import { components } from "components/PortableTextComponents"
 import VideoComponent from "components/VideoComponent.astro"
-import { videoQuery } from "lib/queries"
-import { Video } from "lib/interfaces"
+import { videosQuery } from "lib/queries"
+import { Navigation, Settings, Video } from "lib/interfaces"
 
 export async function getStaticPaths() {
-  const data: { videos: Video[] } = await sanityClient
-    .fetch(videoQuery)
-    .then(response => response)
+  const data: {
+    navigation: Navigation
+    settings: Settings
+    videos: Video[]
+  } = await sanityClient.fetch(videosQuery).then(response => response)
+  const { navigation, settings } = data
   return data.videos.map(video => {
     return {
       params: { slug: video.slug },
-      props: { video }
+      props: { navigation, settings, video }
     }
   })
 }
-const { slug } = Astro.params
-const { video } = Astro.props as { video: Video }
-const {
-  body,
-  introduction,
-  section,
-  seoDescription,
-  seoKeywords,
-  seoTitle,
-  title,
-  videoLink
-} = video
+
+// const { slug } = Astro.params
+const { navigation, settings, video } = Astro.props as {
+  navigation: Navigation
+  settings: Settings
+  video: Video
+}
 ---
-<BaseLayout
-  keywords={seoKeywords}
-  seoDescription={seoDescription}
-  seoTitle={seoTitle}
-  slug={slug}
-  title={title}
->
+<BaseLayout {navigation} {settings}>
   <div>
-    <h2>{title}</h2>
-    <p>{introduction}</p>
-    <p>in:{" "}
-      <a href={buildUrl(section._type, section.slug)}>
-        {section.title}
+    <Maybe as="h2">{video.title}</Maybe>
+    <Maybe as="p">{video.introduction}</Maybe>
+    <Maybe as="p">in:{" "}
+      <a href={buildUrl(video.section._type, video.section.slug)}>
+        {video.section.title}
       </a>
-    </p>
-    {videoLink && <VideoComponent video={video} />}
-    {body && <PortableText value={body} components={components} />}
+    </Maybe>
+    {video.videoLink && <VideoComponent video={video} />}
+    {video.body && <PortableText value={video.body} components={components} />}
   </div>
 </BaseLayout>
 
