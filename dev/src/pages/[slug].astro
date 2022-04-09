@@ -5,13 +5,13 @@ import BaseLayout from "layouts/BaseLayout.astro"
 import Blog from "components/Blog.astro"
 import ContactForm from "components/ContactForm.svelte"
 import { components } from "components/PortableTextComponents"
-import { pageQuery } from "lib/queries"
+import { pagesQuery } from "lib/queries"
 import { Page } from "lib/interfaces"
 
 export async function getStaticPaths() {
-  const data: { pages: Page[] } = await sanityClient
-    .fetch(pageQuery)
-    .then(response => response)
+  const data: {
+    pages: Page[]
+  } = await sanityClient.fetch(pagesQuery).then(response => response)
   return data.pages.map(page => {
     return {
       params: { slug: page.slug },
@@ -21,29 +21,13 @@ export async function getStaticPaths() {
 }
 const { slug } = Astro.params
 const { page } = Astro.props as { page: Page }
-const {
-  body,
-  mainImage,
-  seoDescription,
-  seoKeywords,
-  seoTitle,
-  template,
-  title
-} = page
 ---
-<BaseLayout
-  keywords={seoKeywords}
-  seoDescription={seoDescription}
-  seoTitle={seoTitle}
-  slug={slug}
-  title={title}
-  pathname={Astro.canonicalURL.pathname}
->
+<BaseLayout>
   <div>
-    <h1 class="title bold text-white serif">{title}</h1>
-    {body && <PortableText value={body} components={components} />}
-    {template === "blog" && <Blog />}
-    {template === "contact" && <ContactForm client:idle />}
+    <h1 class="title bold text-white serif">{page.title}</h1>
+    {page.body && <PortableText value={page.body} components={components} />}
+    {page.template === "blog" && <Blog />}
+    {page.template === "contact" && <ContactForm client:idle />}
   </div>
 </BaseLayout>
 

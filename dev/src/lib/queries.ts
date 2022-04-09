@@ -34,7 +34,7 @@ const navigation = `
 `
 
 const pages = `"pages": *[_type == "page" && ${omitDrafts}]{
-  template, ${pagePostFields}
+  template[], ${pagePostFields}
 }`
 
 const posts = `"posts": *[_type == "post" && ${omitDrafts}]{
@@ -65,4 +65,12 @@ export const indexQuery = groq`{
     _type == "photography"
     && _id == "3d60db54-c190-48d8-a17f-396f9a6f5c05"
   ][0] { image, title }
+}`
+
+export const layoutQuery = groq`{
+  ${navigation}, ${settings}
+}`
+
+export const pagesQuery = groq`{
+  ${pages}
 }`
