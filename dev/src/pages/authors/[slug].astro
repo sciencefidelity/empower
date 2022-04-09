@@ -1,48 +1,47 @@
 ---
+import { Maybe } from "astro-control"
 import format from "date-fns/format"
-import { PortableText } from "@portabletext/react"
 import sanityClient from "lib/sanityClient.ts"
-import { buildUrl, twitterLink } from "lib/utils.ts"
+import { buildUrl } from "lib/utils.ts"
 import BaseLayout from "layouts/BaseLayout.astro"
-import { components } from "components/PortableTextComponents"
-import { authorQuery } from "lib/queries"
-import { Author } from "lib/interfaces"
+import { authorsQuery } from "lib/queries"
+import { Author, Navigation, Settings } from "lib/interfaces"
 
 export async function getStaticPaths( ) {
-  const data: { authors: Author[] } = await sanityClient.fetch(authorQuery)
-    .then((response: any) => response)
+  const data: {
+    authors: Author[]
+    navigation: Navigation
+    settings: Settings
+  } = await sanityClient.fetch(authorsQuery).then(response => response)
+  const { navigation, settings } = data
   return data.authors.map(author => {
     return {
       params: { slug: author.slug },
-      props: { author }
+      props: { author, navigation, settings }
     }
   })
 }
 
-const { slug } = Astro.params
-const { author } = Astro.props as { author: Author }
-const { bio, name, posts, twitterHandle } = author
-const title = `Author: ${name}`
+// const { slug } = Astro.params
+const { author, navigation, settings } = Astro.props as {
+  author: Author
+  navigation: Navigation
+  settings: Settings
+}
+const title = `Author: ${author.name}`
 ---
-<BaseLayout title={title}>
+<BaseLayout {navigation} {settings} {title}>
   <div>
     <h2>{title}</h2>
-    {twitterHandle && <p>
-      <a
-        href={twitterLink(twitterHandle)}
-        target="_blank"
-        rel="noreferrer">{twitterHandle}
-      </a>
-    </p>}
     <h2>Bio</h2>
-    <PortableText value={bio} components={components} />
+    <Maybe as="p">{author.bio}</Maybe>
     <br>
     <h2>Posts</h2>
     <ul>
-      {posts.map(post =>
+      {author.posts && author.posts.map(post =>
         <li>
           <a href={buildUrl(post._type, post.slug)}>{post.title}</a><br>
-          {format(new Date(post.publishedAt), "eeee, do MMMM yyyy")}
+          {format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")}
         </li>
       )}
     </ul>

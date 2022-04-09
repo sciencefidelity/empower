@@ -13,7 +13,7 @@ const seo = `
 
 const pageSettings = `settings{
   excerpt, publishedAt,
-  authors[]->{ _id, _type, image, name, ${slug} },
+  authors[]->{ _id, _type, avatar, name, occupation, ${slug} },
   tags[]->{ _id, _type, ${slug}, title }
 }`
 
@@ -21,8 +21,11 @@ const pagePostFields = `
   _id, _type, ${body}, feature, image, ${slug}, title, ${pageSettings}, ${seo}
 `
 
-const authors = `"authors": *[_type == "author"]{
-  _id, _type, avatar, bio, name, occupation, ${slug}
+const authors = `"authors": *[_type == "author" && ${omitDrafts}] | order(name){
+  _id, _type, avatar, bio, name, occupation, ${slug},
+  "posts": *[_type == "post" && references(^._id)] | order(date desc){
+    _type, "publishedAt": settings{ publishedAt }, ${slug}, title
+  }
 }`
 
 const navigation = `
@@ -59,8 +62,8 @@ const videos = `"videos": *[_type == "video" && ${omitDrafts}]{
   videoLink, section->{ _type, title, ${slug} },
 }`
 
-export const blogQuery = groq`{
-  ${posts}
+export const authorsQuery = groq`{
+  ${authors}, ${navigation}, ${settings}
 }`
 
 export const indexQuery = groq`{
@@ -71,10 +74,10 @@ export const indexQuery = groq`{
   ${navigation}
 }`
 
-export const layoutQuery = groq`{
-  ${navigation}, ${settings}
+export const pagesQuery = groq`{
+  ${pages}, ${posts}, ${navigation}, ${settings}
 }`
 
-export const pagesQuery = groq`{
-  ${pages}, ${navigation}, ${settings}
+export const postsQuery = groq`{
+  ${posts}, ${navigation}, ${settings}
 }`

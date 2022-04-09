@@ -6,35 +6,37 @@ import Blog from "components/Blog.astro"
 import ContactForm from "components/ContactForm.svelte"
 import { components } from "components/PortableTextComponents"
 import { pagesQuery } from "lib/queries"
-import { Navigation, Settings, Page } from "lib/interfaces"
+import { Navigation, Settings, Page, Post } from "lib/interfaces"
 
 export async function getStaticPaths() {
   const data: {
-    pages: Page[]
     navigation: Navigation
     settings: Settings
+    pages: Page[]
+    posts: Post[]
   } = await sanityClient.fetch(pagesQuery).then(response => response)
-  const { navigation, settings } = data
+  const { navigation, settings, posts } = data
   return data.pages.map(page => {
     return {
       params: { slug: page.slug },
-      props: { page, navigation, settings }
+      props: { navigation, settings, page, posts }
     }
   })
 }
 
 // const { slug } = Astro.params
-const { page, navigation, settings } = Astro.props as {
-  page: Page
+const { navigation, settings, page, posts } = Astro.props as {
   navigation: Navigation
   settings: Settings
+  page: Page
+  posts: Post[]
 }
 ---
-<BaseLayout {navigation} {settings} >
+<BaseLayout {navigation} {settings}>
   <div>
     <h1 class="title bold text-white serif">{page.title}</h1>
     {page.body && <PortableText value={page.body} components={components} />}
-    {page.template === "blog" && <Blog />}
+    {page.template === "blog" && <Blog {posts} />}
     {page.template === "contact" && <ContactForm client:idle />}
   </div>
 </BaseLayout>

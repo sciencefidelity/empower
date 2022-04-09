@@ -8,6 +8,12 @@ export interface Author extends SanityDocument {
   slug: string
 }
 
+export interface Comment {
+  _createdAt: string
+  message: string
+  name: string
+}
+
 export interface Image extends SanityDocument {
   _type: "image";
   asset: SanityReference<SanityImageAsset>
@@ -70,6 +76,7 @@ export type PortableText = Array<
 export interface Post extends SanityDocument {
   _type: "post"
   body: PortableText
+  comments: Comment[]
   facebookCard: SocialCard
   feature: boolean
   image: Image
