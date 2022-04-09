@@ -11,9 +11,9 @@ import { Navigation, Settings, Page, Post } from "lib/interfaces"
 export async function getStaticPaths() {
   const data: {
     navigation: Navigation
-    settings: Settings
     pages: Page[]
     posts: Post[]
+    settings: Settings
   } = await sanityClient.fetch(pagesQuery).then(response => response)
   const { navigation, settings, posts } = data
   return data.pages.map(page => {

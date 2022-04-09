@@ -24,7 +24,7 @@ const pagePostFields = `
 const authors = `"authors": *[_type == "author" && ${omitDrafts}] | order(name){
   _id, _type, avatar, bio, name, occupation, ${slug},
   "posts": *[_type == "post" && references(^._id)] | order(date desc){
-    _type, "publishedAt": settings{ publishedAt }, ${slug}, title
+    _type, settings{ publishedAt }, ${slug}, title
   }
 }`
 
@@ -54,7 +54,10 @@ const settings = `"settings": *[_type == "settings" && ${omitDrafts}][0]{
 }`
 
 const tags = `"tags": *[_type == "tag" && ${omitDrafts}]{
-  _id, _type, ${slug}, title
+  _id, _type, ${slug}, title,
+  "posts": *[_type == "post" && references(^._id)] | order(date desc){
+    _type, settings{ publishedAt }, ${slug}, title
+  }
 }`
 
 const videos = `"videos": *[_type == "video" && ${omitDrafts}]{
@@ -84,4 +87,8 @@ export const postsQuery = groq`{
 
 export const sectionsQuery = groq`{
   ${navigation}, ${sections}, ${settings}
+}`
+
+export const tagsQuery = groq`{
+  ${navigation}, ${settings}, ${tags}
 }`
