@@ -26,7 +26,7 @@
     "@sanity/image-url": "^1.0.1",
     "@sendgrid/mail": "^7.6.2",
     "@types/react": "^17.0.43",
-    "astro": "^1.0.0-beta.5",
+    "astro": "^1.0.0-beta.8",
     "astro-control": "^0.0.1",
     "autoprefixer": "^10.4.4",
     "concurrently": "^7.1.0",
