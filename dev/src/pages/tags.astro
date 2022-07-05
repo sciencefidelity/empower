@@ -19,18 +19,17 @@ const { navigation, settings, tags } = data as {
 }
 const title = "All Tags"
 ---
+
 <BaseLayout {navigation} {settings}>
   <div>
     <h2>{title}</h2>
-    <br>
+    <br />
     <ul>
-      {tags.map(tag =>
+      {tags.map(tag => (
         <li>
-          <a href={buildUrl(tag._type, tag.slug)}>
-            {tag.title}
-          </a>
+          <a href={buildUrl(tag._type, tag.slug)}>{tag.title}</a>
           <ul>
-            {tag.posts.map(post =>
+            {tag.posts.map(post => (
               <li>
                 <p>
                   <a href={buildUrl(post._type, post.slug)}>{post.title}</a>
@@ -42,10 +41,10 @@ const title = "All Tags"
                   )}
                 </p>
               </li>
-            )}
+            ))}
           </ul>
         </li>
-      )}
+      ))}
     </ul>
   </div>
 </BaseLayout>

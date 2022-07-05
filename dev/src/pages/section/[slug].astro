@@ -24,33 +24,34 @@ export async function getStaticPaths() {
   })
 }
 // const { slug } = Astro.params
-const {  navigation, section, settings } = Astro.props as {
+const { navigation, section, settings } = Astro.props as {
   navigation: Navigation
   section: Section
   settings: Settings
 }
 ---
+
 <BaseLayout {navigation} {settings}>
   <div>
     <Maybe as="h1" class="title mb-sm serif text-white bold">
       {section.title}
     </Maybe>
-    {section.body &&
+    {section.body && (
       <PortableText value={section.body} components={components} />
-    }
-    {section.video &&
+    )}
+    {section.video && (
       <p>
         <a href={buildUrl(section.video._type, section.video.slug)}>
           {section.video.title}
         </a>
       </p>
-    }
+    )}
     {section.video && <Video video={section.video} />}
   </div>
 </BaseLayout>
 
 <style>
-.title {
-  font-size: 7rem;
-}
+  .title {
+    font-size: 7rem;
+  }
 </style>

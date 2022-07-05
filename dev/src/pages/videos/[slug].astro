@@ -31,11 +31,13 @@ const { navigation, settings, video } = Astro.props as {
   video: Video
 }
 ---
+
 <BaseLayout {navigation} {settings}>
   <div>
     <Maybe as="h2">{video.title}</Maybe>
     <Maybe as="p">{video.introduction}</Maybe>
-    <Maybe as="p">in:{" "}
+    <Maybe as="p"
+      >in:{" "}
       <a href={buildUrl(video.section._type, video.section.slug)}>
         {video.section.title}
       </a>
@@ -46,10 +48,10 @@ const { navigation, settings, video } = Astro.props as {
 </BaseLayout>
 
 <style lang="scss">
-li {
-  display: inline;
-  &:not(:last-child)::after {
-    content: ', ';
+  li {
+    display: inline;
+    &:not(:last-child)::after {
+      content: ", ";
+    }
   }
-}
 </style>

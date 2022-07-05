@@ -7,12 +7,13 @@ async function sendEmail(req, res) {
   const fullName = `${req.body.firstName} ${req.body.lastName}`
   const subject = `New Message from ${fullName}`
   try {
-    await sendgrid.send({
-      to: "eMpower <hello@empower-us-all.org>",
-      from: "eMpower Website <hello@empower-us-all.org>",
-      replyTo: `${fullName} <${req.body.email}>`,
-      subject: `${subject}`,
-      html: `
+    await sendgrid
+      .send({
+        to: "eMpower <hello@empower-us-all.org>",
+        from: "eMpower Website <hello@empower-us-all.org>",
+        replyTo: `${fullName} <${req.body.email}>`,
+        subject: `${subject}`,
+        html: `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -28,9 +29,10 @@ async function sendEmail(req, res) {
         </body>
         </html>
       `
-    }).then(res => {
-      console.log("Email sent")
-    })
+      })
+      .then(res => {
+        console.log("Email sent")
+      })
   } catch (error) {
     return res.status(error.statusCode || 500).json({ error: error.message })
   }

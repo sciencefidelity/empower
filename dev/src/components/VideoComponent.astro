@@ -5,6 +5,7 @@ const { video } = Astro.props as { video: Video }
 const { id } = getVideoId(video.videoLink)
 const url = `https://player.vimeo.com/video/${id}?dnt=1`
 ---
+
 <iframe
   title="vimeo-player"
   src={url}
@@ -17,8 +18,8 @@ const url = `https://player.vimeo.com/video/${id}?dnt=1`
 </iframe>
 
 <style>
-.video-embed {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-}
+  .video-embed {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
 </style>

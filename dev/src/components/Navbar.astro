@@ -5,22 +5,24 @@ import { Navigation } from "lib/interfaces"
 const { navigation } = Astro.props as { navigation: Navigation }
 const pathname = Astro.canonicalURL.pathname
 ---
+
 <nav class="nav">
   <div class="lg-hide">
     <ul class="nav__row flex row">
-      {navigation.primary && navigation.primary.map(item =>
-        <li>
-          <a
-            href={buildUrl(item.url._type, item.url.slug)}
-            class={`
+      {navigation.primary &&
+        navigation.primary.map(item => (
+          <li>
+            <a
+              href={buildUrl(item.url._type, item.url.slug)}
+              class={`
               nav__link text-white bold td-none
-              ${pathname === '/' + item.url.slug + '/' ? 'active' : ''}
+              ${pathname === "/" + item.url.slug + "/" ? "active" : ""}
             `}
-          >
-            {item.label}
-          </a>
-        </li>
-      )}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
     </ul>
   </div>
   <div class="hamburger-container" tabindex={0}>
@@ -29,58 +31,58 @@ const pathname = Astro.canonicalURL.pathname
 </nav>
 
 <style lang="scss">
-@use '../styles/foundation/breakpoints' as b;
+  @use "../styles/foundation/breakpoints" as b;
 
-.nav {
-  position: relative;
-  z-index: 4;
-  margin-top: 1em;
-  margin-left: auto;
-  &__row {
-    gap: 2.7vw;
-  }
-  &__link {
-    font-size: 1.9vw;
-    border-bottom: 5px solid rgba(255, 255, 255, 0%);
-    transition: border-bottom 0.3s ease-in-out;
-    &:hover {
-      border-bottom: 2px solid rgba(255, 255, 255, 80%);
+  .nav {
+    position: relative;
+    z-index: 4;
+    margin-top: 1em;
+    margin-left: auto;
+    &__row {
+      gap: 2.7vw;
+    }
+    &__link {
+      font-size: 1.9vw;
+      border-bottom: 5px solid rgba(255, 255, 255, 0%);
       transition: border-bottom 0.3s ease-in-out;
+      &:hover {
+        border-bottom: 2px solid rgba(255, 255, 255, 80%);
+        transition: border-bottom 0.3s ease-in-out;
+      }
     }
   }
-}
 
-.active {
-  cursor: unset;
-  border-bottom: 2px solid rgba(255, 255, 255, 80%);
-}
+  .active {
+    cursor: unset;
+    border-bottom: 2px solid rgba(255, 255, 255, 80%);
+  }
 
-.hamburger-container {
-  height: 1.85em;
-  margin: 0.5em 0 0;
-  cursor: pointer;
-}
+  .hamburger-container {
+    height: 1.85em;
+    margin: 0.5em 0 0;
+    cursor: pointer;
+  }
 
-.hamburger {
-  position: relative;
-  width: 3em;
-  height: 0.25em;
-  background-color: var(--white);
-  border-radius: 0.2em;
-  &::before,
-  &::after {
-    position: absolute;
+  .hamburger {
+    position: relative;
     width: 3em;
     height: 0.25em;
-    content: '';
     background-color: var(--white);
     border-radius: 0.2em;
+    &::before,
+    &::after {
+      position: absolute;
+      width: 3em;
+      height: 0.25em;
+      content: "";
+      background-color: var(--white);
+      border-radius: 0.2em;
+    }
+    &::before {
+      top: 0.8em;
+    }
+    &::after {
+      top: 1.6em;
+    }
   }
-  &::before {
-    top: 0.8em;
-  }
-  &::after {
-    top: 1.6em;
-  }
-}
 </style>

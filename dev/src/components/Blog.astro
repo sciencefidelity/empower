@@ -5,10 +5,13 @@ import { Post } from "lib/interfaces"
 
 const { posts } = Astro.props as { posts: Post[] }
 ---
+
 <ul>
-  {posts.map(post =>
-    <li><a href={buildUrl(post._type, post.slug)}>{post.title}</a><br>
+  {posts.map(post => (
+    <li>
+      <a href={buildUrl(post._type, post.slug)}>{post.title}</a>
+      <br />
       {format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")}
     </li>
-  )}
+  ))}
 </ul>

@@ -19,16 +19,17 @@ const { authors, navigation, settings } = data as {
 }
 const title = "All Authors"
 ---
+
 <BaseLayout {navigation} {settings}>
   <div>
     <h2>{title}</h2>
     <br />
     <ul>
-      {authors.map(author =>
+      {authors.map(author => (
         <li>
           <a href={buildUrl(author._type, author.slug)}>{author.name}</a>
           <ul>
-            {author.posts.map(post =>
+            {author.posts.map(post => (
               <li>
                 <p>
                   <a href={buildUrl(post._type, post.slug)}>{post.title}</a>
@@ -40,10 +41,10 @@ const title = "All Authors"
                   )}
                 </p>
               </li>
-            )}
+            ))}
           </ul>
         </li>
-      )}
+      ))}
     </ul>
   </div>
 </BaseLayout>

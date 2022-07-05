@@ -12,6 +12,7 @@ const { navigation, settings } = Astro.props as {
   settings: Settings
 }
 ---
+
 <html lang="en">
   <head>
     <!-- <BaseHead
@@ -32,22 +33,21 @@ const { navigation, settings } = Astro.props as {
       <div class="flex flex-wrapper">
         <Header {navigation} {settings} />
         <main class="site-main container--body mb-lg">
-          <slot />
+          <slot></slot>
         </main>
         <Footer {settings} />
       </div>
     </div>
+    <style lang="scss">
+      .flex-wrapper {
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .site-main {
+        position: relative;
+        z-index: 5;
+      }
+    </style>
   </body>
 </html>
-
-<style lang="scss">
-.flex-wrapper {
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.site-main {
-  position: relative;
-  z-index: 5;
-}
-</style>

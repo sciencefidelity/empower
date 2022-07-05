@@ -7,7 +7,7 @@ import BaseLayout from "layouts/BaseLayout.astro"
 import { authorsQuery } from "lib/queries"
 import { Author, Navigation, Settings } from "lib/interfaces"
 
-export async function getStaticPaths( ) {
+export async function getStaticPaths() {
   const data: {
     authors: Author[]
     navigation: Navigation
@@ -30,22 +30,25 @@ const { author, navigation, settings } = Astro.props as {
 }
 const title = `Author: ${author.name}`
 ---
+
 <BaseLayout {navigation} {settings} {title}>
   <div>
     <h2>{title}</h2>
     <h2>Bio</h2>
     <Maybe as="p">{author.bio}</Maybe>
-    <br>
+    <br />
     <h2>Posts</h2>
     <ul>
-      {author.posts && author.posts.map(post =>
-        <li>
-          <a href={buildUrl(post._type, post.slug)}>{post.title}</a><br>
-          {format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")}
-        </li>
-      )}
+      {author.posts &&
+        author.posts.map(post => (
+          <li>
+            <a href={buildUrl(post._type, post.slug)}>{post.title}</a>
+            <br />
+            {format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")}
+          </li>
+        ))}
     </ul>
-    <br>
+    <br />
     <p><a href="/authors">All authors</a></p>
   </div>
 </BaseLayout>

@@ -14,6 +14,7 @@ const data: {
 } = await response
 const { navigation, photography, settings } = data
 ---
+
 <BaseLayout {navigation} {settings}>
   <section>
     <div class="mb-lg">
@@ -23,7 +24,7 @@ const { navigation, photography, settings } = data
       </h2>
     </div>
     <div class="sections grid">
-      {navigation.sections.map(section =>
+      {navigation.sections.map(section => (
         <div class="section">
           <a href={buildUrl(section.url._type, section.url.slug)} tabindex={-1}>
             <div class={`section__icon ${section.url.slug} relative`}>
@@ -39,7 +40,7 @@ const { navigation, photography, settings } = data
             <h3 class="section__text text-grey left">{section.label}</h3>
           </a>
         </div>
-      )}
+      ))}
     </div>
     <div class="mb-xl">
       <h1 class="smaller center">
@@ -59,10 +60,7 @@ const { navigation, photography, settings } = data
       </div>
       <div class="side-image">
         <img
-          src={urlFor(photography.image)
-            .auto("format")
-            .quality(75)
-            .url()}
+          src={urlFor(photography.image).auto("format").quality(75).url()}
           alt={photography.title}
           width="700"
           height="1000"
@@ -74,183 +72,183 @@ const { navigation, photography, settings } = data
 </BaseLayout>
 
 <style lang="scss">
-@use '../styles/foundation/breakpoints' as b;
+  @use "../styles/foundation/breakpoints" as b;
 
-.sections {
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 4em;
-  margin-bottom: 8rem;
-  @include b.mq(xl) {
-    gap: 2vw;
-  }
-  @include b.mq(lg) {
-    grid-template-columns: 1fr 1fr;
+  .sections {
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 4em;
+    margin-bottom: 8rem;
+    @include b.mq(xl) {
+      gap: 2vw;
+    }
+    @include b.mq(lg) {
+      grid-template-columns: 1fr 1fr;
+      gap: 4em;
+    }
+    @include b.mq(md) {
+      gap: 1em;
+    }
+    @include b.mq(sm) {
+      grid-template-columns: 1fr;
+      gap: 4em;
+    }
+    a {
+      text-decoration: none;
+    }
   }
-  @include b.mq(md) {
-    gap: 1em;
-  }
-  @include b.mq(sm) {
-    grid-template-columns: 1fr;
-    gap: 4em;
-  }
-  a {
-    text-decoration: none;
-  }
-}
 
-.section {
-  margin-bottom: 0;
-  @include b.mq(md) {
-    margin-bottom: 3rem;
-  }
-  @include b.mq(sm) {
+  .section {
     margin-bottom: 0;
+    @include b.mq(md) {
+      margin-bottom: 3rem;
+    }
+    @include b.mq(sm) {
+      margin-bottom: 0;
+    }
+    &__icon {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 0.4em solid var(--white);
+    }
+    &__text {
+      margin-bottom: -0.7em;
+      margin-left: 0.4em;
+    }
   }
-  &__icon {
-    width: 100%;
-    aspect-ratio: 1 / 1;
+
+  .empower {
+    background: var(--green);
+    svg {
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .family-connect {
+    background: var(--yellow);
+    svg {
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .free-your-mind {
+    background: var(--red);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .generation-peace {
+    background: var(--yellow);
+    svg {
+      left: -2em;
+      width: 100%;
+      height: 100%;
+      @include b.mq(lg) {
+        left: -1.3em;
+      }
+      @include b.mq(md) {
+        left: -1.2em;
+      }
+      @include b.mq(sm) {
+        left: -0.9em;
+      }
+    }
+  }
+
+  .my-silent-space {
+    background: var(--violet);
+    svg {
+      left: -1.6em;
+      width: 100%;
+      height: 100%;
+      @include b.mq(lg) {
+        left: -1.8em;
+      }
+      @include b.mq(md) {
+        left: -1.2em;
+      }
+      @include b.mq(sm) {
+        left: -1.1em;
+      }
+    }
+  }
+
+  .wellbeing-at-work {
+    background: var(--green);
+    svg {
+      left: -1.5em;
+      width: 100%;
+      height: 100%;
+      @include b.mq(lg) {
+        left: -1.8em;
+      }
+      @include b.mq(md) {
+        left: -1.4em;
+      }
+      @include b.mq(sm) {
+        left: -1.1em;
+      }
+    }
+  }
+
+  .smaller {
+    // font-size: 11rem;
+    font-size: 7.3vw;
+    @include b.mq(md) {
+      font-size: 9vw;
+    }
+    @include b.mq(sm) {
+      font-size: 6rem;
+    }
+  }
+
+  .split-container {
+    grid-template-columns: 1fr 43%;
+    gap: 7rem;
+    @include b.mq(lg) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .side-text {
+    padding: 5.5rem 17rem 7rem 8rem;
+    margin: -5.5rem -17rem -5.5rem -8rem;
+    font-size: 3.5rem;
+    font-size: 2.3vw;
+    background-color: var(--teal);
+    @include b.mq(lg) {
+      padding: 5.5rem 21rem 7rem 12rem;
+      font-size: 2.3rem;
+    }
+    @include b.mq(sm) {
+      padding: 5.5rem 3% 7rem;
+      margin: -5.5rem -3%;
+      font-size: 2rem;
+    }
+  }
+
+  .side-image {
     border: 0.4em solid var(--white);
-  }
-  &__text {
-    margin-bottom: -0.7em;
-    margin-left: 0.4em;
-  }
-}
-
-.empower {
-  background: var(--green);
-  svg {
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.family-connect {
-  background: var(--yellow);
-  svg {
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.free-your-mind {
-  background: var(--red);
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.generation-peace {
-  background: var(--yellow);
-  svg {
-    left: -2em;
-    width: 100%;
-    height: 100%;
     @include b.mq(lg) {
-      left: -1.3em;
+      width: 60%;
+      margin-left: auto;
     }
     @include b.mq(md) {
-      left: -1.2em;
+      width: 80%;
+      margin-left: auto;
     }
     @include b.mq(sm) {
-      left: -0.9em;
+      width: 100%;
+      margin-left: auto;
+    }
+    img {
+      filter: brightness(1.2) contrast(0.8);
     }
   }
-}
-
-.my-silent-space {
-  background: var(--violet);
-  svg {
-    left: -1.6em;
-    width: 100%;
-    height: 100%;
-    @include b.mq(lg) {
-      left: -1.8em;
-    }
-    @include b.mq(md) {
-      left: -1.2em;
-    }
-    @include b.mq(sm) {
-      left: -1.1em;
-    }
-  }
-}
-
-.wellbeing-at-work {
-  background: var(--green);
-  svg {
-    left: -1.5em;
-    width: 100%;
-    height: 100%;
-    @include b.mq(lg) {
-      left: -1.8em;
-    }
-    @include b.mq(md) {
-      left: -1.4em;
-    }
-    @include b.mq(sm) {
-      left: -1.1em;
-    }
-  }
-}
-
-.smaller {
-  // font-size: 11rem;
-  font-size: 7.3vw;
-  @include b.mq(md) {
-    font-size: 9vw;
-  }
-  @include b.mq(sm) {
-    font-size: 6rem;
-  }
-}
-
-.split-container {
-  grid-template-columns: 1fr 43%;
-  gap: 7rem;
-  @include b.mq(lg) {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-}
-
-.side-text {
-  padding: 5.5rem 17rem 7rem 8rem;
-  margin: -5.5rem -17rem -5.5rem -8rem;
-  font-size: 3.5rem;
-  font-size: 2.3vw;
-  background-color: var(--teal);
-  @include b.mq(lg) {
-    padding: 5.5rem 21rem 7rem 12rem;
-    font-size: 2.3rem;
-  }
-  @include b.mq(sm) {
-    padding: 5.5rem 3% 7rem;
-    margin: -5.5rem -3%;
-    font-size: 2rem;
-  }
-}
-
-.side-image {
-  border: 0.4em solid var(--white);
-  @include b.mq(lg) {
-    width: 60%;
-    margin-left: auto;
-  }
-  @include b.mq(md) {
-    width: 80%;
-    margin-left: auto;
-  }
-  @include b.mq(sm) {
-    width: 100%;
-    margin-left: auto;
-  }
-  img {
-    filter: brightness(1.2) contrast(0.8);
-  }
-}
 </style>

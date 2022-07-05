@@ -31,21 +31,28 @@ const { navigation, settings, tag } = Astro.props as {
   tag: Tag
 }
 ---
+
 <BaseLayout {navigation} {settings}>
   <div>
     <Maybe as="h2">Tag: {tag.title}</Maybe>
-    <br>
+    <br />
     <ul>
-      {tag.posts && tag.posts.map(post =>
-        <li>
-          <p><a href={buildUrl(post._type, post.slug)}>{post.title}</a></p>
-          <p>
-            {format(new Date(post.settings.publishedAt), "eeee, do MMMM yyyy")}
-          </p>
-        </li>
-      )}
+      {tag.posts &&
+        tag.posts.map(post => (
+          <li>
+            <p>
+              <a href={buildUrl(post._type, post.slug)}>{post.title}</a>
+            </p>
+            <p>
+              {format(
+                new Date(post.settings.publishedAt),
+                "eeee, do MMMM yyyy"
+              )}
+            </p>
+          </li>
+        ))}
     </ul>
-    <br>
+    <br />
     <p><a href="/tags">All tags</a></p>
   </div>
 </BaseLayout>

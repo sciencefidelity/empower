@@ -18,7 +18,11 @@ export const article = (word: string): string => {
 }
 
 export const kebabCase = (str: string): string => {
-  return str.toLowerCase().split(" ").join("-").replace(/[^a-z0-9-]/g, "")
+  return str
+    .toLowerCase()
+    .split(" ")
+    .join("-")
+    .replace(/[^a-z0-9-]/g, "")
 }
 
 export const socialImage = (image: Image) => {
@@ -32,18 +36,18 @@ export const socialImage = (image: Image) => {
 
 export const subdir = (type: string): string => {
   switch (type) {
-  case "author":
-    return "/authors"
-  case "post":
-    return "/blog"
-  case "section":
-    return "/section"
-  case "tag":
-    return "/tags"
-  case "video":
-    return "/videos"
-  default:
-    return ""
+    case "author":
+      return "/authors"
+    case "post":
+      return "/blog"
+    case "section":
+      return "/section"
+    case "tag":
+      return "/tags"
+    case "video":
+      return "/videos"
+    default:
+      return ""
   }
 }
 
