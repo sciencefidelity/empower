@@ -2,4 +2,4 @@
 
 A resource to help everyone improve their wellbeing, self‑esteem and mental health through meditation.
 
-The *Coming Soon* page build with [Astro](https://astro.build).
+The _Coming Soon_ page build with [Astro](https://astro.build).

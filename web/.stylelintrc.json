@@ -3,12 +3,11 @@
     "stylelint-config-prettier",
     "stylelint-config-standard",
     "stylelint-config-sass-guidelines",
-    "stylelint-config-recess-order",
-    "stylelint-config-html"
+    "stylelint-config-recess-order"
   ],
   "overrides": [
     {
-      "files": ["*.astro", "**/*.astro", "*.svelte", "**/*.svelte"],
+      "files": ["*.astro", "**/*.astro"],
       "customSyntax": "postcss-html"
     }
   ],
