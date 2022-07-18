@@ -1,0 +1,17 @@
+{
+  "semi": true,
+  "overrides": [
+    {
+      "files": "*.tsx",
+      "options": {
+        "semi": false
+      }
+    },
+    {
+      "files": ["vite.config.ts"],
+      "options": {
+        "printWidth": 100
+      }
+    }
+  ]
+}

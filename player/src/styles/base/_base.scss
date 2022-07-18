@@ -1,0 +1,12 @@
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: auto;
+  font-family: var(--font-sans-serif);
+  font-size: calc(10px + 2vmin);
+  color: var(--grey-850);
+}

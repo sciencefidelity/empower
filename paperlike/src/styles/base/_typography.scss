@@ -1,0 +1,72 @@
+@font-face {
+  font-family: Verveine;
+  font-size: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/verveine_std_rg.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/alshauss-regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-style: italic;
+  font-weight: 400;
+  src: url('/assets/fonts/alshauss-regularitalic.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 500;
+  src: url('/assets/fonts/alshauss-medium.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-style: italic;
+  font-weight: 500;
+  src: url('/assets/fonts/alshauss-mediumitalic.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-weight: 700;
+  src: url('/assets/fonts/alshauss-bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ALS Hauss';
+  font-size: normal;
+  font-style: italic;
+  font-weight: 700;
+  src: url('/assets/fonts/alshauss-bolditalic.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  --sans:
+    'ALS Hauss',
+    -apple-system,
+    blinkmacsystemfont,
+    'Segoe UI',
+    roboto,
+    'Helvetica Neue',
+    arial,
+    'Noto Sans',
+    sans-serif;
+  --cursive: verveine, sans-serif;
+}
