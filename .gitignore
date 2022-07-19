@@ -24,3 +24,6 @@ cypress
 *.css.map
 .snowpack
 sendgrid.env
+tags
+tags.*
+
