@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Meditation for all",
   "author": "Matt Cook <matt@sciencefidelity.co.uk>",
-  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "dev": "sanity start",
